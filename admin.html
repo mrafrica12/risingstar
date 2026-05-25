@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin Portal — Rising Stars Atlanta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════ */
+:root {
+  --black:    #080808;
+  --dark:     #0d0d0d;
+  --surface:  #111111;
+  --card:     #141414;
+  --elevated: #1a1a1a;
+  --border:   rgba(200,16,46,.25);
+  --border-s: rgba(255,255,255,.06);
+  --gold:     #C8102E;
+  --gold-dim: rgba(200,16,46,.13);
+  --gold-glow:rgba(200,16,46,.28);
+  --white:    #FFFFFF;
+  --off:      rgba(255,255,255,.85);
+  --muted:    rgba(255,255,255,.42);
+  --subtle:   rgba(255,255,255,.06);
+  --green:    #22c55e;
+  --red:      #ef4444;
+  --yellow:   #eab308;
+  --blue:     #3b82f6;
+
+  --font-d: 'Barlow Condensed', sans-serif;
+  --font-b: 'Space Grotesk', sans-serif;
+  --ease:   cubic-bezier(.25,.46,.45,.94);
+  --radius: 4px;
+  --sidebar-w: 240px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{height:100%}
+body{
+  background:var(--dark);color:var(--white);
+  font-family:var(--font-b);font-size:14px;line-height:1.5;
+  height:100%;display:flex;flex-direction:column;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit;color:inherit}
+input,select,textarea{font-family:inherit;color:inherit;outline:none}
+ul{list-style:none}
+
+/* ═══════════════════════════════════════════
+   LOGIN SCREEN
+═══════════════════════════════════════════ */
+#loginScreen{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--black);
+  display:flex;align-items:center;justify-content:center;
+}
+.login-box{
+  width:100%;max-width:400px;padding:0 24px;
+}
+.login-logo{
+  font-family:var(--font-d);font-size:22px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;margin-bottom:48px;justify-content:center;
+}
+.login-logo span{color:var(--gold)}
+.login-badge{
+  width:32px;height:32px;border:1.5px solid var(--gold);background:var(--gold-dim);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-d);font-size:12px;font-weight:900;color:var(--gold);
+  clip-path:polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%);
+}
+.login-title{font-family:var(--font-d);font-size:28px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;text-align:center}
+.login-sub{font-size:13px;color:var(--muted);text-align:center;margin-bottom:36px}
+.login-field{margin-bottom:14px}
+.login-field label{display:block;font-family:var(--font-d);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.login-field input{
+  width:100%;background:var(--surface);border:1px solid var(--border-s);
+  padding:13px 16px;font-size:14px;color:var(--white);
+  transition:border-color .3s;
+}
+.login-field input:focus{border-color:var(--gold)}
+.login-btn{
+  width:100%;margin-top:8px;
+  background:var(--gold);color:var(--white);
+  font-family:var(--font-d);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  padding:15px;
+  clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition:background .3s;
+}
+.login-btn:hover{background:#E32040}
+.login-error{font-size:12px;color:var(--red);text-align:center;margin-top:12px;display:none}
+
+/* ═══════════════════════════════════════════
+   APP SHELL
+═══════════════════════════════════════════ */
+#appShell{display:none;flex:1;overflow:hidden;height:100vh}
+#appShell.visible{display:flex}
+
+/* ── Sidebar ── */
+.sidebar{
+  width:var(--sidebar-w);flex-shrink:0;
+  background:var(--black);border-right:1px solid var(--border-s);
+  display:flex;flex-direction:column;overflow-y:auto;
+}
+.sidebar-logo{
+  padding:22px 20px;border-bottom:1px solid var(--border-s);
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-d);font-size:16px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  flex-shrink:0;
+}
+.sidebar-logo span{color:var(--gold)}
+.sidebar-logo .login-badge{width:28px;height:28px;font-size:10px}
+.sidebar-nav{flex:1;padding:16px 0}
+.sidebar-section{padding:0 12px;margin-bottom:4px}
+.sidebar-section-label{
+  font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--muted);padding:14px 8px 6px;
+}
+.sidebar-link{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 8px;border-radius:2px;
+  font-size:13px;font-weight:500;color:var(--off);
+  transition:all .2s;cursor:pointer;
+  border-left:2px solid transparent;
+}
+.sidebar-link:hover{background:var(--subtle);color:var(--white)}
+.sidebar-link.active{background:var(--gold-dim);color:var(--gold);border-color:var(--gold)}
+.sidebar-link .icon{font-size:15px;width:20px;text-align:center;flex-shrink:0}
+.sidebar-footer{
+  padding:16px 20px;border-top:1px solid var(--border-s);flex-shrink:0;
+}
+.sidebar-user{display:flex;align-items:center;gap:10px}
+.sidebar-avatar{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--gold-dim);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-d);font-size:13px;font-weight:700;color:var(--gold);flex-shrink:0;
+}
+.sidebar-user-info strong{display:block;font-size:13px;font-weight:600}
+.sidebar-user-info span{font-size:11px;color:var(--muted)}
+.logout-btn{
+  margin-left:auto;font-size:11px;color:var(--muted);
+  padding:4px 8px;border:1px solid var(--border-s);border-radius:2px;
+  transition:all .2s;
+}
+.logout-btn:hover{color:var(--red);border-color:var(--red)}
+
+/* ── Main content ── */
+.main{flex:1;overflow-y:auto;display:flex;flex-direction:column}
+.topbar{
+  padding:0 28px;height:60px;flex-shrink:0;
+  background:var(--black);border-bottom:1px solid var(--border-s);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  position:sticky;top:0;z-index:10;
+}
+.topbar-title{font-family:var(--font-d);font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.topbar-actions{display:flex;gap:10px;align-items:center}
+.btn-sm{
+  font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:9px 18px;transition:all .2s;
+}
+.btn-sm-primary{background:var(--gold);color:var(--white);clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%)}
+.btn-sm-primary:hover{background:#E32040}
+.btn-sm-outline{border:1px solid var(--border-s);color:var(--off)}
+.btn-sm-outline:hover{border-color:var(--gold);color:var(--gold)}
+.page-content{padding:28px;flex:1}
+
+/* ═══════════════════════════════════════════
+   DASHBOARD CARDS
+═══════════════════════════════════════════ */
+.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:24px}
+.metric-card{background:var(--surface);padding:24px;border:1px solid var(--border-s);transition:border-color .3s}
+.metric-card:hover{border-color:var(--border)}
+.metric-label{font-family:var(--font-d);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+.metric-badge{font-size:11px;padding:3px 8px;border-radius:20px}
+.metric-badge.up{background:rgba(34,197,94,.12);color:var(--green)}
+.metric-badge.down{background:rgba(239,68,68,.12);color:var(--red)}
+.metric-badge.neutral{background:rgba(234,179,8,.12);color:var(--yellow)}
+.metric-num{font-family:var(--font-d);font-size:clamp(28px,3vw,40px);font-weight:900;color:var(--white);line-height:1}
+.metric-sub{font-size:11px;color:var(--muted);margin-top:6px}
+
+/* ─ Section grids ─ */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.section-card{background:var(--surface);border:1px solid var(--border-s);overflow:hidden}
+.section-card-header{
+  padding:18px 22px;border-bottom:1px solid var(--border-s);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.section-card-title{font-family:var(--font-d);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.section-card-body{padding:22px}
+
+/* Table */
+.data-table{width:100%;border-collapse:collapse}
+.data-table th{
+  font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);text-align:left;padding:0 0 14px;border-bottom:1px solid var(--border-s);
+}
+.data-table td{
+  padding:14px 0;border-bottom:1px solid var(--border-s);
+  font-size:13px;color:var(--off);vertical-align:middle;
+}
+.data-table tr:last-child td{border-bottom:none}
+.data-table td:first-child{font-weight:500;color:var(--white)}
+.status-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:4px 10px;
+}
+.status-badge.confirmed{background:rgba(34,197,94,.1);color:var(--green)}
+.status-badge.pending{background:rgba(234,179,8,.1);color:var(--yellow)}
+.status-badge.cancelled{background:rgba(239,68,68,.1);color:var(--red)}
+.status-dot{width:5px;height:5px;border-radius:50%;background:currentColor}
+
+/* Progress bars */
+.progress-wrap{display:flex;align-items:center;gap:12px}
+.progress-bar{flex:1;height:3px;background:var(--border-s);border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;border-radius:2px;background:var(--gold)}
+.progress-label{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--muted);white-space:nowrap}
+
+/* Action buttons in table */
+.table-action{
+  font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 12px;border:1px solid var(--border-s);color:var(--muted);transition:all .2s;
+}
+.table-action:hover{border-color:var(--gold);color:var(--gold)}
+.table-actions-wrap{display:flex;gap:6px}
+
+/* ── Tabs ── */
+.tab-bar{display:flex;gap:0;border-bottom:1px solid var(--border-s);margin-bottom:22px}
+.tab-btn{
+  font-family:var(--font-d);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  padding:12px 20px;color:var(--muted);border-bottom:2px solid transparent;
+  transition:all .2s;cursor:pointer;
+}
+.tab-btn.active{color:var(--gold);border-color:var(--gold)}
+.tab-btn:hover{color:var(--white)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* ── Form fields ── */
+.admin-form{display:flex;flex-direction:column;gap:14px}
+.admin-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-group{}
+.form-group label{display:block;font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;background:var(--card);border:1px solid var(--border-s);
+  padding:11px 14px;font-size:13px;color:var(--white);transition:border-color .3s;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group textarea{resize:vertical;min-height:90px}
+.form-group select option{background:var(--card)}
+
+/* ── Player list ── */
+.player-row{
+  display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:16px;
+  padding:14px 0;border-bottom:1px solid var(--border-s);
+}
+.player-row:last-child{border-bottom:none}
+.player-avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--gold-dim);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-d);font-size:13px;font-weight:700;color:var(--gold);flex-shrink:0;
+}
+.player-name{font-size:13px;font-weight:600;color:var(--white)}
+.player-meta{font-size:11px;color:var(--muted);margin-top:2px}
+.player-group{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:4px 10px;border:1px solid var(--border)}
+
+/* ── Tournament form ── */
+.tournament-admin-card{background:var(--card);border:1px solid var(--border-s);padding:22px;margin-bottom:2px}
+.tournament-admin-name{font-family:var(--font-d);font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.tournament-admin-meta{font-size:11px;color:var(--muted)}
+.tournament-admin-progress{margin-top:14px}
+
+/* ── Media upload ── */
+.upload-zone{
+  border:2px dashed var(--border-s);padding:48px 24px;text-align:center;
+  transition:border-color .3s,background .3s;cursor:pointer;
+}
+.upload-zone:hover,.upload-zone.drag{border-color:var(--gold);background:var(--gold-dim)}
+.upload-icon{font-size:36px;margin-bottom:12px}
+.upload-text{font-family:var(--font-d);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--off);margin-bottom:4px}
+.upload-hint{font-size:12px;color:var(--muted)}
+.upload-input{display:none}
+.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-top:20px}
+.media-thumb{position:relative;aspect-ratio:1;overflow:hidden;background:var(--card);cursor:pointer}
+.media-thumb img{width:100%;height:100%;object-fit:cover;transition:opacity .3s}
+.media-thumb:hover img{opacity:.7}
+.media-thumb-delete{
+  position:absolute;top:6px;right:6px;width:24px;height:24px;
+  background:rgba(239,68,68,.8);color:white;
+  display:flex;align-items:center;justify-content:center;font-size:12px;
+  opacity:0;transition:opacity .2s;
+}
+.media-thumb:hover .media-thumb-delete{opacity:1}
+
+/* ── Content editor fields ── */
+.content-field{background:var(--card);border:1px solid var(--border-s);padding:20px;margin-bottom:2px}
+.content-field-label{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.save-field-btn{
+  font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  padding:5px 12px;background:var(--gold);color:var(--white);
+  clip-path:polygon(3px 0%,100% 0%,calc(100% - 3px) 100%,0% 100%);
+  transition:background .2s;
+}
+.save-field-btn:hover{background:#E32040}
+.content-input{
+  width:100%;background:var(--surface);border:1px solid var(--border-s);
+  padding:11px 14px;font-size:14px;color:var(--white);transition:border-color .3s;
+}
+.content-input:focus{border-color:var(--gold)}
+
+/* ── Toast ── */
+#toast{
+  position:fixed;bottom:24px;right:24px;z-index:99999;
+  background:var(--surface);border:1px solid var(--border);
+  padding:14px 20px;
+  font-family:var(--font-d);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;
+  opacity:0;transform:translateY(8px);transition:all .35s;pointer-events:none;
+}
+#toast.show{opacity:1;transform:none}
+.toast-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .sidebar{display:none}
+  .metric-grid{grid-template-columns:1fr 1fr}
+  .two-col{grid-template-columns:1fr}
+  .admin-form-row{grid-template-columns:1fr}
+  .page-content{padding:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ LOGIN ═══════ -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo">
+      <div class="login-badge">RS</div>
+      RISING <span>STARS</span> ADMIN
+    </div>
+    <h2 class="login-title">Staff Portal</h2>
+    <p class="login-sub">Sign in with your admin credentials</p>
+    <div class="login-field">
+      <label for="loginUser">Username</label>
+      <input type="text" id="loginUser" placeholder="admin" autocomplete="username">
+    </div>
+    <div class="login-field">
+      <label for="loginPass">Password</label>
+      <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button class="login-btn" id="loginBtn">Access Portal</button>
+    <p class="login-error" id="loginError">Incorrect credentials. Please try again.</p>
+  </div>
+</div>
+
+<!-- ═══════ APP SHELL ═══════ -->
+<div id="appShell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="login-badge">RS</div>
+      RISING <span>STARS</span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Overview</div>
+        <div class="sidebar-link active" data-page="dashboard">
+          <span class="icon">📊</span> Dashboard
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Management</div>
+        <div class="sidebar-link" data-page="registrations">
+          <span class="icon">📋</span> Registrations
+        </div>
+        <div class="sidebar-link" data-page="players">
+          <span class="icon">👥</span> Player CRM
+        </div>
+        <div class="sidebar-link" data-page="tournaments">
+          <span class="icon">🏆</span> Tournaments
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Content</div>
+        <div class="sidebar-link" data-page="media">
+          <span class="icon">🖼️</span> Media
+        </div>
+        <div class="sidebar-link" data-page="content">
+          <span class="icon">✏️</span> Site Content
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Settings</div>
+        <div class="sidebar-link" data-page="settings">
+          <span class="icon">⚙️</span> Settings
+        </div>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar">AD</div>
+        <div class="sidebar-user-info">
+          <strong>Admin</strong>
+          <span>Rising Stars Staff</span>
+        </div>
+        <button class="logout-btn" id="logoutBtn">Out</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-title" id="pageTitle">Dashboard</div>
+      <div class="topbar-actions">
+        <a href="index.html" target="_blank" class="btn-sm btn-sm-outline">View Site ↗</a>
+        <button class="btn-sm btn-sm-primary" id="topbarActionBtn">+ New Registration</button>
+      </div>
+    </div>
+
+    <div class="page-content">
+
+      <!-- ════════ DASHBOARD ════════ -->
+      <div id="page-dashboard" class="tab-panel active">
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-label">Total Registrations <span class="metric-badge up">+12%</span></div>
+            <div class="metric-num">247</div>
+            <div class="metric-sub">This season</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Active Players <span class="metric-badge up">+8</span></div>
+            <div class="metric-num">189</div>
+            <div class="metric-sub">Across all programs</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Pending Approval <span class="metric-badge neutral">14</span></div>
+            <div class="metric-num">14</div>
+            <div class="metric-sub">Awaiting review</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Revenue (MTD) <span class="metric-badge up">+22%</span></div>
+            <div class="metric-num">$18.4K</div>
+            <div class="metric-sub">May 2025</div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <!-- Recent registrations -->
+          <div class="section-card">
+            <div class="section-card-header">
+              <span class="section-card-title">Recent Registrations</span>
+              <button class="table-action" onclick="showPage('registrations')">View All</button>
+            </div>
+            <div class="section-card-body" style="padding:0 22px">
+              <table class="data-table">
+                <thead><tr>
+                  <th>Player</th><th>Program</th><th>Status</th>
+                </tr></thead>
+                <tbody id="dashRecentRegs">
+                  <tr>
+                    <td>Jaylen Williams<br><span style="font-size:11px;color:var(--muted)">Parent: M. Williams</span></td>
+                    <td><span style="font-size:12px;color:var(--muted)">Elite 5v5 · U10</span></td>
+                    <td><span class="status-badge confirmed"><span class="status-dot"></span>Confirmed</span></td>
+                  </tr>
+                  <tr>
+                    <td>Amara Johnson<br><span style="font-size:11px;color:var(--muted)">Parent: T. Johnson</span></td>
+                    <td><span style="font-size:12px;color:var(--muted)">Elite 7v7 · U14</span></td>
+                    <td><span class="status-badge pending"><span class="status-dot"></span>Pending</span></td>
+                  </tr>
+                  <tr>
+                    <td>Marcus Davis<br><span style="font-size:11px;color:var(--muted)">Parent: K. Davis</span></td>
+                    <td><span style="font-size:12px;color:var(--muted)">Private · U17</span></td>
+                    <td><span class="status-badge confirmed"><span class="status-dot"></span>Confirmed</span></td>
+                  </tr>
+                  <tr>
+                    <td>Nia Thompson<br><span style="font-size:11px;color:var(--muted)">Parent: R. Thompson</span></td>
+                    <td><span style="font-size:12px;color:var(--muted)">Elite 5v5 · U8</span></td>
+                    <td><span class="status-badge pending"><span class="status-dot"></span>Pending</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Tournament spots -->
+          <div class="section-card">
+            <div class="section-card-header">
+              <span class="section-card-title">Tournament Capacity</span>
+              <button class="table-action" onclick="showPage('tournaments')">Manage</button>
+            </div>
+            <div class="section-card-body">
+              <div style="display:flex;flex-direction:column;gap:20px">
+                <div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+                    <span style="font-weight:600;font-size:13px">Summer Classic 2025</span>
+                    <span style="font-size:12px;color:var(--muted)">65/100 teams</span>
+                  </div>
+                  <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div><span class="progress-label">65%</span></div>
+                </div>
+                <div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+                    <span style="font-weight:600;font-size:13px">Elite 5v5 Championship</span>
+                    <span style="font-size:12px;color:var(--muted)">24/40 teams</span>
+                  </div>
+                  <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><span class="progress-label">60%</span></div>
+                </div>
+                <div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+                    <span style="font-weight:600;font-size:13px">Elite 7v7 League</span>
+                    <span style="font-size:12px;color:var(--muted)">32/40 teams</span>
+                  </div>
+                  <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div><span class="progress-label">80%</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Age group breakdown -->
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title">Enrollment by Age Group</span>
+          </div>
+          <div class="section-card-body">
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:12px">
+              <div style="text-align:center;background:var(--card);padding:16px;border:1px solid var(--border-s)">
+                <div style="font-family:var(--font-d);font-size:24px;font-weight:900;color:var(--gold)">18</div>
+                <div style="font-family:var(--font-d);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px">U6</div>
+              </div>
+              <div style="text-align:center;background:var(--card);padding:16px;border:1px solid var(--border-s)">
+                <div style="font-family:var(--font-d);font-size:24px;font-weight:900;color:var(--gold)">32</div>
+                <div style="font-family:var(--font-d);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px">U8</div>
+              </div>
+              <div style="text-align:center;background:var(--card);padding:16px;border:1px solid var(--border-s)">
+                <div style="font-family:var(--font-d);font-size:24px;font-weight:900;color:var(--gold)">41</div>
+                <div style="font-family:var(--font-d);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px">U10</div>
+              </div>
+              <div style="text-align:center;background:var(--card);padding:16px;border:1px solid var(--border-s)">
+                <div style="font-family:var(--font-d);font-size:24px;font-weight:900;color:var(--gold)">38</div>
+                <div style="font-family:var(--font-d);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px">U12</div>
+              </div>
+              <div style="text-align:center;background:var(--card);padding:16px;border:1px solid var(--border-s)">
+                <div style="font-family:var(--font-d);font-size:24px;font-weight:900;color:var(--gold)">35</div>
+                <div style="font-family:var(--font-d);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px">U14</div>
+              </div>
+              <div style="text-align:center;background:var(--card);padding:16px;border:1px solid var(--border-s)">
+                <div style="font-family:var(--font-d);font-size:24px;font-weight:900;color:var(--gold)">25</div>
+                <div style="font-family:var(--font-d);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px">U17</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════ REGISTRATIONS ════════ -->
+      <div id="page-registrations" class="tab-panel">
+        <div class="tab-bar">
+          <button class="tab-btn active" data-tab="all-regs">All (247)</button>
+          <button class="tab-btn" data-tab="pending-regs">Pending (14)</button>
+          <button class="tab-btn" data-tab="confirmed-regs">Confirmed (219)</button>
+          <button class="tab-btn" data-tab="cancelled-regs">Cancelled (14)</button>
+        </div>
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title">Registration Database</span>
+            <div style="display:flex;gap:8px">
+              <input type="search" placeholder="Search players…" style="background:var(--card);border:1px solid var(--border-s);padding:8px 14px;font-size:12px;color:var(--white);width:220px">
+              <select style="background:var(--card);border:1px solid var(--border-s);padding:8px 12px;font-size:12px;color:var(--muted)">
+                <option>All Programs</option>
+                <option>Elite 5v5</option>
+                <option>Elite 7v7</option>
+                <option>Private Training</option>
+              </select>
+            </div>
+          </div>
+          <div class="section-card-body" style="padding:0 22px">
+            <table class="data-table">
+              <thead><tr>
+                <th>Player Name</th><th>Parent</th><th>Phone</th><th>Program</th><th>Age Group</th><th>Date</th><th>Status</th><th>Actions</th>
+              </tr></thead>
+              <tbody id="regTableBody">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════ PLAYER CRM ════════ -->
+      <div id="page-players" class="tab-panel">
+        <div class="two-col" style="margin-bottom:16px">
+          <div class="section-card">
+            <div class="section-card-header">
+              <span class="section-card-title">Player Database</span>
+              <input type="search" placeholder="Search…" style="background:var(--card);border:1px solid var(--border-s);padding:7px 12px;font-size:12px;color:var(--white);width:180px">
+            </div>
+            <div class="section-card-body" style="padding:0 22px" id="playerList">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- Add player form -->
+          <div class="section-card">
+            <div class="section-card-header"><span class="section-card-title">Add / Edit Player</span></div>
+            <div class="section-card-body">
+              <form class="admin-form" id="playerForm">
+                <div class="admin-form-row">
+                  <div class="form-group"><label>Player First Name</label><input type="text" placeholder="First"></div>
+                  <div class="form-group"><label>Player Last Name</label><input type="text" placeholder="Last"></div>
+                </div>
+                <div class="admin-form-row">
+                  <div class="form-group"><label>Date of Birth</label><input type="date"></div>
+                  <div class="form-group"><label>Age Group</label>
+                    <select><option>U6</option><option>U8</option><option>U10</option><option>U12</option><option>U14</option><option>U17</option></select>
+                  </div>
+                </div>
+                <div class="form-group"><label>Parent / Guardian Name</label><input type="text" placeholder="Full name"></div>
+                <div class="admin-form-row">
+                  <div class="form-group"><label>Parent Email</label><input type="email" placeholder="email@example.com"></div>
+                  <div class="form-group"><label>Parent Phone / WhatsApp</label><input type="tel" placeholder="(404) 000-0000"></div>
+                </div>
+                <div class="form-group"><label>Emergency Contact</label><input type="text" placeholder="Name · Phone"></div>
+                <div class="admin-form-row">
+                  <div class="form-group"><label>Program</label>
+                    <select><option>Elite 5v5</option><option>Elite 7v7</option><option>Private Training</option></select>
+                  </div>
+                  <div class="form-group"><label>Status</label>
+                    <select><option>Active</option><option>Pending</option><option>Inactive</option></select>
+                  </div>
+                </div>
+                <div class="form-group"><label>Notes</label><textarea placeholder="Internal notes…"></textarea></div>
+                <div style="display:flex;gap:10px;margin-top:6px">
+                  <button type="submit" class="btn-sm btn-sm-primary" style="flex:1">Save Player</button>
+                  <button type="reset" class="btn-sm btn-sm-outline">Clear</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════ TOURNAMENTS ════════ -->
+      <div id="page-tournaments" class="tab-panel">
+        <div class="two-col">
+          <!-- Active tournaments -->
+          <div>
+            <div class="section-card-title" style="margin-bottom:12px">Active Tournaments</div>
+            <div class="tournament-admin-card">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start">
+                <div>
+                  <div class="tournament-admin-name">Summer Classic 2025</div>
+                  <div class="tournament-admin-meta">July 19, 2025 · Atlanta, GA · 5v5 &amp; 7v7</div>
+                </div>
+                <span class="status-badge confirmed"><span class="status-dot"></span>Open</span>
+              </div>
+              <div class="tournament-admin-progress">
+                <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:6px"><span>65/100 teams registered</span><span>65%</span></div>
+                <div class="progress-bar" style="height:4px"><div class="progress-fill" style="width:65%"></div></div>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:14px">
+                <button class="table-action" onclick="showToast('Tournament editor opened')">Edit</button>
+                <button class="table-action" onclick="showToast('Registration closed')">Close Reg.</button>
+                <button class="table-action" onclick="showToast('Flyer upload coming in Phase 2')">Upload Flyer</button>
+              </div>
+            </div>
+            <div class="tournament-admin-card">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start">
+                <div>
+                  <div class="tournament-admin-name">Elite 5v5 Championship</div>
+                  <div class="tournament-admin-meta">Aug 2, 2025 · Atlanta, GA · 5v5 Only</div>
+                </div>
+                <span class="status-badge confirmed"><span class="status-dot"></span>Open</span>
+              </div>
+              <div class="tournament-admin-progress">
+                <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:6px"><span>24/40 teams</span><span>60%</span></div>
+                <div class="progress-bar" style="height:4px"><div class="progress-fill" style="width:60%"></div></div>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:14px">
+                <button class="table-action" onclick="showToast('Editor opened')">Edit</button>
+                <button class="table-action">Close Reg.</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Create tournament -->
+          <div class="section-card">
+            <div class="section-card-header"><span class="section-card-title">Create Tournament</span></div>
+            <div class="section-card-body">
+              <form class="admin-form" id="tournamentForm">
+                <div class="form-group"><label>Tournament Name</label><input type="text" placeholder="e.g. Fall Classic 2025"></div>
+                <div class="admin-form-row">
+                  <div class="form-group"><label>Date</label><input type="date"></div>
+                  <div class="form-group"><label>Location</label><input type="text" placeholder="Venue name, city"></div>
+                </div>
+                <div class="admin-form-row">
+                  <div class="form-group"><label>Format</label>
+                    <select><option>5v5 &amp; 7v7</option><option>5v5 Only</option><option>7v7 Only</option></select>
+                  </div>
+                  <div class="form-group"><label>Max Teams</label><input type="number" placeholder="100"></div>
+                </div>
+                <div class="admin-form-row">
+                  <div class="form-group"><label>Entry Fee</label><input type="text" placeholder="$150"></div>
+                  <div class="form-group"><label>Registration Deadline</label><input type="date"></div>
+                </div>
+                <div class="form-group"><label>Age Groups</label>
+                  <select multiple style="height:80px"><option>U6</option><option>U8</option><option>U10</option><option>U12</option><option>U14</option><option>U17</option></select>
+                </div>
+                <div class="form-group"><label>Description</label><textarea placeholder="Tournament details…"></textarea></div>
+                <button type="submit" class="btn-sm btn-sm-primary" style="width:100%;margin-top:6px">Create Tournament</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════ MEDIA ════════ -->
+      <div id="page-media" class="tab-panel">
+        <div class="section-card" style="margin-bottom:16px">
+          <div class="section-card-header"><span class="section-card-title">Upload Media</span></div>
+          <div class="section-card-body">
+            <div class="upload-zone" id="uploadZone">
+              <div class="upload-icon">📁</div>
+              <div class="upload-text">Drop files here or click to upload</div>
+              <div class="upload-hint">WebP, JPG, PNG, MP4 — Max 20MB per file</div>
+              <input type="file" class="upload-input" id="fileInput" accept="image/*,video/*" multiple>
+            </div>
+            <div class="media-grid" id="mediaGrid">
+              <div class="media-thumb">
+                <img src="assets/webp/c50053_4732bab7fc114482aef29759cd84794a-mv2-57fbc65d.webp" alt="Media 1" loading="lazy">
+                <div class="media-thumb-delete" title="Delete">✕</div>
+              </div>
+              <div class="media-thumb">
+                <img src="assets/webp/c50053_654f60b1c50f4c5089588ac275f8ae97-mv2-387dc111.webp" alt="Media 2" loading="lazy">
+                <div class="media-thumb-delete" title="Delete">✕</div>
+              </div>
+              <div class="media-thumb">
+                <img src="assets/webp/c50053_a92ebe91e43f4c7e8b217107948edf65-mv2-1eb0cfea.webp" alt="Media 3" loading="lazy">
+                <div class="media-thumb-delete" title="Delete">✕</div>
+              </div>
+              <div class="media-thumb">
+                <img src="assets/webp/c50053_6d376e7af2624cd1aaa01cae2891750b-mv2-9bf41478.webp" alt="Media 4" loading="lazy">
+                <div class="media-thumb-delete" title="Delete">✕</div>
+              </div>
+              <div class="media-thumb">
+                <img src="assets/webp/c50053_bc5d4154dcea4e3eabb2173a041cea88-mv2-04693d51.webp" alt="Media 5" loading="lazy">
+                <div class="media-thumb-delete" title="Delete">✕</div>
+              </div>
+              <div class="media-thumb">
+                <img src="assets/webp/c50053_e0c15a1e2fce4129a446e11e7df68018-mv2-4ffb8203.webp" alt="Media 6" loading="lazy">
+                <div class="media-thumb-delete" title="Delete">✕</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════ SITE CONTENT ════════ -->
+      <div id="page-content" class="tab-panel">
+        <div style="margin-bottom:16px;font-family:var(--font-d);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">
+          Edit live site content — changes are saved locally and can be pushed to production
+        </div>
+
+        <div class="content-field">
+          <div class="content-field-label">Hero Headline <button class="save-field-btn" onclick="showToast('Hero headline saved')">Save</button></div>
+          <input class="content-input" type="text" value="Where Elite Players Compete" placeholder="Hero headline">
+        </div>
+        <div class="content-field">
+          <div class="content-field-label">Hero Subtitle <button class="save-field-btn" onclick="showToast('Hero subtitle saved')">Save</button></div>
+          <input class="content-input" type="text" value="Atlanta's premier youth football experience. Developing the next generation of elite athletes." placeholder="Hero subtitle">
+        </div>
+        <div class="content-field">
+          <div class="content-field-label">Registration Status <button class="save-field-btn" onclick="showToast('Status updated')">Save</button></div>
+          <select class="content-input" style="max-width:300px">
+            <option>Registration Open</option>
+            <option>Registration Closing Soon</option>
+            <option>Registration Closed</option>
+            <option>Waitlist Only</option>
+          </select>
+        </div>
+        <div class="content-field">
+          <div class="content-field-label">Ticker Announcement <button class="save-field-btn" onclick="showToast('Ticker updated')">Save</button></div>
+          <input class="content-input" type="text" value="Summer Classic 2025 — Registration Open — Limited Spots" placeholder="Announcement text">
+        </div>
+        <div class="content-field">
+          <div class="content-field-label">Next Tournament Name <button class="save-field-btn" onclick="showToast('Tournament name saved')">Save</button></div>
+          <input class="content-input" type="text" value="Summer Classic 2025" placeholder="Tournament name">
+        </div>
+        <div class="content-field">
+          <div class="content-field-label">Next Tournament Date (countdown target) <button class="save-field-btn" onclick="showToast('Date saved')">Save</button></div>
+          <input class="content-input" type="date" value="2025-07-19" style="max-width:240px">
+        </div>
+        <div class="content-field">
+          <div class="content-field-label">5v5 Program Price <button class="save-field-btn" onclick="showToast('Price saved')">Save</button></div>
+          <input class="content-input" type="text" value="$149" style="max-width:200px">
+        </div>
+        <div class="content-field">
+          <div class="content-field-label">7v7 Program Price <button class="save-field-btn" onclick="showToast('Price saved')">Save</button></div>
+          <input class="content-input" type="text" value="$199" style="max-width:200px">
+        </div>
+        <div class="content-field">
+          <div class="content-field-label">Private Training Price <button class="save-field-btn" onclick="showToast('Price saved')">Save</button></div>
+          <input class="content-input" type="text" value="$85 / session" style="max-width:200px">
+        </div>
+        <div class="content-field">
+          <div class="content-field-label">Contact Phone / WhatsApp <button class="save-field-btn" onclick="showToast('Contact updated')">Save</button></div>
+          <input class="content-input" type="tel" value="(404) 999-9999" style="max-width:260px">
+        </div>
+        <div class="content-field">
+          <div class="content-field-label">Contact Email <button class="save-field-btn" onclick="showToast('Email saved')">Save</button></div>
+          <input class="content-input" type="email" value="info@risingstarsatlanta.com" style="max-width:360px">
+        </div>
+      </div>
+
+      <!-- ════════ SETTINGS ════════ -->
+      <div id="page-settings" class="tab-panel">
+        <div class="two-col">
+          <div class="section-card">
+            <div class="section-card-header"><span class="section-card-title">Admin Accounts</span></div>
+            <div class="section-card-body">
+              <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Manage staff portal access credentials below.</p>
+              <table class="data-table">
+                <thead><tr><th>Username</th><th>Role</th><th>Last Login</th><th></th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td>admin</td>
+                    <td><span class="status-badge confirmed">Owner</span></td>
+                    <td style="color:var(--muted);font-size:12px">Today</td>
+                    <td><button class="table-action">Edit</button></td>
+                  </tr>
+                  <tr>
+                    <td>staff1</td>
+                    <td><span class="status-badge pending">Staff</span></td>
+                    <td style="color:var(--muted);font-size:12px">May 24</td>
+                    <td><button class="table-action">Edit</button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="btn-sm btn-sm-outline" style="margin-top:16px">+ Add Staff Account</button>
+            </div>
+          </div>
+          <div class="section-card">
+            <div class="section-card-header"><span class="section-card-title">Notifications</span></div>
+            <div class="section-card-body">
+              <div style="display:flex;flex-direction:column;gap:16px">
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                  <div><div style="font-weight:600;font-size:13px">Email Confirmations</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Auto-send on registration</div></div>
+                  <label style="cursor:pointer;display:flex;align-items:center;gap:8px">
+                    <input type="checkbox" checked style="accent-color:var(--gold)"> <span style="font-size:12px;color:var(--muted)">On</span>
+                  </label>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border-s);padding-top:16px">
+                  <div><div style="font-weight:600;font-size:13px">WhatsApp Reminders</div><div style="font-size:11px;color:var(--muted);margin-top:2px">48hrs before tournament</div></div>
+                  <label style="cursor:pointer;display:flex;align-items:center;gap:8px">
+                    <input type="checkbox" checked style="accent-color:var(--gold)"> <span style="font-size:12px;color:var(--muted)">On</span>
+                  </label>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border-s);padding-top:16px">
+                  <div><div style="font-weight:600;font-size:13px">SMS Reminders</div><div style="font-size:11px;color:var(--muted);margin-top:2px">24hrs before events</div></div>
+                  <label style="cursor:pointer;display:flex;align-items:center;gap:8px">
+                    <input type="checkbox" style="accent-color:var(--gold)"> <span style="font-size:12px;color:var(--muted)">Off</span>
+                  </label>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border-s);padding-top:16px">
+                  <div><div style="font-weight:600;font-size:13px">Auto-close Registration</div><div style="font-size:11px;color:var(--muted);margin-top:2px">When capacity reached</div></div>
+                  <label style="cursor:pointer;display:flex;align-items:center;gap:8px">
+                    <input type="checkbox" checked style="accent-color:var(--gold)"> <span style="font-size:12px;color:var(--muted)">On</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-card" style="margin-top:16px">
+          <div class="section-card-header"><span class="section-card-title">Backend Integration</span></div>
+          <div class="section-card-body">
+            <div class="admin-form">
+              <div class="form-group" style="max-width:600px">
+                <label>Google Apps Script Endpoint URL</label>
+                <input type="url" placeholder="https://script.google.com/macros/s/…/exec" value="YOUR_GOOGLE_APPS_SCRIPT_URL">
+              </div>
+              <div class="form-group" style="max-width:600px">
+                <label>WhatsApp Business Number</label>
+                <input type="tel" placeholder="+1 404 000 0000">
+              </div>
+              <button class="btn-sm btn-sm-primary" onclick="showToast('Settings saved')">Save Integration Settings</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /page-content -->
+  </div><!-- /main -->
+</div><!-- /appShell -->
+
+<!-- Toast -->
+<div id="toast"><span class="toast-dot"></span><span id="toastMsg">Saved</span></div>
+
+<script>
+/* ─── Auth ─── */
+const ADMIN_CREDS = {admin:'risingstars2025', staff1:'staff123'};
+let toastTimer;
+
+document.getElementById('loginBtn').addEventListener('click', doLogin);
+document.getElementById('loginPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+
+function doLogin() {
+  const u = document.getElementById('loginUser').value.trim();
+  const p = document.getElementById('loginPass').value;
+  const err = document.getElementById('loginError');
+  if(ADMIN_CREDS[u] && ADMIN_CREDS[u] === p) {
+    sessionStorage.setItem('rsAdmin', u);
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('appShell').classList.add('visible');
+    err.style.display = 'none';
+    initApp(u);
+  } else {
+    err.style.display = 'block';
+    document.getElementById('loginPass').value = '';
+  }
+}
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  sessionStorage.removeItem('rsAdmin');
+  location.reload();
+});
+if(sessionStorage.getItem('rsAdmin')) {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('appShell').classList.add('visible');
+  initApp(sessionStorage.getItem('rsAdmin'));
+}
+
+/* ─── App init ─── */
+function initApp(user) {
+  document.querySelector('.sidebar-user-info strong').textContent = user;
+  populateRegistrations();
+  populatePlayers();
+}
+
+/* ─── Navigation ─── */
+const pageTitles = {
+  dashboard:'Dashboard', registrations:'Registrations',
+  players:'Player CRM', tournaments:'Tournaments',
+  media:'Media Library', content:'Site Content', settings:'Settings'
+};
+const topbarActions = {
+  dashboard:'+ New Registration', registrations:'+ Add Registration',
+  players:'+ Add Player', tournaments:'+ Create Tournament',
+  media:'+ Upload Media', content:'Save All Changes', settings:'Save Settings'
+};
+function showPage(id) {
+  document.querySelectorAll('.sidebar-link').forEach(l => l.classList.toggle('active', l.dataset.page === id));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'page-'+id));
+  document.getElementById('pageTitle').textContent = pageTitles[id] || id;
+  document.getElementById('topbarActionBtn').textContent = topbarActions[id] || '+ New';
+}
+document.querySelectorAll('.sidebar-link[data-page]').forEach(link => {
+  link.addEventListener('click', () => showPage(link.dataset.page));
+});
+document.getElementById('topbarActionBtn').addEventListener('click', () => {
+  const active = document.querySelector('.sidebar-link.active')?.dataset.page;
+  if(active === 'registrations' || active === 'dashboard') showPage('registrations');
+  else if(active === 'players') document.getElementById('playerForm')?.reset();
+  else if(active === 'tournaments') document.getElementById('tournamentForm')?.reset();
+  else if(active === 'media') document.getElementById('fileInput')?.click();
+  else if(active === 'content') showToast('All content fields saved');
+  else if(active === 'settings') showToast('Settings saved');
+});
+
+/* ─── Toast ─── */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+/* ─── Sample data ─── */
+const sampleRegs = [
+  {player:'Jaylen Williams',parent:'Marcus Williams',phone:'(404) 555-0101',program:'Elite 5v5',age:'U10',date:'May 22',status:'confirmed'},
+  {player:'Amara Johnson',parent:'Tanya Johnson',phone:'(404) 555-0102',program:'Elite 7v7',age:'U14',date:'May 23',status:'pending'},
+  {player:'Marcus Davis',parent:'Karen Davis',phone:'(404) 555-0103',program:'Private Training',age:'U17',date:'May 23',status:'confirmed'},
+  {player:'Nia Thompson',parent:'Robert Thompson',phone:'(404) 555-0104',program:'Elite 5v5',age:'U8',date:'May 24',status:'pending'},
+  {player:'Isaiah Brown',parent:'Lisa Brown',phone:'(404) 555-0105',program:'Summer Classic',age:'U12',date:'May 24',status:'confirmed'},
+  {player:'Sofia Martinez',parent:'Elena Martinez',phone:'(404) 555-0106',program:'Elite 7v7',age:'U12',date:'May 25',status:'confirmed'},
+  {player:'DeShawn Williams',parent:'James Williams',phone:'(404) 555-0107',program:'Elite 5v5',age:'U6',date:'May 25',status:'pending'},
+];
+
+function populateRegistrations() {
+  const tbody = document.getElementById('regTableBody');
+  if(!tbody) return;
+  tbody.innerHTML = sampleRegs.map(r => `
+    <tr>
+      <td>${r.player}</td>
+      <td style="color:var(--muted)">${r.parent}</td>
+      <td style="color:var(--muted)">${r.phone}</td>
+      <td><span style="font-size:12px">${r.program}</span></td>
+      <td><span class="player-group">${r.age}</span></td>
+      <td style="color:var(--muted)">${r.date}</td>
+      <td><span class="status-badge ${r.status}"><span class="status-dot"></span>${r.status.charAt(0).toUpperCase()+r.status.slice(1)}</span></td>
+      <td><div class="table-actions-wrap">
+        <button class="table-action" onclick="showToast('Player record opened')">View</button>
+        ${r.status==='pending'?`<button class="table-action" style="border-color:var(--green);color:var(--green)" onclick="showToast('Registration confirmed')">Approve</button>`:''}
+      </div></td>
+    </tr>
+  `).join('');
+}
+
+function populatePlayers() {
+  const list = document.getElementById('playerList');
+  if(!list) return;
+  list.innerHTML = `<div style="padding-bottom:16px">` + sampleRegs.map(r => `
+    <div class="player-row">
+      <div class="player-avatar">${r.player.split(' ').map(n=>n[0]).join('')}</div>
+      <div>
+        <div class="player-name">${r.player}</div>
+        <div class="player-meta">${r.parent} · ${r.phone}</div>
+      </div>
+      <span class="player-group">${r.age}</span>
+      <button class="table-action" onclick="showToast('Player record opened')">Edit</button>
+    </div>
+  `).join('') + `</div>`;
+}
+
+/* ─── Forms ─── */
+document.getElementById('playerForm').addEventListener('submit', e => {
+  e.preventDefault();
+  showToast('Player saved to CRM');
+});
+document.getElementById('tournamentForm').addEventListener('submit', e => {
+  e.preventDefault();
+  showToast('Tournament created successfully');
+  e.target.reset();
+});
+
+/* ─── Registrations tab bar ─── */
+document.querySelectorAll('.tab-btn[data-tab]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn[data-tab]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    showToast(`Showing ${btn.textContent}`);
+  });
+});
+
+/* ─── Upload zone ─── */
+const uploadZone = document.getElementById('uploadZone');
+const fileInput  = document.getElementById('fileInput');
+uploadZone?.addEventListener('click', () => fileInput?.click());
+uploadZone?.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag'); });
+uploadZone?.addEventListener('dragleave', () => uploadZone.classList.remove('drag'));
+uploadZone?.addEventListener('drop', e => {
+  e.preventDefault();
+  uploadZone.classList.remove('drag');
+  handleFiles(e.dataTransfer.files);
+});
+fileInput?.addEventListener('change', () => handleFiles(fileInput.files));
+function handleFiles(files) {
+  const grid = document.getElementById('mediaGrid');
+  Array.from(files).forEach(file => {
+    if(!file.type.startsWith('image/') && !file.type.startsWith('video/')) return;
+    const url = URL.createObjectURL(file);
+    const thumb = document.createElement('div');
+    thumb.className = 'media-thumb';
+    thumb.innerHTML = `<img src="${url}" alt="${file.name}" loading="lazy"><div class="media-thumb-delete" title="Delete">✕</div>`;
+    thumb.querySelector('.media-thumb-delete').addEventListener('click', () => { thumb.remove(); URL.revokeObjectURL(url); });
+    grid?.prepend(thumb);
+  });
+  showToast(`${files.length} file${files.length>1?'s':''} uploaded`);
+}
+
+/* ─── Media thumb delete ─── */
+document.querySelectorAll('.media-thumb-delete').forEach(btn => {
+  btn.addEventListener('click', () => btn.closest('.media-thumb').remove());
+});
+</script>
+</body>
+</html>
