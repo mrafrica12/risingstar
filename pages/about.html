@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="About Rising Stars Atlanta — our mission, values, coaching staff, and the community we've built since 2019.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://risingstarsatlanta.com/pages/about.html">
+<meta property="og:title" content="About Rising Stars Atlanta">
+<meta property="og:description" content="Learn about Rising Stars Atlanta, our mission, values, coaching culture, and youth soccer community.">
+<meta property="og:image" content="https://risingstarsatlanta.com/assets/images/gallery/events/risingstar_13.webp">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1046">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../assets/logo/rising-stars-logo-160.png">
+<link rel="apple-touch-icon" href="../assets/logo/rising-stars-logo-160.png">
+<title>About — Rising Stars Atlanta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<style>
+/* ── MISSION SPLIT ──────────────────────────────────── */
+.mission-split { display:grid; grid-template-columns:1fr 1fr; min-height:80vh }
+.mission-visual { position:relative; overflow:hidden }
+.mission-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.75) saturate(.8) }
+.mission-visual-overlay { position:absolute; inset:0; background:linear-gradient(to right,rgba(6,9,26,.6),transparent 60%),linear-gradient(to top,rgba(6,9,26,.7),transparent 50%) }
+.mission-content { display:flex; flex-direction:column; justify-content:center; padding:clamp(48px,6vw,80px); background:var(--dark) }
+.mission-quote { font-family:var(--font-display); font-size:clamp(20px,3vw,32px); font-weight:700; color:var(--off-white); line-height:1.35; letter-spacing:.01em; font-style:italic; margin-bottom:28px }
+.mission-quote::before { content:'"'; display:block; font-size:clamp(48px,6vw,80px); color:var(--gold); line-height:.8; margin-bottom:8px; font-style:normal }
+
+/* ── VALUES GRID ────────────────────────────────────── */
+.values-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px }
+.value-card { background:var(--card); padding:clamp(28px,3vw,44px) clamp(20px,2.5vw,32px); border-top:3px solid transparent; transition:border-color .4s,background .4s }
+.value-card:hover { border-color:var(--gold); background:var(--card-hover) }
+.value-icon { font-size:32px; margin-bottom:20px }
+.value-title { font-family:var(--font-display); font-size:clamp(20px,2.5vw,28px); font-weight:800; text-transform:uppercase; letter-spacing:.04em; margin-bottom:12px }
+.value-desc { font-family:var(--font-light); font-size:14px; color:var(--muted); line-height:1.75 }
+
+/* ── COACHING STAFF ─────────────────────────────────── */
+.coach-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px }
+.coach-card { background:var(--card); overflow:hidden }
+.coach-img { width:100%; aspect-ratio:3/4; object-fit:cover; object-position:top; filter:brightness(.85) saturate(.8); transition:filter .5s,transform .6s var(--ease-out); display:block }
+.coach-card:hover .coach-img { filter:brightness(.7); transform:scale(1.03) }
+.coach-body { padding:24px 24px 28px }
+.coach-name { font-family:var(--font-display); font-size:22px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; margin-bottom:4px }
+.coach-role { font-family:var(--font-display); font-size:10px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--gold) }
+.coach-bio { font-family:var(--font-light); font-size:13px; color:var(--muted); line-height:1.7; margin-top:12px }
+
+/* ── TIMELINE ───────────────────────────────────────── */
+.timeline { display:flex; flex-direction:column; gap:0; position:relative }
+.timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:var(--border-sub) }
+.tl-item { display:grid; grid-template-columns:120px 1fr; gap:32px; padding:32px 0 32px 32px; border-bottom:1px solid var(--border-sub); position:relative }
+.tl-item:last-child { border-bottom:none }
+.tl-item::before { content:''; position:absolute; left:-4px; top:40px; width:9px; height:9px; border-radius:50%; background:var(--gold); border:2px solid var(--black) }
+.tl-year { font-family:var(--font-display); font-size:clamp(24px,3vw,36px); font-weight:900; color:var(--gold); line-height:1 }
+.tl-title { font-family:var(--font-display); font-size:18px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px }
+.tl-desc { font-family:var(--font-light); font-size:14px; color:var(--muted); line-height:1.7 }
+
+/* Active timeline entry — 2026 */
+.tl-item.tl-active { background:rgba(201,168,76,.05); border-left:none; padding-left:32px }
+.tl-item.tl-active::before { width:13px; height:13px; left:-6px; top:38px; background:var(--gold); box-shadow:0 0 0 4px rgba(201,168,76,.25), 0 0 16px rgba(201,168,76,.45); animation:tlPulse 2.2s ease-in-out infinite }
+.tl-item.tl-active .tl-year { color:var(--gold) }
+.tl-active-badge { display:inline-flex; align-items:center; gap:6px; background:var(--gold); color:var(--black); font-family:var(--font-display); font-size:9px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; padding:3px 10px; margin-bottom:8px }
+.tl-active-badge::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--black); animation:liveDot 1.5s ease-in-out infinite }
+@keyframes tlPulse { 0%,100%{box-shadow:0 0 0 4px rgba(201,168,76,.25),0 0 16px rgba(201,168,76,.45)} 50%{box-shadow:0 0 0 8px rgba(201,168,76,.12),0 0 28px rgba(201,168,76,.65)} }
+@keyframes liveDot { 0%,100%{opacity:1} 50%{opacity:.35} }
+
+/* ── STATS SHOWCASE ─────────────────────────────────── */
+.stats-showcase { display:grid; grid-template-columns:repeat(4,1fr); gap:2px }
+.showcase-card { background:var(--card); padding:clamp(28px,3vw,44px); text-align:center; border:1px solid transparent; transition:border-color .3s }
+.showcase-card:hover { border-color:var(--border) }
+.showcase-num { font-family:var(--font-display); font-size:clamp(40px,5vw,64px); font-weight:900; color:var(--gold); line-height:1; letter-spacing:-.02em }
+.showcase-label { font-family:var(--font-display); font-size:10px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin-top:8px }
+.showcase-sub { font-family:var(--font-light); font-size:12px; color:rgba(255,255,255,.3); margin-top:4px }
+
+/* ── COMMUNITY GRID ─────────────────────────────────── */
+.community-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px }
+.community-img { overflow:hidden; aspect-ratio:4/3 }
+.community-img img { width:100%; height:100%; object-fit:cover; filter:brightness(.8) saturate(.85); transition:transform .7s var(--ease-out),filter .7s }
+.community-img:hover img { transform:scale(1.05); filter:brightness(.65) }
+.community-text { background:var(--dark); padding:clamp(40px,5vw,72px); display:flex; flex-direction:column; justify-content:center }
+
+/* ── CONTACT BAR ────────────────────────────────────── */
+.contact-bar { background:var(--gold); padding:clamp(32px,4vw,48px) 0 }
+.contact-bar-inner { display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap }
+.contact-bar-text strong { font-family:var(--font-display); font-size:clamp(20px,3vw,32px); font-weight:800; text-transform:uppercase; letter-spacing:.04em; color:var(--white); display:block }
+.contact-bar-text span { font-family:var(--font-light); font-size:14px; color:rgba(255,255,255,.75) }
+.contact-bar-actions { display:flex; gap:10px; flex-wrap:wrap }
+.btn-dark { display:inline-flex; align-items:center; gap:8px; background:var(--black); color:var(--white); font-family:var(--font-display); font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; padding:13px 24px; clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%); transition:all .3s }
+.btn-dark:hover { background:var(--dark) }
+
+@media(max-width:900px) {
+  .mission-split { grid-template-columns:1fr; min-height:auto }
+  .mission-visual { height:55vw; min-height:260px }
+  .values-grid { grid-template-columns:1fr 1fr }
+  .stats-showcase { grid-template-columns:1fr 1fr }
+  .community-grid { grid-template-columns:1fr }
+  .tl-item { grid-template-columns:80px 1fr; gap:20px; padding-left:24px }
+  .coach-grid { grid-template-columns:1fr 1fr }
+  .contact-bar-inner { flex-direction:column; align-items:flex-start }
+}
+@media(max-width:640px) {
+  .values-grid { grid-template-columns:1fr }
+  .coach-grid { grid-template-columns:1fr }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="../index.html"><div class="nav-logo-img"><img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="90" height="90" decoding="async"></div></a>
+    <nav class="nav-links">
+      <a href="tournaments.html">Tournaments</a>
+      <div class="nav-dropdown"><a href="programs.html">Programs ▾</a><div class="nav-dropdown-menu"><a href="programs.html#fivevfive">Elite 5v5</a><a href="programs.html#sevenvsseven">Elite 7v7</a><a href="programs.html#private">Private Training</a></div></div>
+      <a href="schedules.html">Schedules</a><a href="gallery.html">Gallery</a><a href="about.html" class="active">About</a><a href="resources.html">Resources</a><a href="merchandise.html">Merch</a><a href="partner.html">Partner</a>
+      <a href="register.html" class="nav-cta-btn">Register Now</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <nav><a href="tournaments.html" class="mm-link">Tournaments</a><a href="programs.html" class="mm-link">Programs</a><a href="schedules.html" class="mm-link">Schedules</a><a href="gallery.html" class="mm-link">Gallery</a><a href="about.html" class="mm-link">About</a><a href="resources.html" class="mm-link">Resources</a><a href="merchandise.html" class="mm-link">Merchandise</a><a href="partner.html" class="mm-link">Partner With Us</a><div class="mobile-menu-divider"></div><a href="register.html" class="mm-link mm-link-accent">Register Now →</a></nav>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero" style="height:60vh">
+  <div class="page-hero-bg" style="background-image:url('../assets/images/gallery/events/risingstar_13.webp')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content container">
+    <p class="page-hero-eyebrow">Our Story</p>
+    <h1 class="page-hero-title">Built for the <span>Next Level</span></h1>
+  </div>
+</div>
+
+<!-- MISSION -->
+<section>
+  <div class="mission-split">
+    <div class="mission-visual reveal">
+      <img src="../assets/images/gallery/events/risingstar_13.webp" width="1600" height="1046" alt="Rising Stars community" decoding="async">
+      <div class="mission-visual-overlay"></div>
+    </div>
+    <div class="mission-content reveal reveal-delay-1">
+      <p class="label" style="margin-bottom:20px">Our Mission</p>
+      <div class="mission-quote">We don't just train football players. We develop champions — in sport, in discipline, and in life.</div>
+      <p style="font-family:var(--font-light);font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:24px">Rising Stars Atlanta was founded on a simple belief: every youth athlete in Atlanta deserves access to elite football development. We built a program where technical excellence meets community, where competition meets character, and where every player — regardless of background — has the chance to compete at the highest level.</p>
+      <p style="font-family:var(--font-light);font-size:15px;color:var(--muted);line-height:1.8">Since 2019, we have trained over 500 players, hosted 12 major tournaments, and watched our alumni go on to compete at high school, club, and collegiate levels across the Southeast.</p>
+      <div style="margin-top:36px;display:flex;gap:12px;flex-wrap:wrap">
+        <a href="register.html" class="btn-primary">Join the Program ↗</a>
+        <a href="programs.html" class="btn-outline">View Programs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="background:var(--black);border-top:1px solid var(--border-sub);border-bottom:1px solid var(--border-sub);padding:clamp(48px,6vw,72px) 0">
+  <div class="container">
+    <div class="stats-showcase">
+      <div class="showcase-card reveal" data-counter-target="500" data-counter-suffix="+"><div class="showcase-num">0</div><div class="showcase-label">Players Trained</div><div class="showcase-sub">Across all programs</div></div>
+      <div class="showcase-card reveal reveal-delay-1" data-counter-target="12" data-counter-suffix=""><div class="showcase-num">0</div><div class="showcase-label">Tournaments Hosted</div><div class="showcase-sub">Since 2019</div></div>
+      <div class="showcase-card reveal reveal-delay-2" data-counter-target="95" data-counter-suffix="%"><div class="showcase-num">0</div><div class="showcase-label">% Satisfaction</div><div class="showcase-sub">Parent survey 2024</div></div>
+      <div class="showcase-card reveal reveal-delay-3" data-counter-target="6" data-counter-suffix="+"><div class="showcase-num">0</div><div class="showcase-label">Years Running</div><div class="showcase-sub">And growing</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section" style="background:var(--dark)">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">What We Stand For</p>
+      <h2 class="section-title">Our <span>Values</span></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal"><div class="value-icon">⚡</div><div class="value-title">Excellence</div><p class="value-desc">We hold every player, coach, and staff member to an elite standard — in performance, attitude, and character.</p></div>
+      <div class="value-card reveal reveal-delay-1"><div class="value-icon">🎯</div><div class="value-title">Discipline</div><p class="value-desc">Champions are built through consistent, purposeful effort. We instill habits that translate beyond the pitch.</p></div>
+      <div class="value-card reveal reveal-delay-2"><div class="value-icon">🤝</div><div class="value-title">Community</div><p class="value-desc">Football is a team sport. We build a family — players, parents, and coaches united around a shared purpose.</p></div>
+      <div class="value-card reveal reveal-delay-3"><div class="value-icon">📈</div><div class="value-title">Growth</div><p class="value-desc">Every player leaves better. Technically, tactically, mentally. Growth is the standard, not the goal.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COACHING STAFF -->
+<section class="section" style="background:var(--black);border-top:1px solid var(--border-sub)">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">Coaching Staff</p>
+      <h2 class="section-title">Meet the <span>Coaches</span></h2>
+      <p class="section-desc">USSF-licensed coaches with elite playing and coaching backgrounds dedicated to developing Atlanta's next generation.</p>
+    </div>
+    <div class="coach-grid">
+      <div class="coach-card reveal">
+        <img class="coach-img" src="../assets/images/gallery/events/risingstar_16.webp" width="1600" height="1046" alt="Head Coach Marcus" loading="lazy" decoding="async">
+        <div class="coach-body">
+          <div class="coach-name">Coach Marcus</div>
+          <div class="coach-role">Head Coach · 5v5 Director</div>
+          <p class="coach-bio">USSF B-License. 12 years of elite youth coaching experience. Former semi-professional player. Specialized in small-sided game development and technical foundations.</p>
+        </div>
+      </div>
+      <div class="coach-card reveal reveal-delay-1">
+        <img class="coach-img" src="../assets/images/gallery/events/risingstar_17.webp" width="1600" height="1046" alt="Coach Amara" loading="lazy" decoding="async">
+        <div class="coach-body">
+          <div class="coach-name">Coach Amara</div>
+          <div class="coach-role">7v7 Director · Tactics Lead</div>
+          <p class="coach-bio">USSF A-License candidate. Former Division I college player. Expert in tactical formation work, video analysis, and preparing players for high school and college programs.</p>
+        </div>
+      </div>
+      <div class="coach-card reveal reveal-delay-2">
+        <img class="coach-img" src="../assets/images/gallery/events/risingstar_18.webp" width="1600" height="1046" alt="Coach Devon" loading="lazy" decoding="async">
+        <div class="coach-body">
+          <div class="coach-name">Coach Devon</div>
+          <div class="coach-role">Private Training Specialist</div>
+          <p class="coach-bio">Certified strength &amp; conditioning coach with USSF National C License. Specializes in player-specific development plans, mental performance coaching, and skill acceleration.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,8vw,100px)">
+      <div class="reveal">
+        <p class="label">Our Journey</p>
+        <h2 class="section-title">From <span>2019</span><br>to Today</h2>
+        <p class="section-desc" style="margin-top:20px">What started as a single 5v5 tournament has grown into Atlanta's most trusted elite youth football organization.</p>
+      </div>
+      <div class="timeline reveal reveal-delay-1">
+        <div class="tl-item">
+          <div class="tl-year">2019</div>
+          <div><div class="tl-title">Founded</div><p class="tl-desc">Rising Stars Atlanta hosts its first tournament at a local Atlanta field with 12 teams and 80 players.</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2020</div>
+          <div><div class="tl-title">Programs Launch</div><p class="tl-desc">Elite 5v5 and 7v7 seasonal programs introduced. First cohort of 150 players enrolled across 6 age groups.</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2022</div>
+          <div><div class="tl-title">Private Training</div><p class="tl-desc">Personalized 1-on-1 coaching program launched. USSF-licensed coaching staff expanded to 6 coaches.</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2023</div>
+          <div><div class="tl-title">500 Players</div><p class="tl-desc">Milestone: 500 players trained. Summer Classic tournament attracts teams from across Georgia and neighboring states.</p></div>
+        </div>
+        <div class="tl-item tl-active">
+          <div class="tl-year">2026</div>
+          <div>
+            <div class="tl-active-badge">Active Now</div>
+            <div class="tl-title">Next Chapter</div>
+            <p class="tl-desc">Website relaunch, expanded tournament schedule, merchandise line, and new partnerships with elite clubs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section style="background:var(--dark);border-top:1px solid var(--border-sub)">
+  <div class="community-grid">
+    <div class="community-img reveal">
+      <img src="../assets/images/gallery/events/risingstar_20.webp" width="1600" height="1046" alt="Rising Stars community" loading="lazy" decoding="async">
+    </div>
+    <div class="community-text reveal reveal-delay-1">
+      <p class="label" style="margin-bottom:16px">More Than Football</p>
+      <h2 class="section-title">A <span>Community</span><br>Built to Last</h2>
+      <p style="font-family:var(--font-light);font-size:15px;color:var(--muted);line-height:1.8;margin-top:20px;max-width:480px">We believe the best football programs don't just produce better players — they produce better people. Our culture emphasizes respect, accountability, and leadership on and off the pitch.</p>
+      <p style="font-family:var(--font-light);font-size:15px;color:var(--muted);line-height:1.8;margin-top:16px;max-width:480px">From post-game team dinners to community service initiatives, Rising Stars is a family that shows up for each other year-round.</p>
+      <div style="margin-top:36px;display:flex;gap:12px;flex-wrap:wrap">
+        <a href="register.html" class="btn-primary">Join Our Community ↗</a>
+        <a href="gallery.html" class="btn-outline">View Gallery</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT BAR -->
+<div class="contact-bar">
+  <div class="container">
+    <div class="contact-bar-inner">
+      <div class="contact-bar-text">
+        <strong>Get In Touch</strong>
+        <span>(678) 438-0539 &nbsp;·&nbsp; info@risingstarsatlanta.com</span>
+      </div>
+      <div class="contact-bar-actions">
+        <a href="tel:+16784380539" class="btn-dark">Call Us</a>
+        <a href="mailto:info@risingstarsatlanta.com" class="btn-dark">Email Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div><div class="footer-logo"><div class="footer-logo-img"><img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="44" height="44" decoding="async"></div><span>RISING <span>STARS</span> ATL</span></div><p class="footer-tagline">Atlanta's premier elite youth football experience since 2019.</p><div class="footer-socials"><a href="tel:+16784380539" class="footer-social" aria-label="Call Rising Stars Atlanta">PH</a><a href="mailto:info@risingstarsatlanta.com" class="footer-social" aria-label="Email Rising Stars Atlanta">EM</a></div></div>
+      <div class="footer-col"><h4>Programs</h4><ul><li><a href="programs.html#fivevfive">Elite 5v5</a></li><li><a href="programs.html#sevenvsseven">Elite 7v7</a></li><li><a href="programs.html#private">Private Training</a></li><li><a href="register.html">Register</a></li></ul></div>
+      <div class="footer-col"><h4>Events</h4><ul><li><a href="tournaments.html">Summer Classic 2026</a></li><li><a href="tournaments.html">5v5 Championship</a></li><li><a href="tournaments.html">7v7 League</a></li><li><a href="tournaments.html">All Events</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="schedules.html">Schedules</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="resources.html">Resources</a></li><li><a href="partner.html">Partner</a></li></ul></div>
+      <div class="footer-col"><h4>Shop</h4><ul><li><a href="merchandise.html">Merchandise</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2026 Rising Stars Atlanta. All rights reserved.</p><div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap"><a href="https://umojaserv.com/" target="_blank" rel="noopener noreferrer" class="footer-credit">Site by UmojaServ</a></div></div>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="stickyCta"><div class="sticky-cta-text">Join Rising Stars<span>Registration open now</span></div><a href="register.html" class="sticky-cta-btn">Register ↗</a></div>
+
+<script>
+// ── NAV & MOBILE MENU ────────────────────────────────
+const nav = document.getElementById('nav');
+const sticky = document.getElementById('stickyCta');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', scrollY > 40);
+  sticky.classList.toggle('visible', scrollY > 300);
+}, { passive: true });
+
+const tog = document.getElementById('navToggle');
+const men = document.getElementById('mobileMenu');
+tog.addEventListener('click', () => {
+  const o = men.classList.toggle('open');
+  tog.classList.toggle('active', o);
+  tog.setAttribute('aria-expanded', o ? 'true' : 'false');
+  tog.setAttribute('aria-label', o ? 'Close menu' : 'Open menu');
+  document.body.style.overflow = o ? 'hidden' : '';
+});
+document.querySelectorAll('.mm-link').forEach(a => a.addEventListener('click', () => {
+  men.classList.remove('open');
+  tog.classList.remove('active');
+  tog.setAttribute('aria-expanded', 'false');
+  tog.setAttribute('aria-label', 'Open menu');
+  document.body.style.overflow = '';
+}));
+
+// ── COUNTER ANIMATION ────────────────────────────────
+function animateCounter(card) {
+  const num    = card.querySelector('.showcase-num');
+  if (!num || num.dataset.animated) return;
+  num.dataset.animated = '1';
+  const target = +card.dataset.counterTarget;
+  const suffix = card.dataset.counterSuffix ?? '';
+  const dur    = 2000;
+  const start  = Date.now();
+  const run = () => {
+    const p    = Math.min(1, (Date.now() - start) / dur);
+    const ease = 1 - Math.pow(1 - p, 3);
+    num.textContent = Math.round(ease * target) + suffix;
+    if (p < 1) requestAnimationFrame(run);
+  };
+  run();
+}
+
+// ── SCROLL REVEAL + COUNTER TRIGGER ─────────────────
+// Single observer drives both: adds .visible class AND fires
+// counter animation when a .showcase-card enters the viewport.
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('visible');
+    if (e.target.dataset.counterTarget) animateCounter(e.target);
+    obs.unobserve(e.target);
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+<script src="../assets/js/cms-config.js" defer></script>
+<script src="../assets/js/cms.js" defer></script>
+</body>
+</html>

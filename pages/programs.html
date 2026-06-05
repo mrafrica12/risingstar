@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Rising Stars Atlanta Training Programs — Elite 5v5, 7v7, and Private Training for youth players ages 4–17 in Atlanta, GA.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://risingstarsatlanta.com/pages/programs.html">
+<meta property="og:title" content="Rising Stars Atlanta Training Programs">
+<meta property="og:description" content="Elite 5v5, 7v7, and private training programs for youth soccer players ages 4-17 in Atlanta.">
+<meta property="og:image" content="https://risingstarsatlanta.com/assets/images/gallery/events/risingstar_08.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://risingstarsatlanta.com/pages/programs.html">
+<link rel="icon" type="image/png" href="../assets/logo/rising-stars-logo-160.png">
+<link rel="apple-touch-icon" href="../assets/logo/rising-stars-logo-160.png">
+<title>Programs — Rising Stars Atlanta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<style>
+/* ── PROGRAM HERO SPLIT ─────────────────────────────── */
+.prog-split {
+  display:grid; grid-template-columns:1fr 1fr; min-height:100vh;
+  padding-top:var(--nav-h);
+}
+.prog-split-visual {
+  position:relative; overflow:hidden;
+}
+.prog-split-visual img {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center top;
+  filter:brightness(.7) saturate(.85);
+  transition:transform .8s var(--ease-out);
+}
+.prog-split-visual:hover img { transform:scale(1.03) }
+.prog-split-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to right, rgba(6,9,26,.4), transparent 60%),
+             linear-gradient(to top, rgba(6,9,26,.8), transparent 50%);
+}
+.prog-split-content {
+  display:flex; flex-direction:column; justify-content:center;
+  padding:clamp(48px,6vw,80px) clamp(32px,5vw,72px);
+  background:var(--dark);
+}
+.prog-number {
+  font-family:var(--font-display); font-size:clamp(80px,12vw,160px); font-weight:900;
+  color:var(--gold-dim); line-height:1; letter-spacing:-.04em;
+  margin-bottom:-20px; position:relative; z-index:0;
+}
+.prog-split-title {
+  font-family:var(--font-display); font-size:clamp(36px,5vw,64px); font-weight:900;
+  text-transform:uppercase; line-height:.95; letter-spacing:-.01em;
+  position:relative; z-index:1; margin-bottom:8px;
+}
+.prog-split-title span { color:var(--gold) }
+.prog-split-tag {
+  font-family:var(--font-display); font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:20px; display:block;
+}
+.prog-split-desc {
+  font-family:var(--font-light); font-size:clamp(14px,1.8vw,17px); font-weight:300;
+  color:var(--muted); line-height:1.75; margin-bottom:32px; max-width:480px;
+}
+.prog-features-list { display:flex; flex-direction:column; gap:10px; margin-bottom:36px }
+.prog-feat { display:flex; align-items:flex-start; gap:12px; font-family:var(--font-light); font-size:14px; color:var(--off-white) }
+.prog-feat::before { content:'—'; color:var(--gold); font-size:10px; margin-top:4px; flex-shrink:0 }
+.prog-price-wrap {
+  display:flex; align-items:center; gap:20px;
+  border-top:1px solid var(--border-sub); padding-top:28px;
+}
+.prog-price-big { font-family:var(--font-display); font-size:clamp(40px,5vw,60px); font-weight:900; color:var(--gold); line-height:1 }
+.prog-price-note { font-family:var(--font-display); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted) }
+
+/* ── SCHEDULE CARDS ─────────────────────────────────── */
+.sched-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:2px }
+.sched-day { background:var(--card); padding:20px 12px; text-align:center; border:1px solid transparent; transition:all .3s }
+.sched-day.active { background:var(--gold-dim); border-color:var(--border) }
+.sched-day-name { font-family:var(--font-display); font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-bottom:8px }
+.sched-day.active .sched-day-name { color:var(--gold) }
+.sched-day-time { font-family:var(--font-display); font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.06em }
+.sched-day-note { font-family:var(--font-light); font-size:11px; color:var(--muted); margin-top:4px }
+
+/* ── COMPARE TABLE ──────────────────────────────────── */
+.compare-table { width:100%; border-collapse:collapse }
+.compare-table th { font-family:var(--font-display); font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; padding:16px 20px; border-bottom:1px solid var(--border-sub); text-align:left }
+.compare-table th:not(:first-child) { text-align:center; color:var(--gold) }
+.compare-table td { padding:16px 20px; border-bottom:1px solid var(--border-sub); font-size:13px; color:var(--off-white) }
+.compare-table td:not(:first-child) { text-align:center; font-size:18px }
+.compare-table tr:last-child td { border-bottom:none }
+.compare-table td:first-child { color:var(--muted) }
+.check { color:var(--gold) }
+.cross { color:rgba(255,255,255,.2) }
+
+/* ── COACH CARDS ────────────────────────────────────── */
+.coach-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px }
+.coach-card { background:var(--card); overflow:hidden }
+.coach-img { width:100%; aspect-ratio:3/4; object-fit:cover; object-position:top; filter:brightness(.85) saturate(.8); transition:filter .5s,transform .6s var(--ease-out); display:block }
+.coach-card:hover .coach-img { filter:brightness(.7); transform:scale(1.03) }
+.coach-body { padding:24px 24px 28px }
+.coach-name { font-family:var(--font-display); font-size:22px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; margin-bottom:4px }
+.coach-role { font-family:var(--font-display); font-size:10px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--gold) }
+.coach-bio { font-family:var(--font-light); font-size:13px; color:var(--muted); line-height:1.7; margin-top:12px }
+
+@media(max-width:900px) {
+  .prog-split { grid-template-columns:1fr; min-height:auto }
+  .prog-split-visual { height:50vw; min-height:280px; position:relative }
+  .prog-split-visual img { position:absolute }
+  .sched-grid { grid-template-columns:repeat(3,1fr) }
+  .coach-grid { grid-template-columns:1fr 1fr }
+}
+@media(max-width:640px) {
+  .sched-grid { grid-template-columns:repeat(2,1fr) }
+  .coach-grid { grid-template-columns:1fr }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="../index.html"><div class="nav-logo-img"><img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="90" height="90" decoding="async"></div></a>
+    <nav class="nav-links">
+      <a href="tournaments.html">Tournaments</a>
+      <div class="nav-dropdown"><a href="programs.html" class="active">Programs ▾</a>
+        <div class="nav-dropdown-menu"><a href="#fivevfive">Elite 5v5</a><a href="#sevenvsseven">Elite 7v7</a><a href="#private">Private Training</a></div>
+      </div>
+      <a href="schedules.html">Schedules</a><a href="gallery.html">Gallery</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="merchandise.html">Merch</a><a href="partner.html">Partner</a>
+      <a href="register.html" class="nav-cta-btn">Register Now</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <nav><a href="tournaments.html" class="mm-link">Tournaments</a><a href="programs.html" class="mm-link">Programs</a><a href="schedules.html" class="mm-link">Schedules</a><a href="gallery.html" class="mm-link">Gallery</a><a href="about.html" class="mm-link">About</a><a href="resources.html" class="mm-link">Resources</a><a href="merchandise.html" class="mm-link">Merchandise</a><a href="partner.html" class="mm-link">Partner With Us</a><div class="mobile-menu-divider"></div><a href="register.html" class="mm-link mm-link-accent">Register Now →</a></nav>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('../assets/images/gallery/events/risingstar_15.webp')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content container">
+    <p class="page-hero-eyebrow">Training Programs</p>
+    <h1 class="page-hero-title">Develop Your <span>Game</span></h1>
+  </div>
+</div>
+
+<!-- ELITE 5v5 -->
+<section id="fivevfive" style="scroll-margin-top:var(--nav-h)">
+  <div class="prog-split">
+    <div class="prog-split-visual reveal">
+      <img src="../assets/images/gallery/events/risingstar_08.webp" width="1600" height="1046" alt="Elite 5v5 Training" decoding="async">
+      <div class="prog-split-overlay"></div>
+    </div>
+    <div class="prog-split-content reveal reveal-delay-1">
+      <div class="prog-number">01</div>
+      <p class="label" style="margin-bottom:12px">Small-Sided Game</p>
+      <h2 class="prog-split-title">Elite <span>5v5</span></h2>
+      <span class="prog-split-tag">Ages 4–10 · U6 · U8 · U10</span>
+      <p class="prog-split-desc">The fastest way to develop technical skill, decision-making, and competitive instinct. Our 5v5 format gives every player maximum ball touches and real match intensity in a safe, age-appropriate environment.</p>
+      <ul class="prog-features-list">
+        <li class="prog-feat">Weekly league matches + monthly tournaments</li>
+        <li class="prog-feat">Certified coaching staff (USSF licensed)</li>
+        <li class="prog-feat">Three divisions: U6, U8, U10</li>
+        <li class="prog-feat">Individual player development tracking</li>
+        <li class="prog-feat">End-of-season awards ceremony</li>
+        <li class="prog-feat">Parent progress reports every 4 weeks</li>
+      </ul>
+      <div class="prog-price-wrap">
+        <div><div class="prog-price-big">$149</div><div class="prog-price-note">Per Season · 8 Weeks</div></div>
+        <a href="register.html" class="btn-primary" style="margin-left:auto">Register ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ELITE 7v7 -->
+<section id="sevenvsseven" style="scroll-margin-top:var(--nav-h)">
+  <div class="prog-split" style="direction:rtl">
+    <div class="prog-split-visual reveal" style="direction:ltr">
+      <img src="../assets/images/gallery/events/risingstar_09.webp" width="1600" height="1046" alt="Elite 7v7 Training" decoding="async">
+      <div class="prog-split-overlay"></div>
+    </div>
+    <div class="prog-split-content reveal reveal-delay-1" style="direction:ltr">
+      <div class="prog-number">02</div>
+      <p class="label" style="margin-bottom:12px">Competitive League</p>
+      <h2 class="prog-split-title">Elite <span>7v7</span></h2>
+      <span class="prog-split-tag">Ages 10–17 · U12 · U14 · U17</span>
+      <p class="prog-split-desc">Where football gets serious. The 7v7 format bridges the gap between development and elite competition — deeper tactical work, more complex formations, and higher-intensity matches that prepare players for full-sided football.</p>
+      <ul class="prog-features-list">
+        <li class="prog-feat">Full competitive league + playoff brackets</li>
+        <li class="prog-feat">Tactical formations and set-piece training</li>
+        <li class="prog-feat">Video analysis review sessions</li>
+        <li class="prog-feat">Strength &amp; conditioning guidance</li>
+        <li class="prog-feat">College prep and exposure opportunities</li>
+        <li class="prog-feat">Three divisions: U12, U14, U17</li>
+      </ul>
+      <div class="prog-price-wrap">
+        <div><div class="prog-price-big">$199</div><div class="prog-price-note">Per Season · 10 Weeks</div></div>
+        <a href="register.html" class="btn-primary" style="margin-left:auto">Register ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVATE TRAINING -->
+<section id="private" style="scroll-margin-top:var(--nav-h)">
+  <div class="prog-split">
+    <div class="prog-split-visual reveal">
+      <img src="../assets/images/gallery/events/risingstar_10.webp" width="1600" height="1046" alt="Private Training" decoding="async">
+      <div class="prog-split-overlay"></div>
+    </div>
+    <div class="prog-split-content reveal reveal-delay-1">
+      <div class="prog-number">03</div>
+      <p class="label" style="margin-bottom:12px">1-on-1 Coaching</p>
+      <h2 class="prog-split-title">Private <span>Training</span></h2>
+      <span class="prog-split-tag">All Ages · All Positions</span>
+      <p class="prog-split-desc">The fastest path to elite-level improvement. Private sessions are fully customized around each player's development goals — whether it's mastering a skill, improving fitness, or preparing for tryouts.</p>
+      <ul class="prog-features-list">
+        <li class="prog-feat">1-on-1 or small group (2–4 players)</li>
+        <li class="prog-feat">Fully customized training plan</li>
+        <li class="prog-feat">Flexible scheduling — mornings, evenings, weekends</li>
+        <li class="prog-feat">Position-specific technical coaching</li>
+        <li class="prog-feat">Mental performance coaching included</li>
+        <li class="prog-feat">Progress reports after every 4 sessions</li>
+      </ul>
+      <div class="prog-price-wrap">
+        <div><div class="prog-price-big">$85</div><div class="prog-price-note">Per Session · 60 Min</div></div>
+        <a href="register.html" class="btn-primary" style="margin-left:auto">Book Session ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="section" style="background:var(--dark);border-top:1px solid var(--border-sub)">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">Training Schedule</p>
+      <h2 class="section-title">Weekly <span>Sessions</span></h2>
+      <p class="section-desc">Consistent, structured training weeks that build habits and accelerate development.</p>
+    </div>
+    <div class="sched-grid reveal">
+      <div class="sched-day"><div class="sched-day-name">Mon</div><div class="sched-day-time" style="color:var(--muted)">Off</div></div>
+      <div class="sched-day active"><div class="sched-day-name">Tue</div><div class="sched-day-time">5v5</div><div class="sched-day-note">4:00 – 6:00 PM</div></div>
+      <div class="sched-day active"><div class="sched-day-name">Wed</div><div class="sched-day-time">Private</div><div class="sched-day-note">4:00 – 8:00 PM</div></div>
+      <div class="sched-day active"><div class="sched-day-name">Thu</div><div class="sched-day-time">7v7</div><div class="sched-day-note">5:00 – 7:00 PM</div></div>
+      <div class="sched-day"><div class="sched-day-name">Fri</div><div class="sched-day-time" style="color:var(--muted)">Off</div></div>
+      <div class="sched-day active"><div class="sched-day-name">Sat</div><div class="sched-day-time">Match Day</div><div class="sched-day-note">8:00 AM – 2:00 PM</div></div>
+      <div class="sched-day active"><div class="sched-day-name">Sun</div><div class="sched-day-time">Private</div><div class="sched-day-note">10 AM – 4 PM</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">Side By Side</p>
+      <h2 class="section-title">Compare <span>Programs</span></h2>
+    </div>
+    <div class="reveal" style="background:var(--dark);border:1px solid var(--border-sub);overflow-x:auto">
+      <table class="compare-table">
+        <thead><tr><th>Feature</th><th>Elite 5v5</th><th>Elite 7v7</th><th>Private</th></tr></thead>
+        <tbody>
+          <tr><td>Age Groups</td><td>U6, U8, U10</td><td>U12, U14, U17</td><td>All Ages</td></tr>
+          <tr><td>Weekly Sessions</td><td>2x / week</td><td>2x / week</td><td>Flexible</td></tr>
+          <tr><td>League Competition</td><td class="check">✓</td><td class="check">✓</td><td class="cross">—</td></tr>
+          <tr><td>Tournament Access</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>Video Analysis</td><td class="cross">—</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>Customized Plan</td><td class="cross">—</td><td class="cross">—</td><td class="check">✓</td></tr>
+          <tr><td>Progress Reports</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>Season Price</td><td style="color:var(--gold);font-weight:700">$149</td><td style="color:var(--gold);font-weight:700">$199</td><td style="color:var(--gold);font-weight:700">$85/session</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- COACHES -->
+<section class="section" style="background:var(--dark);border-top:1px solid var(--border-sub)">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">Coaching Staff</p>
+      <h2 class="section-title">Meet the <span>Coaches</span></h2>
+      <p class="section-desc">USSF-licensed coaches with elite playing and coaching backgrounds dedicated to developing Atlanta's next generation.</p>
+    </div>
+    <div class="coach-grid">
+      <div class="coach-card reveal">
+        <img class="coach-img" src="../assets/images/gallery/events/risingstar_16.webp" width="1600" height="1046" alt="Head Coach" loading="lazy" decoding="async">
+        <div class="coach-body">
+          <div class="coach-name">Coach Marcus</div>
+          <div class="coach-role">Head Coach · 5v5 Director</div>
+          <p class="coach-bio">USSF B-License. 12 years of elite youth coaching experience. Former semi-professional player. Specialized in small-sided game development and technical foundations.</p>
+        </div>
+      </div>
+      <div class="coach-card reveal reveal-delay-1">
+        <img class="coach-img" src="../assets/images/gallery/events/risingstar_17.webp" width="1600" height="1046" alt="Assistant Coach" loading="lazy" decoding="async">
+        <div class="coach-body">
+          <div class="coach-name">Coach Amara</div>
+          <div class="coach-role">7v7 Director · Tactics Lead</div>
+          <p class="coach-bio">USSF A-License candidate. Former Division I college player. Expert in tactical formation work, video analysis, and preparing players for high school and college programs.</p>
+        </div>
+      </div>
+      <div class="coach-card reveal reveal-delay-2">
+        <img class="coach-img" src="../assets/images/gallery/events/risingstar_18.webp" width="1600" height="1046" alt="Private Training Coach" loading="lazy" decoding="async">
+        <div class="coach-body">
+          <div class="coach-name">Coach Devon</div>
+          <div class="coach-role">Private Training Specialist</div>
+          <p class="coach-bio">Certified strength &amp; conditioning coach with USSF National C License. Specializes in player-specific development plans, mental performance coaching, and skill acceleration.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE CMS PROGRAMS -->
+<section class="section" aria-label="Live program listings">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">Program Manager</p>
+      <h2 class="section-title">Live <span>Programs</span></h2>
+      <p class="section-desc">Admin-managed programs render here when the Google Apps Script endpoint is configured.</p>
+    </div>
+    <div class="prog-grid" data-cms-programs></div>
+  </div>
+</section>
+
+<!-- REGISTER CTA -->
+<section class="section" style="background:var(--charcoal);border-top:1px solid var(--border-sub);text-align:center">
+  <div class="container">
+    <div class="reveal">
+      <p class="label" style="justify-content:center">Get Started</p>
+      <h2 class="section-title" style="text-align:center;margin-top:16px">Ready to <span>Train?</span></h2>
+      <p style="font-family:var(--font-light);font-size:clamp(14px,2vw,18px);color:var(--muted);max-width:480px;margin:20px auto 40px;line-height:1.75">Choose your program and secure your spot. Limited enrollment ensures every player gets the coaching attention they deserve.</p>
+      <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap">
+        <a href="register.html" class="btn-primary">Register Now ↗</a>
+        <a href="tournaments.html" class="btn-outline">View Tournaments</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div><div class="footer-logo"><div class="footer-logo-img"><img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="44" height="44" decoding="async"></div><span>RISING <span>STARS</span> ATL</span></div><p class="footer-tagline">Atlanta's premier elite youth football experience since 2019.</p><div class="footer-socials"><a href="tel:+16784380539" class="footer-social" aria-label="Call Rising Stars Atlanta">PH</a><a href="mailto:info@risingstarsatlanta.com" class="footer-social" aria-label="Email Rising Stars Atlanta">EM</a></div></div>
+      <div class="footer-col"><h4>Programs</h4><ul><li><a href="#fivevfive">Elite 5v5</a></li><li><a href="#sevenvsseven">Elite 7v7</a></li><li><a href="#private">Private Training</a></li><li><a href="register.html">Register</a></li></ul></div>
+      <div class="footer-col"><h4>Events</h4><ul><li><a href="tournaments.html">Tournaments</a></li><li><a href="tournaments.html">Schedule</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="schedules.html">Schedules</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="resources.html">Resources</a></li><li><a href="partner.html">Partner</a></li></ul></div>
+      <div class="footer-col"><h4>Shop</h4><ul><li><a href="merchandise.html">Merchandise</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2026 Rising Stars Atlanta. All rights reserved.</p><div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap"><a href="https://umojaserv.com/" target="_blank" rel="noopener noreferrer" class="footer-credit">Site by UmojaServ</a></div></div>
+  </div>
+</footer>
+<div class="sticky-cta" id="stickyCta"><div class="sticky-cta-text">Join a Program<span>Limited spots remaining</span></div><a href="register.html" class="sticky-cta-btn">Register ↗</a></div>
+<script>
+const nav=document.getElementById('nav'),sticky=document.getElementById('stickyCta');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>40);sticky.classList.toggle('visible',scrollY>300)},{passive:true});
+const tog=document.getElementById('navToggle'),men=document.getElementById('mobileMenu');
+tog.addEventListener('click',()=>{const o=men.classList.toggle('open');tog.classList.toggle('active',o);tog.setAttribute('aria-expanded',o?'true':'false');tog.setAttribute('aria-label',o?'Close menu':'Open menu');document.body.style.overflow=o?'hidden':''});
+document.querySelectorAll('.mm-link').forEach(a=>a.addEventListener('click',()=>{men.classList.remove('open');tog.classList.remove('active');tog.setAttribute('aria-expanded','false');tog.setAttribute('aria-label','Open menu');document.body.style.overflow=''}));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+<script src="../assets/js/cms-config.js" defer></script>
+<script src="../assets/js/cms.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Rising Stars Atlanta Gallery — Match moments, tournament highlights, and training sessions from Atlanta's elite youth football program.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://risingstarsatlanta.com/pages/gallery.html">
+<meta property="og:title" content="Rising Stars Atlanta Gallery">
+<meta property="og:description" content="Match moments, tournament highlights, and training sessions from Rising Stars Atlanta.">
+<meta property="og:image" content="https://risingstarsatlanta.com/assets/images/gallery/events/risingstar_00.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://risingstarsatlanta.com/pages/gallery.html">
+<link rel="icon" type="image/png" href="../assets/logo/rising-stars-logo-160.png">
+<link rel="apple-touch-icon" href="../assets/logo/rising-stars-logo-160.png">
+<title>Gallery — Rising Stars Atlanta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<style>
+/* ── FILTER BAR ─────────────────────────────────────── */
+.filter-bar {
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  padding:24px 0; border-bottom:1px solid var(--border-sub);
+}
+.filter-btn {
+  font-family:var(--font-display); font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  padding:9px 20px; border:1px solid var(--border-sub); color:var(--muted);
+  transition:all .25s; cursor:pointer;
+}
+.filter-btn:hover { border-color:var(--gold); color:var(--gold) }
+.filter-btn.active { background:var(--gold); color:var(--white); border-color:var(--gold) }
+
+/* ── MASONRY GALLERY ────────────────────────────────── */
+.gallery-masonry {
+  columns:3; column-gap:3px;
+  padding-top:3px;
+}
+.gallery-masonry .g-item {
+  break-inside:avoid; margin-bottom:3px;
+  overflow:hidden; cursor:pointer; position:relative; background:var(--card);
+  display:block;
+}
+.gallery-masonry .g-item img {
+  width:100%; display:block;
+  transition:transform .7s var(--ease-out), filter .7s;
+  filter:brightness(.88) saturate(.85);
+}
+.gallery-masonry .g-item:hover img { transform:scale(1.05); filter:brightness(.7) saturate(.75) }
+.g-overlay {
+  position:absolute; inset:0;
+  background:rgba(6,9,26,.5);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  opacity:0; transition:opacity .35s;
+}
+.g-item:hover .g-overlay { opacity:1 }
+.g-overlay-icon { font-size:28px; color:var(--white) }
+.g-overlay-label { font-family:var(--font-display); font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--white) }
+
+/* Count badge */
+.gallery-count { font-family:var(--font-display); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-left:auto }
+
+/* ── LIGHTBOX ───────────────────────────────────────── */
+#lightbox {
+  position:fixed; inset:0; z-index:2000;
+  background:rgba(6,9,26,.97);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; visibility:hidden; transition:all .35s;
+}
+#lightbox.open { opacity:1; visibility:visible }
+.lb-img-wrap { position:relative; max-width:90vw; max-height:90vh }
+#lbImg { max-width:90vw; max-height:85vh; object-fit:contain; display:block }
+.lb-close {
+  position:fixed; top:24px; right:24px;
+  width:48px; height:48px; border:1px solid var(--border-sub);
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; color:var(--white); cursor:pointer; transition:all .25s;
+  z-index:10;
+}
+.lb-close:hover { border-color:var(--gold); color:var(--gold) }
+.lb-prev,.lb-next {
+  position:fixed; top:50%; transform:translateY(-50%);
+  width:52px; height:52px; border:1px solid var(--border-sub);
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; color:var(--white); cursor:pointer; transition:all .25s;
+  z-index:10;
+}
+.lb-prev { left:20px }
+.lb-next { right:20px }
+.lb-prev:hover,.lb-next:hover { border-color:var(--gold); color:var(--gold) }
+.lb-counter { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); font-family:var(--font-display); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); z-index:10 }
+
+/* ── HIDDEN items (filter) ──────────────────────────── */
+.g-item.hidden { display:none }
+
+@media(max-width:900px) { .gallery-masonry { columns:2 } }
+@media(max-width:480px) { .gallery-masonry { columns:1 } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="../index.html"><div class="nav-logo-img"><img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="90" height="90" decoding="async"></div></a>
+    <nav class="nav-links">
+      <a href="tournaments.html">Tournaments</a>
+      <div class="nav-dropdown"><a href="programs.html">Programs ▾</a><div class="nav-dropdown-menu"><a href="programs.html#fivevfive">Elite 5v5</a><a href="programs.html#sevenvsseven">Elite 7v7</a><a href="programs.html#private">Private Training</a></div></div>
+      <a href="schedules.html">Schedules</a><a href="gallery.html" class="active">Gallery</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="merchandise.html">Merch</a><a href="partner.html">Partner</a>
+      <a href="register.html" class="nav-cta-btn">Register Now</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <nav><a href="tournaments.html" class="mm-link">Tournaments</a><a href="programs.html" class="mm-link">Programs</a><a href="schedules.html" class="mm-link">Schedules</a><a href="gallery.html" class="mm-link">Gallery</a><a href="about.html" class="mm-link">About</a><a href="resources.html" class="mm-link">Resources</a><a href="merchandise.html" class="mm-link">Merchandise</a><a href="partner.html" class="mm-link">Partner With Us</a><div class="mobile-menu-divider"></div><a href="register.html" class="mm-link mm-link-accent">Register Now →</a></nav>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('../assets/images/gallery/events/risingstar_00.webp')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content container">
+    <p class="page-hero-eyebrow">Media Gallery</p>
+    <h1 class="page-hero-title">Match <span>Moments</span></h1>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="section" style="padding-top:clamp(40px,5vw,64px)">
+  <div class="container">
+    <!-- Filter bar -->
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">All Photos</button>
+      <button class="filter-btn" data-filter="tournament">Tournaments</button>
+      <button class="filter-btn" data-filter="training">Training</button>
+      <button class="filter-btn" data-filter="awards">Awards</button>
+      <span class="gallery-count" id="galleryCount">23 Photos</span>
+    </div>
+
+    <!-- Masonry grid -->
+    <div class="gallery-masonry" id="galleryGrid">
+      <div class="g-item reveal" data-cat="tournament" data-index="0"><img src="../assets/images/gallery/events/risingstar_00.webp" width="1600" height="944" alt="Match action 1" loading="eager" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-1" data-cat="training" data-index="1"><img src="../assets/images/gallery/events/risingstar_01.webp" width="1600" height="1046" alt="Training session" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-2" data-cat="tournament" data-index="2"><img src="../assets/images/gallery/events/risingstar_02.webp" width="1600" height="1046" alt="Tournament play" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal" data-cat="tournament" data-index="3"><img src="../assets/images/gallery/events/risingstar_03.webp" width="1600" height="1046" alt="Match moments" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-1" data-cat="awards" data-index="4"><img src="../assets/images/gallery/events/risingstar_04.webp" width="1600" height="1046" alt="Awards ceremony" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-2" data-cat="tournament" data-index="5"><img src="../assets/images/gallery/events/risingstar_05.webp" width="1600" height="1046" alt="5v5 championship" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal" data-cat="tournament" data-index="6"><img src="../assets/images/gallery/events/risingstar_06.webp" width="1600" height="1046" alt="7v7 league match" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-1" data-cat="training" data-index="7"><img src="../assets/images/gallery/events/risingstar_07.webp" width="1600" height="1046" alt="Skills training" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-2" data-cat="training" data-index="8"><img src="../assets/images/gallery/events/risingstar_08.webp" width="1600" height="1046" alt="Drill session" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal" data-cat="tournament" data-index="9"><img src="../assets/images/gallery/events/risingstar_09.webp" width="1600" height="1046" alt="Elite competition" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-1" data-cat="tournament" data-index="10"><img src="../assets/images/gallery/events/risingstar_10.webp" width="1600" height="1046" alt="Youth football action" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-2" data-cat="awards" data-index="11"><img src="../assets/images/gallery/events/risingstar_11.webp" width="1600" height="1046" alt="Champions" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal" data-cat="training" data-index="12"><img src="../assets/images/gallery/events/risingstar_12.webp" width="1600" height="1046" alt="Team huddle" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-1" data-cat="tournament" data-index="13"><img src="../assets/images/gallery/events/risingstar_13.webp" width="1600" height="1046" alt="Match intensity" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-2" data-cat="training" data-index="14"><img src="../assets/images/gallery/events/risingstar_14.webp" width="1600" height="1046" alt="Coaching session" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal" data-cat="tournament" data-index="15"><img src="../assets/images/gallery/events/risingstar_15.webp" width="1600" height="1046" alt="Tournament finals" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-1" data-cat="awards" data-index="16"><img src="../assets/images/gallery/events/risingstar_16.webp" width="1600" height="1046" alt="Trophy ceremony" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-2" data-cat="training" data-index="17"><img src="../assets/images/gallery/events/risingstar_17.webp" width="1600" height="1046" alt="Individual training" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal" data-cat="tournament" data-index="18"><img src="../assets/images/gallery/events/risingstar_18.webp" width="1600" height="1046" alt="Game day" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-1" data-cat="awards" data-index="19"><img src="../assets/images/gallery/events/risingstar_19.webp" width="1600" height="1046" alt="MVP awards" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-2" data-cat="tournament" data-index="20"><img src="../assets/images/gallery/events/risingstar_20.webp" width="1600" height="1046" alt="Rising Stars players" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal" data-cat="training" data-index="21"><img src="../assets/images/gallery/events/risingstar_21.webp" width="1600" height="1046" alt="Skill development" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-1" data-cat="tournament" data-index="22"><img src="../assets/images/gallery/events/risingstar_22.webp" width="1600" height="787" alt="Championship match" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+  <button class="lb-prev" id="lbPrev" aria-label="Previous">←</button>
+  <div class="lb-img-wrap"><img id="lbImg" src="" alt="" width="1600" height="1046" decoding="async"></div>
+  <button class="lb-next" id="lbNext" aria-label="Next">→</button>
+  <div class="lb-counter" id="lbCounter">1 / 23</div>
+</div>
+
+<!-- CTA STRIP -->
+<section style="background:var(--dark);border-top:1px solid var(--border-sub);padding:clamp(48px,6vw,80px) 0;text-align:center">
+  <div class="container reveal">
+    <p class="label" style="justify-content:center">Join The Action</p>
+    <h2 class="section-title" style="text-align:center;margin-top:12px;font-size:clamp(32px,5vw,60px)">Be Part of the <span>Story</span></h2>
+    <p style="font-family:var(--font-light);font-size:16px;color:var(--muted);margin:20px auto 36px;max-width:420px">Register your player today and create moments like these. Atlanta's elite youth football experience awaits.</p>
+    <a href="register.html" class="btn-primary">Register Now ↗</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div><div class="footer-logo"><div class="footer-logo-img"><img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="44" height="44" decoding="async"></div><span>RISING <span>STARS</span> ATL</span></div><p class="footer-tagline">Atlanta's premier elite youth football experience since 2019.</p><div class="footer-socials"><a href="tel:+16784380539" class="footer-social" aria-label="Call Rising Stars Atlanta">PH</a><a href="mailto:info@risingstarsatlanta.com" class="footer-social" aria-label="Email Rising Stars Atlanta">EM</a></div></div>
+      <div class="footer-col"><h4>Programs</h4><ul><li><a href="programs.html#fivevfive">Elite 5v5</a></li><li><a href="programs.html#sevenvsseven">Elite 7v7</a></li><li><a href="programs.html#private">Private Training</a></li><li><a href="register.html">Register</a></li></ul></div>
+      <div class="footer-col"><h4>Events</h4><ul><li><a href="tournaments.html">Tournaments</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="schedules.html">Schedules</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="resources.html">Resources</a></li><li><a href="partner.html">Partner</a></li></ul></div>
+      <div class="footer-col"><h4>Shop</h4><ul><li><a href="merchandise.html">Merchandise</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2026 Rising Stars Atlanta. All rights reserved.</p><div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap"><a href="https://umojaserv.com/" target="_blank" rel="noopener noreferrer" class="footer-credit">Site by UmojaServ</a></div></div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const tog=document.getElementById('navToggle'),men=document.getElementById('mobileMenu');
+tog.addEventListener('click',()=>{const o=men.classList.toggle('open');tog.classList.toggle('active',o);tog.setAttribute('aria-expanded',o?'true':'false');tog.setAttribute('aria-label',o?'Close menu':'Open menu');document.body.style.overflow=o?'hidden':''});
+document.querySelectorAll('.mm-link').forEach(a=>a.addEventListener('click',()=>{men.classList.remove('open');tog.classList.remove('active');tog.setAttribute('aria-expanded','false');tog.setAttribute('aria-label','Open menu');document.body.style.overflow=''}));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* Filter */
+const items=[...document.querySelectorAll('.g-item')];
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.filter;
+    let count=0;
+    items.forEach(item=>{const show=f==='all'||item.dataset.cat===f;item.classList.toggle('hidden',!show);if(show)count++;});
+    document.getElementById('galleryCount').textContent=count+' Photo'+(count!==1?'s':'');
+  });
+});
+
+/* Lightbox */
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCounter=document.getElementById('lbCounter');
+let current=0;
+function visibleItems(){return items.filter(i=>!i.classList.contains('hidden'))}
+function openLb(idx){
+  const vis=visibleItems();current=idx;
+  lbImg.src=vis[current].querySelector('img').src;
+  lbImg.alt=vis[current].querySelector('img').alt;
+  lbCounter.textContent=(current+1)+' / '+vis.length;
+  lb.classList.add('open');document.body.style.overflow='hidden';
+}
+function closeLb(){lb.classList.remove('open');document.body.style.overflow=''}
+items.forEach((item,i)=>item.addEventListener('click',()=>{const vis=visibleItems();const vi=vis.indexOf(item);openLb(vi)}));
+document.getElementById('lbClose').addEventListener('click',closeLb);
+document.getElementById('lbPrev').addEventListener('click',()=>{const v=visibleItems();openLb((current-1+v.length)%v.length)});
+document.getElementById('lbNext').addEventListener('click',()=>{const v=visibleItems();openLb((current+1)%v.length)});
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;const v=visibleItems();if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')openLb((current-1+v.length)%v.length);if(e.key==='ArrowRight')openLb((current+1)%v.length)});
+let ts=0;lb.addEventListener('touchstart',e=>{ts=e.touches[0].clientX},{passive:true});
+lb.addEventListener('touchend',e=>{const d=ts-e.changedTouches[0].clientX;const v=visibleItems();if(Math.abs(d)>50)openLb(d>0?(current+1)%v.length:(current-1+v.length)%v.length)});
+</script>
+<script src="../assets/js/cms-config.js" defer></script>
+<script src="../assets/js/cms.js" defer></script>
+</body>
+</html>
