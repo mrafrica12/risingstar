@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PLACEHOLDER');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Cache Control: Always fetch latest HTML, cache CSS/JS with versioning -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Rising Stars Atlanta Gallery — Match moments, tournament highlights, and training sessions from Atlanta's elite youth football program.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://risingstarsatlanta.com/pages/gallery.html">
+<meta property="og:title" content="Rising Stars Atlanta Gallery">
+<meta property="og:description" content="Match moments, tournament highlights, and training sessions from Rising Stars Atlanta.">
+<meta property="og:image" content="https://risingstarsatlanta.com/assets/images/gallery/events/risingstar_00.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://risingstarsatlanta.com/pages/gallery.html">
+<link rel="icon" type="image/png" href="../assets/logo/rising-stars-logo-160.png">
+<link rel="apple-touch-icon" href="../assets/logo/rising-stars-logo-160.png">
+<title>Gallery — Rising Stars Atlanta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css?v=navfix-20260608">
+<link rel="stylesheet" href="../assets/css/mobile-bottom-nav.css?v=mobile-nav-20260613">
+<style>
+/* ── FILTER BAR ─────────────────────────────────────── */
+.filter-bar {
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  padding:24px 0; border-bottom:1px solid var(--border-sub);
+}
+.filter-btn {
+  font-family:var(--font-display); font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  padding:9px 20px; border:1px solid var(--border-sub); color:var(--muted);
+  transition:all .25s; cursor:pointer;
+}
+.filter-btn:hover { border-color:var(--gold); color:var(--gold) }
+.filter-btn.active { background:var(--gold); color:var(--white); border-color:var(--gold) }
+
+/* ── MASONRY GALLERY ────────────────────────────────── */
+.gallery-masonry {
+  columns:3; column-gap:3px;
+  padding-top:3px;
+}
+.gallery-masonry .g-item {
+  break-inside:avoid; margin-bottom:3px;
+  overflow:hidden; cursor:pointer; position:relative; background:var(--card);
+  display:block;
+}
+.gallery-masonry .g-item img {
+  width:100%; display:block;
+  transition:transform .7s var(--ease-out), filter .7s;
+  filter:brightness(.88) saturate(.85);
+}
+.gallery-masonry .g-item:hover img { transform:scale(1.05); filter:brightness(.7) saturate(.75) }
+.g-overlay {
+  position:absolute; inset:0;
+  background:rgba(6,9,26,.5);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  opacity:0; transition:opacity .35s;
+}
+.g-item:hover .g-overlay { opacity:1 }
+.g-overlay-icon { font-size:28px; color:var(--white) }
+.g-overlay-label { font-family:var(--font-display); font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--white) }
+
+/* Count badge */
+.gallery-count { font-family:var(--font-display); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-left:auto }
+
+/* ── LIGHTBOX ───────────────────────────────────────── */
+#lightbox {
+  position:fixed; inset:0; z-index:2000;
+  background:rgba(6,9,26,.97);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; visibility:hidden; transition:all .35s;
+}
+#lightbox.open { opacity:1; visibility:visible }
+.lb-img-wrap { position:relative; max-width:90vw; max-height:90vh }
+#lbImg { max-width:90vw; max-height:85vh; object-fit:contain; display:block }
+.lb-close {
+  position:fixed; top:24px; right:24px;
+  width:48px; height:48px; border:1px solid var(--border-sub);
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; color:var(--white); cursor:pointer; transition:all .25s;
+  z-index:10;
+}
+.lb-close:hover { border-color:var(--gold); color:var(--gold) }
+.lb-prev,.lb-next {
+  position:fixed; top:50%; transform:translateY(-50%);
+  width:52px; height:52px; border:1px solid var(--border-sub);
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; color:var(--white); cursor:pointer; transition:all .25s;
+  z-index:10;
+}
+.lb-prev { left:20px }
+.lb-next { right:20px }
+.lb-prev:hover,.lb-next:hover { border-color:var(--gold); color:var(--gold) }
+.lb-counter { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); font-family:var(--font-display); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); z-index:10 }
+
+/* ── HIDDEN items (filter) ──────────────────────────── */
+.g-item.hidden { display:none }
+
+@media(max-width:900px) { .gallery-masonry { columns:2 } }
+@media(max-width:480px) { .gallery-masonry { columns:1 } }
+</style>
+<script src="../assets/js/cache-buster.js?v=20260613"></script>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLACEHOLDER"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- SOCIAL BAR -->
+<div class="social-bar" aria-label="Follow Rising Stars Atlanta on social media">
+  <span class="social-bar-tagline">Atlanta's Elite Youth Football Club</span>
+  <div class="social-bar-links">
+    <a href="https://www.instagram.com/risingstarsatl" class="social-bar-link sb-instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+    <a href="https://www.facebook.com/risingstarsatl" class="social-bar-link sb-facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="https://x.com/risingstarsatl" class="social-bar-link sb-x" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.631L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- NAV -->
+<header id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="../index.html"><div class="nav-logo-img"><img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="90" height="90" decoding="async"></div></a>
+    <nav class="nav-links">
+      <div class="nav-dropdown">
+        <a href="tournaments.html">Tournaments ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="tournaments.html#memorial-day-5v5">Memorial Day 5v5</a>
+          <a href="tournaments.html#summer-elite-5v5">Summer Elite 5v5</a>
+          <a href="tournaments.html#championship-cup-5v5">Championship Cup 5v5</a>
+          <a href="tournaments.html#elite-7v7-summer">Elite 7v7 Summer Series</a>
+          <a href="tournaments.html#labor-day-5v5">Labor Day 5v5</a>
+          <a href="tournaments.html#winter-elite-5v5">Winter Elite 5v5</a>
+        </div>
+      </div>
+      <div class="nav-dropdown"><a href="programs.html">Programs ▾</a><div class="nav-dropdown-menu"><a href="programs.html#private">Private Training</a></div></div>
+      <a href="schedules.html">Schedules</a><a href="gallery.html" class="active">Gallery</a><a href="about.html">About</a><div class="nav-dropdown"><a href="resources.html">Resources ▾</a><div class="nav-dropdown-menu"><a href="resources.html#downloads">Documents</a><a href="resources.html#rules">Rules</a><a href="resources.html#faq">FAQ</a></div></div><a href="merchandise.html">Merch</a><a href="partner.html">Partner</a>
+      <a href="tournaments.html" class="nav-cta-btn">Register Now</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mm-backdrop" id="mmBackdrop"></div>
+  <div class="mm-panel">
+    <div class="mm-header">
+      <div class="mm-brand">
+        <img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="46" height="46">
+        <div>
+          <div class="mm-brand-name">Rising <span>Stars</span></div>
+          <span class="mm-brand-sub">Atlanta · Est. 2019</span>
+        </div>
+      </div>
+      <button class="mm-close" id="mmClose" aria-label="Close menu"><span></span><span></span></button>
+    </div>
+    <nav class="mm-nav" aria-label="Mobile navigation">
+      <a href="tournaments.html" class="mm-link" data-num="01">Tournaments</a>
+      <a href="programs.html"    class="mm-link" data-num="02">Programs</a>
+      <a href="schedules.html"   class="mm-link" data-num="03">Schedules</a>
+      <a href="gallery.html"     class="mm-link" data-num="04">Gallery</a>
+      <a href="about.html"       class="mm-link" data-num="05">About</a>
+      <a href="resources.html"   class="mm-link" data-num="06">Resources</a>
+      <a href="merchandise.html" class="mm-link" data-num="07">Merchandise</a>
+      <a href="partner.html"     class="mm-link" data-num="08">Partner</a>
+    </nav>
+    <div class="mm-foot">
+      <a href="tournaments.html" class="mm-cta">Register Now ↗</a>
+      <div class="mm-contact">
+        <a href="tel:+16784380539">📞 (678) 438-0539</a>
+        <a href="mailto:info@risingstarsatlanta.com">✉ info@risingstarsatlanta.com</a>
+      </div>
+      <div class="mm-social">
+        <a href="https://www.instagram.com/risingstarsatl" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <a href="https://www.facebook.com/risingstarsatl" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+        <a href="https://wa.me/16784380539" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+        <a href="https://x.com/risingstarsatl" target="_blank" rel="noopener" aria-label="X (Twitter)">YT</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('../assets/images/gallery/events/risingstar_00.webp')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content container">
+    <p class="page-hero-eyebrow">Media Gallery</p>
+    <h1 class="page-hero-title">Match <span>Moments</span></h1>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="section" style="padding-top:clamp(40px,5vw,64px)">
+  <div class="container">
+    <!-- Filter bar -->
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">All Photos</button>
+      <button class="filter-btn" data-filter="tournament">Tournaments</button>
+      <button class="filter-btn" data-filter="training">Training</button>
+      <button class="filter-btn" data-filter="awards">Awards</button>
+      <span class="gallery-count" id="galleryCount">23 Photos</span>
+    </div>
+
+    <!-- Masonry grid -->
+    <div class="gallery-masonry" id="galleryGrid">
+      <div class="g-item reveal" data-cat="tournament" data-index="0"><img src="../assets/images/gallery/events/risingstar_00.webp" width="1600" height="944" alt="Match action 1" loading="eager" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-1" data-cat="training" data-index="1"><img src="../assets/images/gallery/events/risingstar_01.webp" width="1600" height="1046" alt="Training session" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-2" data-cat="tournament" data-index="2"><img src="../assets/images/gallery/events/risingstar_02.webp" width="1600" height="1046" alt="Tournament play" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal" data-cat="tournament" data-index="3"><img src="../assets/images/gallery/events/risingstar_03.webp" width="1600" height="1046" alt="Match moments" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-1" data-cat="awards" data-index="4"><img src="../assets/images/gallery/events/risingstar_04.webp" width="1600" height="1046" alt="Awards ceremony" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-2" data-cat="tournament" data-index="5"><img src="../assets/images/gallery/events/risingstar_05.webp" width="1600" height="1046" alt="5v5 championship" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal" data-cat="tournament" data-index="6"><img src="../assets/images/gallery/events/risingstar_06.webp" width="1600" height="1046" alt="7v7 league match" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-1" data-cat="training" data-index="7"><img src="../assets/images/gallery/events/risingstar_07.webp" width="1600" height="1046" alt="Skills training" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-2" data-cat="training" data-index="8"><img src="../assets/images/gallery/events/risingstar_08.webp" width="1600" height="1046" alt="Drill session" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal" data-cat="tournament" data-index="9"><img src="../assets/images/gallery/events/risingstar_09.webp" width="1600" height="1046" alt="Elite competition" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-1" data-cat="tournament" data-index="10"><img src="../assets/images/gallery/events/risingstar_10.webp" width="1600" height="1046" alt="Youth football action" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-2" data-cat="awards" data-index="11"><img src="../assets/images/gallery/events/risingstar_11.webp" width="1600" height="1046" alt="Champions" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal" data-cat="training" data-index="12"><img src="../assets/images/gallery/events/risingstar_12.webp" width="1600" height="1046" alt="Team huddle" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-1" data-cat="tournament" data-index="13"><img src="../assets/images/gallery/events/risingstar_13.webp" width="1600" height="1046" alt="Match intensity" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-2" data-cat="training" data-index="14"><img src="../assets/images/gallery/events/risingstar_14.webp" width="1600" height="1046" alt="Coaching session" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal" data-cat="tournament" data-index="15"><img src="../assets/images/gallery/events/risingstar_15.webp" width="1600" height="1046" alt="Tournament finals" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-1" data-cat="awards" data-index="16"><img src="../assets/images/gallery/events/risingstar_16.webp" width="1600" height="1046" alt="Trophy ceremony" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-2" data-cat="training" data-index="17"><img src="../assets/images/gallery/events/risingstar_17.webp" width="1600" height="1046" alt="Individual training" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal" data-cat="tournament" data-index="18"><img src="../assets/images/gallery/events/risingstar_18.webp" width="1600" height="1046" alt="Game day" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-1" data-cat="awards" data-index="19"><img src="../assets/images/gallery/events/risingstar_19.webp" width="1600" height="1046" alt="MVP awards" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-2" data-cat="tournament" data-index="20"><img src="../assets/images/gallery/events/risingstar_20.webp" width="1600" height="1046" alt="Rising Stars players" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal" data-cat="training" data-index="21"><img src="../assets/images/gallery/events/risingstar_21.webp" width="1600" height="1046" alt="Skill development" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+      <div class="g-item reveal reveal-delay-1" data-cat="tournament" data-index="22"><img src="../assets/images/gallery/events/risingstar_22.webp" width="1600" height="787" alt="Championship match" loading="lazy" decoding="async"><div class="g-overlay"><div class="g-overlay-icon">⊕</div><div class="g-overlay-label">View</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+  <button class="lb-prev" id="lbPrev" aria-label="Previous">←</button>
+  <div class="lb-img-wrap"><img id="lbImg" src="" alt="" width="1600" height="1046" decoding="async"></div>
+  <button class="lb-next" id="lbNext" aria-label="Next">→</button>
+  <div class="lb-counter" id="lbCounter">1 / 23</div>
+</div>
+
+<!-- CTA STRIP -->
+<section style="background:var(--dark);border-top:1px solid var(--border-sub);padding:clamp(48px,6vw,80px) 0;text-align:center">
+  <div class="container reveal">
+    <p class="label" style="justify-content:center">Join The Action</p>
+    <h2 class="section-title" style="text-align:center;margin-top:12px;font-size:clamp(32px,5vw,60px)">Be Part of the <span>Story</span></h2>
+    <p style="font-family:var(--font-light);font-size:16px;color:var(--muted);margin:20px auto 36px;max-width:420px">Register your player today and create moments like these. Atlanta's elite youth football experience awaits.</p>
+    <a href="tournaments.html" class="btn-primary">Register Now ↗</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div><div class="footer-logo"><div class="footer-logo-img"><img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="44" height="44" decoding="async"></div><span>RISING <span>STARS</span> ATL</span></div><p class="footer-tagline">Atlanta's premier elite youth football experience since 2019.</p><div class="footer-socials"><a href="tel:+16784380539" class="footer-social" aria-label="Call Rising Stars Atlanta">PH</a><a href="mailto:info@risingstarsatlanta.com" class="footer-social" aria-label="Email Rising Stars Atlanta">EM</a></div></div>
+      <div class="footer-col"><h4>Programs</h4><ul><li><a href="programs.html#private">Private Training</a></li><li><a href="tournaments.html">Register</a></li></ul></div>
+      <div class="footer-col"><h4>Events</h4><ul><li><a href="tournaments.html">Summer Classic 2026</a></li><li><a href="tournaments.html">5v5 Championship</a></li><li><a href="tournaments.html">7v7 League</a></li><li><a href="tournaments.html">All Events</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="schedules.html">Schedules</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="resources.html">Resources</a></li><li><a href="partner.html">Partner</a></li></ul></div>
+      <div class="footer-col"><h4>Shop</h4><ul><li><a href="merchandise.html">Merchandise</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2026 Rising Stars Atlanta. All rights reserved.</p><div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap"><a href="https://umojaserv.com/" target="_blank" rel="noopener noreferrer" class="footer-credit">Site by UmojaServ</a></div></div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const tog=document.getElementById('navToggle'),men=document.getElementById('mobileMenu'),backdrop=document.getElementById('mmBackdrop'),mmCloseBtn=document.getElementById('mmClose');const mmOpen=()=>{men.classList.add('open');tog.classList.add('active');tog.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'};const mmClose=()=>{men.classList.remove('open');tog.classList.remove('active');tog.setAttribute('aria-expanded','false');document.body.style.overflow=''};tog.addEventListener('click',()=>men.classList.contains('open')?mmClose():mmOpen());if(mmCloseBtn)mmCloseBtn.addEventListener('click',mmClose);if(backdrop)backdrop.addEventListener('click',mmClose);document.querySelectorAll('.mm-link,.mm-cta').forEach(a=>a.addEventListener('click',mmClose));document.addEventListener('keydown',e=>{if(e.key==='Escape')mmClose()});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* Filter */
+const items=[...document.querySelectorAll('.g-item')];
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.filter;
+    let count=0;
+    items.forEach(item=>{const show=f==='all'||item.dataset.cat===f;item.classList.toggle('hidden',!show);if(show)count++;});
+    document.getElementById('galleryCount').textContent=count+' Photo'+(count!==1?'s':'');
+  });
+});
+
+/* Lightbox */
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCounter=document.getElementById('lbCounter');
+let current=0;
+function visibleItems(){return items.filter(i=>!i.classList.contains('hidden'))}
+function openLb(idx){
+  const vis=visibleItems();current=idx;
+  lbImg.src=vis[current].querySelector('img').src;
+  lbImg.alt=vis[current].querySelector('img').alt;
+  lbCounter.textContent=(current+1)+' / '+vis.length;
+  lb.classList.add('open');document.body.style.overflow='hidden';
+}
+function closeLb(){lb.classList.remove('open');document.body.style.overflow=''}
+items.forEach((item,i)=>item.addEventListener('click',()=>{const vis=visibleItems();const vi=vis.indexOf(item);openLb(vi)}));
+document.getElementById('lbClose').addEventListener('click',closeLb);
+document.getElementById('lbPrev').addEventListener('click',()=>{const v=visibleItems();openLb((current-1+v.length)%v.length)});
+document.getElementById('lbNext').addEventListener('click',()=>{const v=visibleItems();openLb((current+1)%v.length)});
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;const v=visibleItems();if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')openLb((current-1+v.length)%v.length);if(e.key==='ArrowRight')openLb((current+1)%v.length)});
+let ts=0;lb.addEventListener('touchstart',e=>{ts=e.touches[0].clientX},{passive:true});
+lb.addEventListener('touchend',e=>{const d=ts-e.changedTouches[0].clientX;const v=visibleItems();if(Math.abs(d)>50)openLb(d>0?(current+1)%v.length:(current-1+v.length)%v.length)});
+</script>
+<script src="../assets/js/cms-config.js" defer></script>
+<script src="../assets/js/cms.js?v=navfix-20260608" defer></script>
+<!-- MOBILE BOTTOM NAVIGATION -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation" role="navigation">
+  <div class="mobile-bottom-nav-inner">
+    <a href="../index.html" class="mobile-nav-item" data-nav-tab="home" aria-label="Home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="mobile-nav-label">Home</span>
+    </a>
+    <a href="tournaments.html" class="mobile-nav-item" data-nav-tab="tournaments" aria-label="Tournaments">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9c0-1 1-2 2-2h8c1 0 2 1 2 2"/><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M12 9v6M9 13h6"/></svg>
+      <span class="mobile-nav-label">Tournaments</span>
+    </a>
+    <a href="programs.html" class="mobile-nav-item" data-nav-tab="programs" aria-label="Programs">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+      <span class="mobile-nav-label">Programs</span>
+    </a>
+    <a href="gallery.html" class="mobile-nav-item" data-nav-tab="gallery" aria-label="Gallery">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span class="mobile-nav-label">Gallery</span>
+    </a>
+    <button type="button" class="mobile-nav-item" data-nav-tab="menu" aria-label="Menu" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      <span class="mobile-nav-label">Menu</span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU DROPDOWN -->
+<div class="mobile-menu-dropdown" id="mobileMenuDropdown" role="menu" aria-label="Additional menu">
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title">Training</div>
+    <a href="programs.html#private" class="mobile-menu-link" role="menuitem">Private Training</a>
+    <a href="programs.html#elite-pickup" class="mobile-menu-link" role="menuitem">Elite Pickup</a>
+  </div>
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title">Info</div>
+    <a href="schedules.html" class="mobile-menu-link" role="menuitem">Schedules</a>
+    <a href="about.html" class="mobile-menu-link" role="menuitem">About</a>
+    <a href="resources.html" class="mobile-menu-link" role="menuitem">Resources</a>
+  </div>
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title">Shop</div>
+    <a href="merchandise.html" class="mobile-menu-link" role="menuitem">Merchandise</a>
+    <a href="partner.html" class="mobile-menu-link" role="menuitem">Partner With Us</a>
+  </div>
+</div>
+
+<script src="../assets/js/mobile-nav.js?v=mobile-nav-20260613" defer></script>
+</body>
+</html>
