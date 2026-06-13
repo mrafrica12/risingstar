@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PLACEHOLDER');</script>
+<!-- End Google Tag Manager -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Partner With Rising Stars Atlanta — sponsorship opportunities, brand partnerships, and community collaboration with Atlanta's elite youth football program.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://risingstarsatlanta.com/pages/partner.html">
+<meta property="og:title" content="Partner With Rising Stars Atlanta">
+<meta property="og:description" content="Sponsorship, brand partnership, and community collaboration opportunities with Rising Stars Atlanta.">
+<meta property="og:image" content="https://risingstarsatlanta.com/assets/images/gallery/events/risingstar_22.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://risingstarsatlanta.com/pages/partner.html">
+<link rel="icon" type="image/png" href="../assets/logo/rising-stars-logo-160.png">
+<link rel="apple-touch-icon" href="../assets/logo/rising-stars-logo-160.png">
+<title>Partner With Us — Rising Stars Atlanta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css?v=navfix-20260608">
+<link rel="stylesheet" href="../assets/css/mobile-bottom-nav.css?v=mobile-nav-20260613">
+<style>
+/* ── PARTNER INTRO ──────────────────────────────────── */
+.partner-intro { display:grid; grid-template-columns:1fr 1fr; gap:0 }
+.partner-intro-visual { position:relative; overflow:hidden; min-height:500px }
+.partner-intro-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.65) saturate(.8) }
+.partner-intro-overlay { position:absolute; inset:0; background:linear-gradient(to right,rgba(6,9,26,.5),transparent 60%),linear-gradient(to top,rgba(6,9,26,.7),transparent 50%) }
+.partner-intro-content { background:var(--dark); display:flex; flex-direction:column; justify-content:center; padding:clamp(48px,6vw,80px) }
+
+/* ── REACH STATS ────────────────────────────────────── */
+.reach-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px }
+.reach-card { background:var(--card); padding:clamp(24px,3vw,40px); text-align:center; border:1px solid transparent; transition:all .3s }
+.reach-card:hover { border-color:var(--border) }
+.reach-num { font-family:var(--font-display); font-size:clamp(36px,5vw,56px); font-weight:900; color:var(--gold); line-height:1 }
+.reach-label { font-family:var(--font-display); font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-top:8px }
+.reach-sub { font-family:var(--font-light); font-size:12px; color:rgba(255,255,255,.3); margin-top:4px }
+
+/* ── PACKAGES ───────────────────────────────────────── */
+.packages-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px }
+.pkg-card { background:var(--card); padding:clamp(28px,3.5vw,48px); border:1px solid transparent; border-top:3px solid transparent; transition:all .4s; position:relative }
+.pkg-card.featured { border-top-color:var(--gold); background:var(--card-hover) }
+.pkg-badge { position:absolute; top:20px; right:20px; background:var(--gold); color:var(--white); font-family:var(--font-display); font-size:9px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; padding:5px 12px; clip-path:polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%) }
+.pkg-tier { font-family:var(--font-display); font-size:10px; font-weight:700; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; display:block }
+.pkg-name { font-family:var(--font-display); font-size:clamp(28px,3.5vw,44px); font-weight:900; text-transform:uppercase; line-height:.95; letter-spacing:-.01em; margin-bottom:16px }
+.pkg-price { font-family:var(--font-display); font-size:clamp(20px,2.5vw,32px); font-weight:800; color:var(--white); margin-bottom:24px }
+.pkg-price span { font-size:14px; font-weight:400; color:var(--muted); margin-left:4px }
+.pkg-divider { height:1px; background:var(--border-sub); margin:24px 0 }
+.pkg-perks { display:flex; flex-direction:column; gap:12px; margin-bottom:32px }
+.pkg-perk { display:flex; align-items:flex-start; gap:10px; font-family:var(--font-light); font-size:13px; color:var(--off-white) }
+.pkg-perk::before { content:'✓'; color:var(--gold); font-size:11px; flex-shrink:0; margin-top:2px }
+.pkg-perk.no { color:var(--muted) }
+.pkg-perk.no::before { content:'—'; color:rgba(255,255,255,.2) }
+
+/* ── BENEFITS GRID ──────────────────────────────────── */
+.benefits-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2px }
+.benefit-card { background:var(--card); padding:clamp(28px,3vw,44px); display:flex; gap:20px; border:1px solid transparent; transition:border-color .3s }
+.benefit-card:hover { border-color:var(--border) }
+.benefit-icon { font-size:28px; flex-shrink:0 }
+.benefit-body strong { font-family:var(--font-display); font-size:15px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; display:block; margin-bottom:8px }
+.benefit-body p { font-family:var(--font-light); font-size:13px; color:var(--muted); line-height:1.7 }
+
+/* ── PARTNER FORM ───────────────────────────────────── */
+.partner-form-wrap { background:var(--card); border:1px solid var(--border-sub); padding:clamp(36px,4vw,56px); max-width:680px; margin:0 auto }
+.partner-form-title { font-family:var(--font-display); font-size:clamp(22px,3vw,32px); font-weight:800; text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px }
+.partner-form-sub { font-family:var(--font-light); font-size:14px; color:var(--muted); margin-bottom:32px }
+
+/* ── CURRENT PARTNERS ───────────────────────────────── */
+.partners-logos { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:0 }
+.partner-logo { padding:32px 40px; border-right:1px solid var(--border-sub); border-bottom:1px solid var(--border-sub); font-family:var(--font-display); font-size:clamp(16px,2vw,22px); font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.2); transition:color .4s; cursor:default }
+.partner-logo:hover { color:rgba(255,255,255,.5) }
+
+@media(max-width:900px) { .partner-intro { grid-template-columns:1fr } .partner-intro-visual { min-height:55vw } .packages-grid { grid-template-columns:1fr } .reach-grid { grid-template-columns:1fr 1fr } .benefits-grid { grid-template-columns:1fr } }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLACEHOLDER"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- SOCIAL BAR -->
+<div class="social-bar" aria-label="Follow Rising Stars Atlanta on social media">
+  <span class="social-bar-tagline">Atlanta's Elite Youth Football Club</span>
+  <div class="social-bar-links">
+    <a href="https://www.instagram.com/risingstarsatl" class="social-bar-link sb-instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+    <a href="https://www.facebook.com/risingstarsatl" class="social-bar-link sb-facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="https://x.com/risingstarsatl" class="social-bar-link sb-x" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.631L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- NAV -->
+<header id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="../index.html"><div class="nav-logo-img"><img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="90" height="90" decoding="async"></div></a>
+    <nav class="nav-links">
+      <div class="nav-dropdown">
+        <a href="tournaments.html">Tournaments ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="tournaments.html#memorial-day-5v5">Memorial Day 5v5</a>
+          <a href="tournaments.html#summer-elite-5v5">Summer Elite 5v5</a>
+          <a href="tournaments.html#championship-cup-5v5">Championship Cup 5v5</a>
+          <a href="tournaments.html#elite-7v7-summer">Elite 7v7 Summer Series</a>
+          <a href="tournaments.html#labor-day-5v5">Labor Day 5v5</a>
+          <a href="tournaments.html#winter-elite-5v5">Winter Elite 5v5</a>
+        </div>
+      </div>
+      <div class="nav-dropdown"><a href="programs.html">Programs ▾</a><div class="nav-dropdown-menu"><a href="programs.html#private">Private Training</a></div></div>
+      <a href="schedules.html">Schedules</a><a href="gallery.html">Gallery</a><a href="about.html">About</a><div class="nav-dropdown"><a href="resources.html">Resources ▾</a><div class="nav-dropdown-menu"><a href="resources.html#downloads">Documents</a><a href="resources.html#rules">Rules</a><a href="resources.html#faq">FAQ</a></div></div><a href="merchandise.html">Merch</a><a href="partner.html" class="active">Partner</a>
+      <a href="tournaments.html" class="nav-cta-btn">Register Now</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mm-backdrop" id="mmBackdrop"></div>
+  <div class="mm-panel">
+    <div class="mm-header">
+      <div class="mm-brand">
+        <img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="46" height="46">
+        <div>
+          <div class="mm-brand-name">Rising <span>Stars</span></div>
+          <span class="mm-brand-sub">Atlanta · Est. 2019</span>
+        </div>
+      </div>
+      <button class="mm-close" id="mmClose" aria-label="Close menu"><span></span><span></span></button>
+    </div>
+    <nav class="mm-nav" aria-label="Mobile navigation">
+      <a href="tournaments.html" class="mm-link" data-num="01">Tournaments</a>
+      <a href="programs.html"    class="mm-link" data-num="02">Programs</a>
+      <a href="schedules.html"   class="mm-link" data-num="03">Schedules</a>
+      <a href="gallery.html"     class="mm-link" data-num="04">Gallery</a>
+      <a href="about.html"       class="mm-link" data-num="05">About</a>
+      <a href="resources.html"   class="mm-link" data-num="06">Resources</a>
+      <a href="merchandise.html" class="mm-link" data-num="07">Merchandise</a>
+      <a href="partner.html"     class="mm-link" data-num="08">Partner</a>
+    </nav>
+    <div class="mm-foot">
+      <a href="tournaments.html" class="mm-cta">Register Now ↗</a>
+      <div class="mm-contact">
+        <a href="tel:+16784380539">📞 (678) 438-0539</a>
+        <a href="mailto:info@risingstarsatlanta.com">✉ info@risingstarsatlanta.com</a>
+      </div>
+      <div class="mm-social">
+        <a href="https://www.instagram.com/risingstarsatl" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <a href="https://www.facebook.com/risingstarsatl" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+        <a href="https://wa.me/16784380539" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+        <a href="https://x.com/risingstarsatl" target="_blank" rel="noopener" aria-label="X (Twitter)">YT</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero" style="height:60vh">
+  <div class="page-hero-bg" style="background-image:url('../assets/images/gallery/events/risingstar_21.webp')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content container">
+    <p class="page-hero-eyebrow">Sponsorship &amp; Partnerships</p>
+    <h1 class="page-hero-title">Partner <span>With Us</span></h1>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section>
+  <div class="partner-intro">
+    <div class="partner-intro-visual reveal">
+      <img src="../assets/images/gallery/events/risingstar_22.webp" width="1600" height="787" alt="Rising Stars community impact" decoding="async">
+      <div class="partner-intro-overlay"></div>
+    </div>
+    <div class="partner-intro-content reveal reveal-delay-1">
+      <p class="label" style="margin-bottom:16px">Why Partner With Us</p>
+      <h2 class="section-title">Align Your Brand<br>with <span>Atlanta's Best</span></h2>
+      <p style="font-family:var(--font-light);font-size:15px;color:var(--muted);line-height:1.8;margin-top:20px;max-width:480px">Rising Stars Atlanta reaches thousands of engaged parents, athletes, and community members across the Greater Atlanta area. Partnering with us puts your brand at the center of the most authentic, community-driven youth sports experience in the region.</p>
+      <p style="font-family:var(--font-light);font-size:15px;color:var(--muted);line-height:1.8;margin-top:16px;max-width:480px">Our partners aren't sponsors — they're part of the Rising Stars family. Your investment directly funds player scholarships, equipment, and elite coaching access for Atlanta's youth.</p>
+      <div style="margin-top:36px"><a href="#partner-form" class="btn-primary">Become a Partner ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- REACH STATS -->
+<section style="background:var(--black);border-top:1px solid var(--border-sub);border-bottom:1px solid var(--border-sub);padding:clamp(48px,6vw,72px) 0">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:clamp(32px,4vw,56px)">
+      <p class="label" style="justify-content:center;display:flex">Our Reach</p>
+    </div>
+    <div class="reach-grid">
+      <div class="reach-card reveal"><div class="reach-num">500+</div><div class="reach-label">Active Players</div><div class="reach-sub">Families engaged</div></div>
+      <div class="reach-card reveal reveal-delay-1"><div class="reach-num">12+</div><div class="reach-label">Events / Year</div><div class="reach-sub">Live brand exposure</div></div>
+      <div class="reach-card reveal reveal-delay-2"><div class="reach-num">5K+</div><div class="reach-label">Social Followers</div><div class="reach-sub">Across all platforms</div></div>
+      <div class="reach-card reveal reveal-delay-3"><div class="reach-num">ATL</div><div class="reach-label">Market</div><div class="reach-sub">Metro-wide reach</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="section" style="background:var(--dark)">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">Sponsorship Tiers</p>
+      <h2 class="section-title">Partnership <span>Packages</span></h2>
+      <p class="section-desc">Choose the level of involvement that fits your brand — from community supporter to exclusive presenting sponsor.</p>
+    </div>
+    <div class="packages-grid">
+      <div class="pkg-card reveal">
+        <span class="pkg-tier">Bronze</span>
+        <h3 class="pkg-name">Community Partner</h3>
+        <div class="pkg-price">Custom proposal</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-perks">
+          <li class="pkg-perk">Logo on Rising Stars website</li>
+          <li class="pkg-perk">Social media shoutout (2x)</li>
+          <li class="pkg-perk">Logo on event signage</li>
+          <li class="pkg-perk no">Jersey branding</li>
+          <li class="pkg-perk no">Dedicated tournament activation</li>
+          <li class="pkg-perk no">Presenting sponsorship</li>
+        </ul>
+        <a href="#partner-form" class="btn-outline" style="width:100%;justify-content:center">Get Started</a>
+      </div>
+      <div class="pkg-card featured reveal reveal-delay-1">
+        <div class="pkg-badge">Most Popular</div>
+        <span class="pkg-tier">Gold</span>
+        <h3 class="pkg-name">Elite Partner</h3>
+        <div class="pkg-price">Custom proposal</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-perks">
+          <li class="pkg-perk">All Bronze benefits</li>
+          <li class="pkg-perk">Jersey sleeve branding</li>
+          <li class="pkg-perk">Monthly social posts + story features</li>
+          <li class="pkg-perk">On-field banner at all events</li>
+          <li class="pkg-perk">Email newsletter mention (monthly)</li>
+          <li class="pkg-perk no">Presenting sponsorship</li>
+        </ul>
+        <a href="#partner-form" class="btn-primary" style="width:100%;justify-content:center">Get Started ↗</a>
+      </div>
+      <div class="pkg-card reveal reveal-delay-2">
+        <span class="pkg-tier">Platinum</span>
+        <h3 class="pkg-name">Presenting Sponsor</h3>
+        <div class="pkg-price">Custom proposal</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-perks">
+          <li class="pkg-perk">All Gold benefits</li>
+          <li class="pkg-perk">Presenting sponsor of Summer Classic</li>
+          <li class="pkg-perk">Tournament named after your brand</li>
+          <li class="pkg-perk">Front jersey logo placement</li>
+          <li class="pkg-perk">Branded VIP tent at all events</li>
+          <li class="pkg-perk">Dedicated email to full parent list</li>
+        </ul>
+        <a href="#partner-form" class="btn-outline" style="width:100%;justify-content:center">Get Started</a>
+      </div>
+    </div>
+    <p style="text-align:center;font-family:var(--font-light);font-size:13px;color:var(--muted);margin-top:24px">Custom packages available for multi-year commitments and community partners. <a href="#partner-form" style="color:var(--gold)">Let's talk →</a></p>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">What You Get</p>
+      <h2 class="section-title">Partnership <span>Benefits</span></h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal"><div class="benefit-icon">📣</div><div class="benefit-body"><strong>Brand Visibility</strong><p>Your logo and brand name prominently featured across tournaments, jerseys, social media, signage, and our website — seen by thousands of Atlanta-area families.</p></div></div>
+      <div class="benefit-card reveal reveal-delay-1"><div class="benefit-icon">🤝</div><div class="benefit-body"><strong>Community Alignment</strong><p>Associate your brand with youth development, excellence, and community values. Rising Stars is trusted — that trust extends to our partners.</p></div></div>
+      <div class="benefit-card reveal reveal-delay-1"><div class="benefit-icon">📱</div><div class="benefit-body"><strong>Social Media Reach</strong><p>Featured across Instagram, Facebook, and our growing parent community. Custom content collaboration available for Gold and Platinum partners.</p></div></div>
+      <div class="benefit-card reveal reveal-delay-2"><div class="benefit-icon">🎯</div><div class="benefit-body"><strong>Targeted Audience</strong><p>Direct access to Atlanta families — dual-income households with children aged 4–17. Highly engaged, community-active, and brand-loyal demographics.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRENT PARTNERS -->
+<section style="background:var(--dark);border-top:1px solid var(--border-sub);padding:clamp(48px,6vw,72px) 0">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:clamp(32px,4vw,48px)">
+      <p class="label">Our Partners</p>
+      <h2 class="section-title">Current <span>Sponsors</span></h2>
+    </div>
+    <div class="partners-logos reveal">
+      <div class="partner-logo">Adidas</div>
+      <div class="partner-logo">Nike</div>
+      <div class="partner-logo">City of Atlanta</div>
+      <div class="partner-logo">Elite Sports ATL</div>
+      <div class="partner-logo">Champions FC</div>
+      <div class="partner-logo">Your Brand Here</div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER FORM -->
+<section id="partner-form" class="section" style="scroll-margin-top:var(--nav-h)">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center;align-items:center">
+      <p class="label" style="justify-content:center">Get In Touch</p>
+      <h2 class="section-title" style="text-align:center">Let's <span>Connect</span></h2>
+      <p class="section-desc" style="text-align:center;max-width:480px;margin-left:auto;margin-right:auto">Tell us about your brand and what you're looking for. We'll reach out within 48 hours to discuss the right partnership for you.</p>
+    </div>
+    <div class="partner-form-wrap reveal reveal-delay-1">
+      <h3 class="partner-form-title">Partnership Inquiry</h3>
+      <p class="partner-form-sub">We'll respond within 48 hours with a custom proposal</p>
+      <form id="partnerForm" novalidate>
+        <div class="form-row">
+          <div class="form-field"><label for="partner-name">Your Name</label><input id="partner-name" name="name" type="text" placeholder="First Last" required autocomplete="name"></div>
+          <div class="form-field"><label for="partner-company">Company / Brand</label><input id="partner-company" name="company" type="text" placeholder="Your company name" required autocomplete="organization"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label for="partner-email">Email</label><input id="partner-email" name="email" type="email" placeholder="email@company.com" required autocomplete="email"></div>
+          <div class="form-field"><label for="partner-phone">Phone</label><input id="partner-phone" name="phone" type="tel" placeholder="(678) 438-0539" autocomplete="tel"></div>
+        </div>
+        <div class="form-field">
+          <label>Partnership Package Interest</label>
+          <select id="partner-package" name="package" required>
+            <option value="" disabled selected>Select a package</option>
+            <option>Bronze — Community Partner</option>
+            <option>Gold — Elite Partner</option>
+            <option>Platinum — Presenting Sponsor</option>
+            <option>Custom / Multi-year Package</option>
+            <option>Not sure — let's talk</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Tell Us About Your Brand</label>
+          <textarea id="partner-message" name="message" placeholder="What does your brand do? What are you hoping to achieve through this partnership?"></textarea>
+        </div>
+        <div class="form-field">
+          <label>Partnership Scope (optional)</label>
+          <select id="partner-budget" name="budget">
+            <option value="" disabled selected>Select partnership scope</option>
+            <option>Community supporter</option>
+            <option>Season partner</option>
+            <option>Presenting sponsor</option>
+            <option>Open to discussion</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;margin-top:8px;justify-content:center">Send Partnership Inquiry ↗</button>
+        <p class="partner-error" role="alert" aria-live="polite" style="display:none;font-family:var(--font-light);font-size:12px;color:#ff9a9a;text-align:center;margin-top:12px">Please complete the required fields.</p>
+        <p style="font-family:var(--font-light);font-size:11px;color:var(--muted);text-align:center;margin-top:12px">We'll respond within 48 hours. All inquiries are confidential.</p>
+      </form>
+      <div id="partnerSuccess" style="display:none;text-align:center;padding:40px 0">
+        <div style="font-size:40px;margin-bottom:16px">✓</div>
+        <h3 style="font-family:var(--font-display);font-size:22px;font-weight:800;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Inquiry Received</h3>
+        <p style="font-family:var(--font-light);font-size:14px;color:var(--muted)">Thank you for your interest. Our partnerships team will reach out within 48 hours.</p>
+        <div style="margin-top:22px"><a class="btn-primary" href="mailto:info@risingstarsatlanta.com">Email Partnerships</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div><div class="footer-logo"><div class="footer-logo-img"><img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="44" height="44" decoding="async"></div><span>RISING <span>STARS</span> ATL</span></div><p class="footer-tagline">Atlanta's premier elite youth football experience since 2019.</p><div class="footer-socials"><a href="tel:+16784380539" class="footer-social" aria-label="Call Rising Stars Atlanta">PH</a><a href="mailto:info@risingstarsatlanta.com" class="footer-social" aria-label="Email Rising Stars Atlanta">EM</a></div></div>
+      <div class="footer-col"><h4>Programs</h4><ul><li><a href="programs.html#private">Private Training</a></li><li><a href="tournaments.html">Register</a></li></ul></div>
+      <div class="footer-col"><h4>Events</h4><ul><li><a href="tournaments.html">Summer Classic 2026</a></li><li><a href="tournaments.html">5v5 Championship</a></li><li><a href="tournaments.html">7v7 League</a></li><li><a href="tournaments.html">All Events</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="schedules.html">Schedules</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="resources.html">Resources</a></li><li><a href="partner.html">Partner</a></li></ul></div>
+      <div class="footer-col"><h4>Shop</h4><ul><li><a href="merchandise.html">Merchandise</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2026 Rising Stars Atlanta. All rights reserved.</p><div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap"><a href="https://umojaserv.com/" target="_blank" rel="noopener noreferrer" class="footer-credit">Site by UmojaServ</a></div></div>
+  </div>
+</footer>
+<div class="sticky-cta" id="stickyCta"><div class="sticky-cta-text">Become a Partner<span>Custom packages available</span></div><a href="#partner-form" class="sticky-cta-btn">Inquire ↗</a></div>
+<script>
+const nav=document.getElementById('nav'),sticky=document.getElementById('stickyCta');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>40);sticky.classList.toggle('visible',scrollY>300)},{passive:true});
+const tog=document.getElementById('navToggle'),men=document.getElementById('mobileMenu'),backdrop=document.getElementById('mmBackdrop'),mmCloseBtn=document.getElementById('mmClose');const mmOpen=()=>{men.classList.add('open');tog.classList.add('active');tog.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'};const mmClose=()=>{men.classList.remove('open');tog.classList.remove('active');tog.setAttribute('aria-expanded','false');document.body.style.overflow=''};tog.addEventListener('click',()=>men.classList.contains('open')?mmClose():mmOpen());if(mmCloseBtn)mmCloseBtn.addEventListener('click',mmClose);if(backdrop)backdrop.addEventListener('click',mmClose);document.querySelectorAll('.mm-link,.mm-cta').forEach(a=>a.addEventListener('click',mmClose));document.addEventListener('keydown',e=>{if(e.key==='Escape')mmClose()});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.getElementById('partnerForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const invalid=[...this.querySelectorAll('[required]')].filter(field=>!field.value.trim());
+  this.querySelectorAll('.form-field').forEach(field=>field.classList.remove('has-error'));
+  if(invalid.length){
+    invalid.forEach(field=>field.closest('.form-field')?.classList.add('has-error'));
+    this.querySelector('.partner-error').style.display='block';
+    invalid[0].focus();
+    return;
+  }
+  this.style.display='none';
+  document.getElementById('partnerSuccess').style.display='block';
+});
+</script>
+<script src="../assets/js/cms-config.js" defer></script>
+<script src="../assets/js/cms.js?v=navfix-20260608" defer></script>
+<!-- MOBILE BOTTOM NAVIGATION -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation" role="navigation">
+  <div class="mobile-bottom-nav-inner">
+    <a href="../index.html" class="mobile-nav-item" data-nav-tab="home" aria-label="Home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="mobile-nav-label">Home</span>
+    </a>
+    <a href="tournaments.html" class="mobile-nav-item" data-nav-tab="tournaments" aria-label="Tournaments">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9c0-1 1-2 2-2h8c1 0 2 1 2 2"/><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M12 9v6M9 13h6"/></svg>
+      <span class="mobile-nav-label">Tournaments</span>
+    </a>
+    <a href="programs.html" class="mobile-nav-item" data-nav-tab="programs" aria-label="Programs">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+      <span class="mobile-nav-label">Programs</span>
+    </a>
+    <a href="gallery.html" class="mobile-nav-item" data-nav-tab="gallery" aria-label="Gallery">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span class="mobile-nav-label">Gallery</span>
+    </a>
+    <button type="button" class="mobile-nav-item" data-nav-tab="menu" aria-label="Menu" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      <span class="mobile-nav-label">Menu</span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU DROPDOWN -->
+<div class="mobile-menu-dropdown" id="mobileMenuDropdown" role="menu" aria-label="Additional menu">
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title">Training</div>
+    <a href="programs.html#private" class="mobile-menu-link" role="menuitem">Private Training</a>
+    <a href="programs.html#elite-pickup" class="mobile-menu-link" role="menuitem">Elite Pickup</a>
+  </div>
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title">Info</div>
+    <a href="schedules.html" class="mobile-menu-link" role="menuitem">Schedules</a>
+    <a href="about.html" class="mobile-menu-link" role="menuitem">About</a>
+    <a href="resources.html" class="mobile-menu-link" role="menuitem">Resources</a>
+  </div>
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title">Shop</div>
+    <a href="merchandise.html" class="mobile-menu-link" role="menuitem">Merchandise</a>
+    <a href="partner.html" class="mobile-menu-link" role="menuitem">Partner With Us</a>
+  </div>
+</div>
+
+<script src="../assets/js/mobile-nav.js?v=mobile-nav-20260613" defer></script>
+</body>
+</html>
