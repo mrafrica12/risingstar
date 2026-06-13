@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PLACEHOLDER');</script>
+<!-- End Google Tag Manager -->
+<!-- Cache Control: Always fetch latest HTML, cache CSS/JS with versioning -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Rising Stars Atlanta Private Training for youth players ages 4-17 in Atlanta, GA.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://risingstarsatlanta.com/pages/programs.html">
+<meta property="og:title" content="Rising Stars Atlanta Training Programs">
+<meta property="og:description" content="Private training for youth soccer players ages 4-17 in Atlanta.">
+<meta property="og:image" content="https://risingstarsatlanta.com/assets/images/gallery/events/risingstar_08.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://risingstarsatlanta.com/pages/programs.html">
+<link rel="icon" type="image/png" href="../assets/logo/rising-stars-logo-160.png">
+<link rel="apple-touch-icon" href="../assets/logo/rising-stars-logo-160.png">
+<title>Programs — Rising Stars Atlanta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css?v=navfix-20260608">
+<link rel="stylesheet" href="../assets/css/mobile-bottom-nav.css?v=mobile-nav-20260613">
+<style>
+/* ── PROGRAM HERO SPLIT ─────────────────────────────── */
+.prog-split {
+  display:grid; grid-template-columns:1fr 1fr; min-height:100vh;
+  padding-top:var(--nav-h);
+}
+.prog-split-visual {
+  position:relative; overflow:hidden;
+}
+.prog-split-visual img {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center top;
+  filter:brightness(.7) saturate(.85);
+  transition:transform .8s var(--ease-out);
+}
+.prog-split-visual:hover img { transform:scale(1.03) }
+.prog-split-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to right, rgba(6,9,26,.4), transparent 60%),
+             linear-gradient(to top, rgba(6,9,26,.8), transparent 50%);
+}
+.prog-split-content {
+  display:flex; flex-direction:column; justify-content:center;
+  padding:clamp(48px,6vw,80px) clamp(32px,5vw,72px);
+  background:var(--dark);
+}
+.prog-number {
+  font-family:var(--font-display); font-size:clamp(80px,12vw,160px); font-weight:900;
+  color:var(--gold-dim); line-height:1; letter-spacing:-.04em;
+  margin-bottom:-20px; position:relative; z-index:0;
+}
+.prog-split-title {
+  font-family:var(--font-display); font-size:clamp(36px,5vw,64px); font-weight:900;
+  text-transform:uppercase; line-height:.95; letter-spacing:-.01em;
+  position:relative; z-index:1; margin-bottom:8px;
+}
+.prog-split-title span { color:var(--gold) }
+.prog-split-tag {
+  font-family:var(--font-display); font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:20px; display:block;
+}
+.prog-split-desc {
+  font-family:var(--font-light); font-size:clamp(14px,1.8vw,17px); font-weight:300;
+  color:var(--muted); line-height:1.75; margin-bottom:32px; max-width:480px;
+}
+.prog-features-list { display:flex; flex-direction:column; gap:10px; margin-bottom:36px }
+.prog-feat { display:flex; align-items:flex-start; gap:12px; font-family:var(--font-light); font-size:14px; color:var(--off-white) }
+.prog-feat::before { content:'—'; color:var(--gold); font-size:10px; margin-top:4px; flex-shrink:0 }
+.prog-price-wrap {
+  display:flex; align-items:center; gap:20px;
+  border-top:1px solid var(--border-sub); padding-top:28px;
+}
+.prog-price-big { font-family:var(--font-display); font-size:clamp(40px,5vw,60px); font-weight:900; color:var(--gold); line-height:1 }
+.prog-price-note { font-family:var(--font-display); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted) }
+
+/* ── SCHEDULE CARDS ─────────────────────────────────── */
+.sched-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:2px }
+.sched-day { background:var(--card); padding:20px 12px; text-align:center; border:1px solid transparent; transition:all .3s }
+.sched-day.active { background:var(--gold-dim); border-color:var(--border) }
+.sched-day-name { font-family:var(--font-display); font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-bottom:8px }
+.sched-day.active .sched-day-name { color:var(--gold) }
+.sched-day-time { font-family:var(--font-display); font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.06em }
+.sched-day-note { font-family:var(--font-light); font-size:11px; color:var(--muted); margin-top:4px }
+
+/* ── COMPARE TABLE ──────────────────────────────────── */
+.compare-table { width:100%; border-collapse:collapse }
+.compare-table th { font-family:var(--font-display); font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; padding:16px 20px; border-bottom:1px solid var(--border-sub); text-align:left }
+.compare-table th:not(:first-child) { text-align:center; color:var(--gold) }
+.compare-table td { padding:16px 20px; border-bottom:1px solid var(--border-sub); font-size:13px; color:var(--off-white) }
+.compare-table td:not(:first-child) { text-align:center; font-size:18px }
+.compare-table tr:last-child td { border-bottom:none }
+.compare-table td:first-child { color:var(--muted) }
+.check { color:var(--gold) }
+.cross { color:rgba(255,255,255,.2) }
+
+/* ── TRAINING FOCUS GRID ────────────────────────────── */
+.focus-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+.focus-card{background:var(--card);padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;align-items:center;text-align:center;border:1px solid transparent;transition:all .3s}
+.focus-card:hover{background:var(--card-hover);border-color:var(--border)}
+.focus-icon{font-size:clamp(36px,5vw,48px);margin-bottom:16px;display:block}
+.focus-title{font-family:var(--font-display);font-size:clamp(14px,2vw,18px);font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--white);margin-bottom:12px}
+.focus-desc{font-family:var(--font-light);font-size:13px;color:var(--muted);line-height:1.6}
+
+/* ── PRIVATE COACHING FORM ──────────────────────────── */
+.private-coaching-form{display:flex;flex-direction:column;gap:20px}
+.form-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.form-field{display:flex;flex-direction:column;gap:6px}
+.form-field.full{grid-column:1/-1}
+.form-field label{font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.form-field input,.form-field select,.form-field textarea{width:100%;background:var(--card);border:1px solid var(--border-sub);padding:14px 16px;font-family:var(--font-light);font-size:14px;color:var(--off-white);transition:all .25s}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--gold);background:rgba(200,16,46,.08)}
+.form-field select option{background:var(--card);color:var(--off-white)}
+.form-field textarea{min-height:100px;resize:vertical;font-family:var(--font-light)}
+.checkbox-group{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:8px}
+.checkbox-label{display:flex;align-items:center;gap:8px;font-family:var(--font-light);font-size:13px;color:var(--off-white);cursor:pointer}
+.checkbox-label input{width:16px;height:16px;cursor:pointer;accent-color:var(--gold)}
+
+/* ── COACH CARDS ────────────────────────────────────── */
+.coach-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px }
+.coach-card { background:var(--card); overflow:hidden }
+.coach-img { width:100%; aspect-ratio:3/4; object-fit:cover; object-position:top; filter:brightness(.85) saturate(.8); transition:filter .5s,transform .6s var(--ease-out); display:block }
+.coach-card:hover .coach-img { filter:brightness(.7); transform:scale(1.03) }
+.coach-body { padding:24px 24px 28px }
+.coach-name { font-family:var(--font-display); font-size:22px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; margin-bottom:4px }
+.coach-role { font-family:var(--font-display); font-size:10px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--gold) }
+.coach-bio { font-family:var(--font-light); font-size:13px; color:var(--muted); line-height:1.7; margin-top:12px }
+
+@media(max-width:900px) {
+  .prog-split { grid-template-columns:1fr; min-height:auto }
+  .prog-split-visual { height:50vw; min-height:280px; position:relative }
+  .prog-split-visual img { position:absolute }
+  .sched-grid { grid-template-columns:repeat(3,1fr) }
+  .coach-grid { grid-template-columns:1fr 1fr }
+  .form-row { grid-template-columns:1fr }
+  .focus-grid { grid-template-columns:repeat(2,1fr) }
+}
+@media(max-width:640px) {
+  .sched-grid { grid-template-columns:repeat(2,1fr) }
+  .coach-grid { grid-template-columns:1fr }
+  .checkbox-group { grid-template-columns:1fr }
+  .focus-grid { grid-template-columns:1fr }
+}
+</style>
+<script src="../assets/js/cache-buster.js?v=20260613"></script>
+
+<body>
+
+<!-- SOCIAL BAR -->
+<div class="social-bar" aria-label="Follow Rising Stars Atlanta on social media">
+  <span class="social-bar-tagline">Atlanta's Elite Youth Football Club</span>
+  <div class="social-bar-links">
+    <a href="https://www.instagram.com/risingstarsatl" class="social-bar-link sb-instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+    <a href="https://www.facebook.com/risingstarsatl" class="social-bar-link sb-facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="https://x.com/risingstarsatl" class="social-bar-link sb-x" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.631L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- NAV -->
+<header id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="../index.html"><div class="nav-logo-img"><img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="90" height="90" decoding="async"></div></a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="about.html">About</a>
+      <div class="nav-dropdown"><a href="tournaments.html" >Tournaments ▾</a>
+        <div class="nav-dropdown-menu"><a href="tournaments.html#memorial-day-5v5">Memorial Day 5v5</a><a href="tournaments.html#summer-elite-5v5">Summer Elite 5v5</a><a href="tournaments.html#championship-cup-5v5">Championship Cup 5v5</a><a href="tournaments.html#elite-7v7-summer">Elite 7v7 Summer Series</a><a href="tournaments.html#labor-day-5v5">Labor Day 5v5</a><a href="tournaments.html#winter-elite-5v5">Winter Elite 5v5</a></div>
+      </div>
+      <div class="nav-dropdown"><a href="programs.html" class="active">Programs ▾</a>
+        <div class="nav-dropdown-menu"><a href="programs.html#private">Private Training</a><a href="about.html#team">Coaching Staff</a><a href="programs.html#elite-pickup">Elite Soccer Pickup</a></div>
+      </div>
+      <a href="schedules.html">Schedules</a><a href="gallery.html">Gallery</a><div class="nav-dropdown"><a href="resources.html">Resources ▾</a><div class="nav-dropdown-menu"><a href="resources.html#downloads">Documents</a><a href="resources.html#rules">Rules</a><a href="resources.html#faq">FAQ</a></div></div>
+      <a href="merchandise.html">Merch</a>
+      <a href="partner.html">Partner</a>
+      <a href="tournaments.html" class="nav-cta-btn">Register Now</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mm-backdrop" id="mmBackdrop"></div>
+  <div class="mm-panel">
+    <div class="mm-header">
+      <div class="mm-brand">
+        <img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="46" height="46">
+        <div>
+          <div class="mm-brand-name">Rising <span>Stars</span></div>
+          <span class="mm-brand-sub">Atlanta · Est. 2019</span>
+        </div>
+      </div>
+      <button class="mm-close" id="mmClose" aria-label="Close menu"><span></span><span></span></button>
+    </div>
+    <nav class="mm-nav" aria-label="Mobile navigation">
+      <a href="tournaments.html" class="mm-link" data-num="01">Tournaments</a>
+      <a href="programs.html"    class="mm-link" data-num="02">Programs</a>
+      <a href="schedules.html"   class="mm-link" data-num="03">Schedules</a>
+      <a href="gallery.html"     class="mm-link" data-num="04">Gallery</a>
+      <a href="about.html"       class="mm-link" data-num="05">About</a>
+      <a href="resources.html"   class="mm-link" data-num="06">Resources</a>
+      <a href="merchandise.html" class="mm-link" data-num="07">Merchandise</a>
+      <a href="partner.html"     class="mm-link" data-num="08">Partner</a>
+    </nav>
+    <div class="mm-foot">
+      <a href="tournaments.html" class="mm-cta">Register Now ↗</a>
+      <div class="mm-contact">
+        <a href="tel:+16784380539">📞 (678) 438-0539</a>
+        <a href="mailto:info@risingstarsatlanta.com">✉ info@risingstarsatlanta.com</a>
+      </div>
+      <div class="mm-social">
+        <a href="https://www.instagram.com/risingstarsatl" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <a href="https://www.facebook.com/risingstarsatl" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+        <a href="https://wa.me/16784380539" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+        <a href="https://x.com/risingstarsatl" target="_blank" rel="noopener" aria-label="X (Twitter)">YT</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('../assets/images/gallery/events/risingstar_15.webp')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content container">
+    <p class="page-hero-eyebrow">Training Programs</p>
+    <h1 class="page-hero-title">Develop Your <span>Game</span></h1>
+  </div>
+</div>
+
+<!-- PRIVATE TRAINING -->
+<section id="private" style="scroll-margin-top:var(--nav-h)">
+  <div class="prog-split">
+    <div class="prog-split-visual reveal">
+      <img src="../assets/images/gallery/events/risingstar_10.webp" width="1600" height="1046" alt="Private Training" decoding="async">
+      <div class="prog-split-overlay"></div>
+    </div>
+    <div class="prog-split-content reveal reveal-delay-1">
+      <div class="prog-number">01</div>
+      <p class="label" style="margin-bottom:12px">1-on-1 Coaching</p>
+      <h2 class="prog-split-title">Private <span>Training</span></h2>
+      <span class="prog-split-tag">All Ages · All Positions</span>
+      <p class="prog-split-desc">The fastest path to elite-level improvement. Private sessions are fully customized around each player's development goals — whether it's mastering a skill, improving fitness, or preparing for tryouts.</p>
+      <ul class="prog-features-list">
+        <li class="prog-feat">1-on-1 or small group (2–4 players)</li>
+        <li class="prog-feat">Fully customized training plan</li>
+        <li class="prog-feat">Flexible scheduling — mornings, evenings, weekends</li>
+        <li class="prog-feat">Position-specific technical coaching</li>
+        <li class="prog-feat">Mental performance coaching included</li>
+        <li class="prog-feat">Progress reports after every 4 sessions</li>
+      </ul>
+      <div class="prog-price-wrap">
+        <div><div class="prog-price-note">Availability confirmed by coaching staff</div></div>
+        <a href="tournaments.html" class="btn-primary" style="margin-left:auto">View Tournaments ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING FOCUS -->
+<section class="section" style="background:var(--charcoal);border-top:1px solid var(--border-sub)">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">What We Focus On</p>
+      <h2 class="section-title">Training <span>Priorities</span></h2>
+      <p class="section-desc">Every session is designed to develop the core abilities that separate elite players from the rest.</p>
+    </div>
+    <div class="focus-grid reveal">
+      <div class="focus-card">
+        <div class="focus-icon">⚽</div>
+        <h3 class="focus-title">Technical Skills</h3>
+        <p class="focus-desc">Master the fundamentals of passing, receiving, and controlling the ball with precision under pressure.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon">🎯</div>
+        <h3 class="focus-title">Ball Mastery / Control</h3>
+        <p class="focus-desc">First touch development and ball-per-feet drills that build confidence and command over the ball.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon">🔥</div>
+        <h3 class="focus-title">Finishing</h3>
+        <p class="focus-desc">Clinical finishing techniques — shooting accuracy, composure in the box, and converting chances.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon">🧠</div>
+        <h3 class="focus-title">Tactical Instructions</h3>
+        <p class="focus-desc">Game intelligence — positioning, reading the game, and making smart decisions in real time.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon">⚡</div>
+        <h3 class="focus-title">Speed & Quickness</h3>
+        <p class="focus-desc">Explosive movement with and without the ball — acceleration, agility, and directional changes.</p>
+      </div>
+    </div>
+    <div class="contact-info reveal" style="background:var(--dark);border:1px solid var(--border-sub);padding:28px;border-radius:6px;margin-top:40px;max-width:660px;margin-left:auto;margin-right:auto;text-align:center">
+      <p style="font-family:var(--font-light);color:var(--muted);margin-bottom:16px">Have questions about Private Training registration?</p>
+      <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap">
+        <a href="tel:470-886-4936" style="color:var(--gold);font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;transition:opacity .3s" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">📞 470-886-4936</a>
+        <a href="mailto:risingstarsatlanta@gmail.com" style="color:var(--gold);font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;transition:opacity .3s" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">✉ risingstarsatlanta@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVATE COACHING REGISTRATION FORM -->
+<section class="section" style="background:var(--dark);border-top:1px solid var(--border-sub)">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">Start Training</p>
+      <h2 class="section-title">Request <span>Private Coaching</span></h2>
+      <p class="section-desc">Tell us about your player and preferred training style. Our coaching staff will review your request and confirm availability.</p>
+    </div>
+    <form id="privateCoachingForm" class="private-coaching-form reveal" style="max-width:660px;margin:0 auto">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="playerName">Player Full Name *</label>
+          <input id="playerName" name="playerName" type="text" required placeholder="e.g., Marcus Johnson">
+        </div>
+        <div class="form-field">
+          <label for="playerAge">Age / Date of Birth *</label>
+          <input id="playerAge" name="playerAge" type="text" required placeholder="e.g., 12 years old or 01/15/2013">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="parentName">Parent / Guardian Name *</label>
+          <input id="parentName" name="parentName" type="text" required placeholder="Full name">
+        </div>
+        <div class="form-field">
+          <label for="parentPhone">Phone Number *</label>
+          <input id="parentPhone" name="parentPhone" type="tel" required placeholder="(678) 123-4567">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="parentEmail">Email Address *</label>
+          <input id="parentEmail" name="parentEmail" type="email" required placeholder="your@email.com">
+        </div>
+        <div class="form-field">
+          <label for="experienceLevel">Soccer Experience *</label>
+          <select id="experienceLevel" name="experienceLevel" required>
+            <option value="">Select level</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="sessionType">Preferred Session Type *</label>
+          <select id="sessionType" name="sessionType" required>
+            <option value="">Select type</option>
+            <option value="1-on-1">1-on-1 Private Training</option>
+            <option value="Small Group">Small Group (2–4 players)</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="sessionsPerMonth">Sessions per Month *</label>
+          <select id="sessionsPerMonth" name="sessionsPerMonth" required>
+            <option value="">Select</option>
+            <option value="2">2 Sessions</option>
+            <option value="4">4 Sessions</option>
+            <option value="8">8 Sessions</option>
+            <option value="12">12+ Sessions</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-field full">
+        <label>Preferred Training Days/Times *</label>
+        <div class="checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" name="preferredTimes" value="Mon AM"> Monday Morning
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="preferredTimes" value="Mon PM"> Monday Evening
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="preferredTimes" value="Wed AM"> Wednesday Morning
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="preferredTimes" value="Wed PM"> Wednesday Evening
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="preferredTimes" value="Sat AM"> Saturday Morning
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="preferredTimes" value="Sun AM"> Sunday Morning
+          </label>
+        </div>
+      </div>
+
+      <div class="form-field full">
+        <label for="specialNotes">Goals / Special Notes</label>
+        <textarea id="specialNotes" name="specialNotes" placeholder="e.g., Working on ball control, preparing for tryouts, improve fitness, etc."></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary" style="width:100%;margin-top:12px">Submit Registration</button>
+      <div id="formMessage" style="margin-top:12px;text-align:center;font-size:13px;display:none;padding:12px;background:var(--gold-dim);border:1px solid var(--border);color:var(--off-white);border-radius:4px"></div>
+    </form>
+  </div>
+</section>
+
+<!-- ELITE SOCCER PICKUP -->
+<section id="elite-pickup" style="scroll-margin-top:var(--nav-h)">
+  <div class="prog-split">
+    <div class="prog-split-visual reveal">
+      <img src="../assets/images/gallery/events/risingstar_11.webp" width="1600" height="1046" alt="Elite Soccer Pickup" decoding="async">
+      <div class="prog-split-overlay"></div>
+    </div>
+    <div class="prog-split-content reveal reveal-delay-1">
+      <div class="prog-number">02</div>
+      <p class="label" style="margin-bottom:12px">Invite Only</p>
+      <h2 class="prog-split-title">Elite Soccer <span>Pickup</span></h2>
+      <span class="prog-split-tag">High-Level Competition · Competitive Play</span>
+      <p class="prog-split-desc">Rising Stars Elite Soccer Pickup is an exclusive, invite-only program for the most competitive players. Players compete against elite peers in a high-intensity, game-focused environment designed to develop winning mentality and championship-level play.</p>
+      <ul class="prog-features-list">
+        <li class="prog-feat">Invite-only membership (invite code required)</li>
+        <li class="prog-feat">Elite-level competitive matches</li>
+        <li class="prog-feat">Tournament preparation focus</li>
+        <li class="prog-feat">Coaching staff supervision</li>
+        <li class="prog-feat">Player evaluation & feedback</li>
+        <li class="prog-feat">Network with top players in Atlanta</li>
+      </ul>
+      <div class="prog-price-wrap">
+        <div><div class="prog-price-note">Invite code required to register</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ELITE PICKUP REGISTRATION CTA -->
+<section class="section" style="background:var(--charcoal);border-top:1px solid var(--border-sub);text-align:center">
+  <div class="container">
+    <div class="reveal">
+      <p class="label" style="justify-content:center">Invite Only</p>
+      <h2 class="section-title" style="text-align:center;margin-top:16px">Ready to Join <span>Elite Pickup?</span></h2>
+      <p style="font-family:var(--font-light);font-size:clamp(14px,2vw,18px);color:var(--muted);max-width:480px;margin:20px auto 40px;line-height:1.75">Enter your invite code to unlock registration. Elite Soccer Pickup registration is managed by SincSports.</p>
+
+      <!-- ELITE PICKUP CODE VALIDATOR -->
+      <div style="max-width:480px;margin:0 auto 32px;background:rgba(200,16,46,.08);border:1px solid rgba(200,16,46,.2);padding:24px;border-radius:8px">
+        <div style="display:flex;gap:10px;margin-bottom:14px">
+          <input id="eliteCodeInput" type="text" placeholder="Enter your invite code" style="flex:1;background:var(--card);border:1px solid var(--border-sub);padding:12px 14px;color:var(--off-white);font-family:var(--font-light);font-size:14px;text-transform:uppercase" maxlength="20">
+          <button id="validateCodeBtn" class="btn-primary" style="padding:12px 20px">Verify Code</button>
+        </div>
+        <p id="codeMessage" style="font-family:var(--font-light);font-size:12px;color:var(--muted);min-height:18px"></p>
+      </div>
+
+      <!-- REGISTRATION LINK (hidden until code verified) -->
+      <div id="registrationContainer" style="display:none">
+        <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap">
+          <a id="elitePickupLink" href="#" class="btn-primary" target="_blank" rel="noopener noreferrer">Register Elite Pickup ↗</a>
+          <a href="tel:470-886-4936" class="btn-outline">Questions?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COACHES -->
+<section class="section" style="background:var(--dark);border-top:1px solid var(--border-sub)">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">Coaching Staff</p>
+      <h2 class="section-title">Meet the <span>Coaches</span></h2>
+      <p class="section-desc">USSF-licensed coaches with elite playing and coaching backgrounds dedicated to developing Atlanta's next generation.</p>
+    </div>
+    <div class="coach-grid">
+      <div class="coach-card reveal">
+        <img class="coach-img" src="../assets/images/gallery/events/risingstar_16.webp" width="1600" height="1046" alt="Head Coach" loading="lazy" decoding="async">
+        <div class="coach-body">
+          <div class="coach-name">Coach Marcus</div>
+          <div class="coach-role">Head Coach</div>
+          <p class="coach-bio">USSF B-License. 12 years of elite youth coaching experience. Former semi-professional player. Specialized in technical foundations and player development.</p>
+        </div>
+      </div>
+      <div class="coach-card reveal reveal-delay-1">
+        <img class="coach-img" src="../assets/images/gallery/events/risingstar_17.webp" width="1600" height="1046" alt="Assistant Coach" loading="lazy" decoding="async">
+        <div class="coach-body">
+          <div class="coach-name">Coach Amara</div>
+          <div class="coach-role">Tactics Lead</div>
+          <p class="coach-bio">USSF A-License candidate. Former Division I college player. Expert in tactical formation work, video analysis, and preparing players for high school and college programs.</p>
+        </div>
+      </div>
+      <div class="coach-card reveal reveal-delay-2">
+        <img class="coach-img" src="../assets/images/gallery/events/risingstar_18.webp" width="1600" height="1046" alt="Private Training Coach" loading="lazy" decoding="async">
+        <div class="coach-body">
+          <div class="coach-name">Coach Devon</div>
+          <div class="coach-role">Private Training Specialist</div>
+          <p class="coach-bio">Certified strength &amp; conditioning coach with USSF National C License. Specializes in player-specific development plans, mental performance coaching, and skill acceleration.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER CTA -->
+<section class="section" style="background:var(--charcoal);border-top:1px solid var(--border-sub);text-align:center">
+  <div class="container">
+    <div class="reveal">
+      <p class="label" style="justify-content:center">Get Started</p>
+      <h2 class="section-title" style="text-align:center;margin-top:16px">Ready to <span>Train?</span></h2>
+      <p style="font-family:var(--font-light);font-size:clamp(14px,2vw,18px);color:var(--muted);max-width:480px;margin:20px auto 40px;line-height:1.75">Choose your program and secure your spot. Limited enrollment ensures every player gets the coaching attention they deserve.</p>
+      <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap">
+        <a href="tournaments.html" class="btn-primary">Register Now ↗</a>
+        <a href="tournaments.html" class="btn-outline">View Tournaments</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div><div class="footer-logo"><div class="footer-logo-img"><img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="44" height="44" decoding="async"></div><span>RISING <span>STARS</span> ATL</span></div><p class="footer-tagline">Atlanta's premier elite youth football experience since 2019.</p><div class="footer-socials"><a href="tel:+16784380539" class="footer-social" aria-label="Call Rising Stars Atlanta">PH</a><a href="mailto:info@risingstarsatlanta.com" class="footer-social" aria-label="Email Rising Stars Atlanta">EM</a></div></div>
+      <div class="footer-col"><h4>Programs</h4><ul><li><a href="#private">Private Training</a></li><li><a href="tournaments.html">Register</a></li></ul></div>
+      <div class="footer-col"><h4>Events</h4><ul><li><a href="tournaments.html">Summer Classic 2026</a></li><li><a href="tournaments.html">5v5 Championship</a></li><li><a href="tournaments.html">7v7 League</a></li><li><a href="tournaments.html">All Events</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="schedules.html">Schedules</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="resources.html">Resources</a></li><li><a href="partner.html">Partner</a></li></ul></div>
+      <div class="footer-col"><h4>Shop</h4><ul><li><a href="merchandise.html">Merchandise</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2026 Rising Stars Atlanta. All rights reserved.</p><div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap"><a href="https://umojaserv.com/" target="_blank" rel="noopener noreferrer" class="footer-credit">Site by UmojaServ</a></div></div>
+  </div>
+</footer>
+<div class="sticky-cta" id="stickyCta"><div class="sticky-cta-text">Private Training<span>Coach-approved availability</span></div><a href="tournaments.html" class="sticky-cta-btn">Register ↗</a></div>
+<script>
+const nav=document.getElementById('nav'),sticky=document.getElementById('stickyCta');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>40);sticky.classList.toggle('visible',scrollY>300)},{passive:true});
+const tog=document.getElementById('navToggle'),men=document.getElementById('mobileMenu'),backdrop=document.getElementById('mmBackdrop'),mmCloseBtn=document.getElementById('mmClose');const mmOpen=()=>{men.classList.add('open');tog.classList.add('active');tog.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'};const mmClose=()=>{men.classList.remove('open');tog.classList.remove('active');tog.setAttribute('aria-expanded','false');document.body.style.overflow=''};tog.addEventListener('click',()=>men.classList.contains('open')?mmClose():mmOpen());if(mmCloseBtn)mmCloseBtn.addEventListener('click',mmClose);if(backdrop)backdrop.addEventListener('click',mmClose);document.querySelectorAll('.mm-link,.mm-cta').forEach(a=>a.addEventListener('click',mmClose));document.addEventListener('keydown',e=>{if(e.key==='Escape')mmClose()});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ── LOAD ELITE PICKUP LINK ────────────────────────── */
+(function() {
+  const endpoint = sessionStorage.getItem('rsaFormEndpoint') || 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
+  const token = sessionStorage.getItem('rsaFormToken') || 'default-token';
+
+  try {
+    fetch(endpoint, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'listAll',
+        token: token,
+        siteId: 'rising-stars-atlanta'
+      })
+    }).then(async res => {
+      const data = await res.json();
+      const links = data?.data?.ProgramLinks || [];
+      const eliteLink = links.find(l => l.program_id === 'elite-pickup');
+      if (eliteLink && eliteLink.url) {
+        document.getElementById('elitePickupLink').href = eliteLink.url;
+      }
+    }).catch(e => {
+      console.log('Could not load Elite Pickup link');
+    });
+  } catch (e) {}
+})();
+
+/* ── PRIVATE COACHING FORM SUBMISSION ──────────────── */
+document.getElementById('privateCoachingForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const msgEl = document.getElementById('formMessage');
+
+  try {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    const preferredTimes = Array.from(form.querySelectorAll('input[name="preferredTimes"]:checked'))
+      .map(cb => cb.value)
+      .join(', ') || 'Not specified';
+
+    const data = {
+      playerName: form.playerName.value,
+      playerAge: form.playerAge.value,
+      parentName: form.parentName.value,
+      parentPhone: form.parentPhone.value,
+      parentEmail: form.parentEmail.value,
+      experienceLevel: form.experienceLevel.value,
+      sessionType: form.sessionType.value,
+      sessionsPerMonth: form.sessionsPerMonth.value,
+      preferredTimes: preferredTimes,
+      specialNotes: form.specialNotes.value,
+      status: 'New',
+      createdAt: new Date().toISOString()
+    };
+
+    const endpoint = sessionStorage.getItem('rsaFormEndpoint') || 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
+    const token = sessionStorage.getItem('rsaFormToken') || 'default-token';
+
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'submitPrivateCoachingForm',
+        token: token,
+        siteId: 'rising-stars-atlanta',
+        data: data
+      })
+    });
+
+    msgEl.textContent = '✓ Registration submitted! Our coaching staff will review your request and contact you within 24 hours.';
+    msgEl.style.background = 'rgba(34,197,94,.15)';
+    msgEl.style.color = '#22c55e';
+    msgEl.style.borderColor = '#22c55e';
+    msgEl.style.display = 'block';
+
+    form.reset();
+    submitBtn.textContent = 'Submit Registration';
+    submitBtn.disabled = false;
+
+    setTimeout(() => {
+      msgEl.style.display = 'none';
+    }, 6000);
+  } catch (err) {
+    msgEl.textContent = '⚠ Error submitting form. Please try again or contact (678) 438-0539.';
+    msgEl.style.background = 'rgba(239,68,68,.15)';
+    msgEl.style.color = '#ef4444';
+    msgEl.style.borderColor = '#ef4444';
+    msgEl.style.display = 'block';
+    submitBtn.textContent = 'Submit Registration';
+    submitBtn.disabled = false;
+  }
+});
+</script>
+<!-- MOBILE BOTTOM NAVIGATION -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation" role="navigation">
+  <div class="mobile-bottom-nav-inner">
+    <a href="../index.html" class="mobile-nav-item" data-nav-tab="home" aria-label="Home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="mobile-nav-label">Home</span>
+    </a>
+    <a href="tournaments.html" class="mobile-nav-item" data-nav-tab="tournaments" aria-label="Tournaments">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9c0-1 1-2 2-2h8c1 0 2 1 2 2"/><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M12 9v6M9 13h6"/></svg>
+      <span class="mobile-nav-label">Tournaments</span>
+    </a>
+    <a href="programs.html" class="mobile-nav-item" data-nav-tab="programs" aria-label="Programs">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+      <span class="mobile-nav-label">Programs</span>
+    </a>
+    <a href="gallery.html" class="mobile-nav-item" data-nav-tab="gallery" aria-label="Gallery">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span class="mobile-nav-label">Gallery</span>
+    </a>
+    <button type="button" class="mobile-nav-item" data-nav-tab="menu" aria-label="Menu" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      <span class="mobile-nav-label">Menu</span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU DROPDOWN -->
+<div class="mobile-menu-dropdown" id="mobileMenuDropdown" role="menu" aria-label="Additional menu">
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title">Training</div>
+    <a href="programs.html#private" class="mobile-menu-link" role="menuitem">Private Training</a>
+    <a href="programs.html#elite-pickup" class="mobile-menu-link" role="menuitem">Elite Pickup</a>
+  </div>
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title">Info</div>
+    <a href="schedules.html" class="mobile-menu-link" role="menuitem">Schedules</a>
+    <a href="about.html" class="mobile-menu-link" role="menuitem">About</a>
+    <a href="resources.html" class="mobile-menu-link" role="menuitem">Resources</a>
+  </div>
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title">Shop</div>
+    <a href="merchandise.html" class="mobile-menu-link" role="menuitem">Merchandise</a>
+    <a href="partner.html" class="mobile-menu-link" role="menuitem">Partner With Us</a>
+  </div>
+</div>
+
+<script src="../assets/js/cms-config.js" defer></script>
+<script src="../assets/js/cms.js?v=navfix-20260608" defer></script>
+<script src="../assets/js/mobile-nav.js?v=mobile-nav-20260613" defer></script>
+<script src="../assets/js/elite-pickup-codes.js?v=elite-pickup-20260613" defer></script>
+</body>
+</html>
