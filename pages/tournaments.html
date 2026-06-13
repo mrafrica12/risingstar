@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PLACEHOLDER');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Cache Control: Always fetch latest HTML, cache CSS/JS with versioning -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Rising Stars Atlanta Tournaments — Elite 5v5 and 7v7 youth football tournaments in Atlanta, GA. Managed on SincSports.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://risingstarsatlanta.com/pages/tournaments.html">
+<meta property="og:title" content="Rising Stars Atlanta Tournaments">
+<meta property="og:description" content="Elite 5v5 and 7v7 youth soccer tournaments for players ages 4-17 in Atlanta, GA.">
+<meta property="og:image" content="https://risingstarsatlanta.com/assets/images/gallery/events/risingstar_04.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../assets/logo/rising-stars-logo-160.png">
+<link rel="apple-touch-icon" href="../assets/logo/rising-stars-logo-160.png">
+<title>Tournaments — Rising Stars Atlanta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css?v=navfix-20260608">
+<link rel="stylesheet" href="../assets/css/mobile-bottom-nav.css?v=mobile-nav-20260613">
+<style>
+/* ── SINCSPORTS NOTICE BANNER ───────────────────────── */
+.sinc-notice {
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  border-left:3px solid var(--gold);
+  padding:14px 20px;
+  display:flex; align-items:flex-start; gap:12px;
+  margin-bottom:clamp(28px,4vw,44px);
+}
+.sinc-notice-icon { font-size:16px; flex-shrink:0; margin-top:1px }
+.sinc-notice p {
+  font-family:var(--font-light); font-size:13px; color:var(--muted); line-height:1.6; margin:0;
+}
+.sinc-notice strong { color:var(--off-white); font-weight:600 }
+.sinc-notice a { color:var(--gold); text-decoration:underline; text-underline-offset:3px }
+
+/* ── FIELD LOCATION CARD ───────────────────────────── */
+.field-location {
+  background:linear-gradient(135deg, rgba(200,16,46,.12), rgba(255,255,255,.035));
+  border:1px solid rgba(255,255,255,.1);
+  border-left:3px solid var(--gold);
+  padding:clamp(20px,3vw,28px);
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:20px;
+  align-items:center;
+  margin-bottom:clamp(28px,4vw,44px);
+}
+.field-location-label {
+  font-family:var(--font-display);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:8px;
+}
+.field-location-name {
+  font-family:var(--font-display);
+  font-size:clamp(24px,3vw,34px);
+  font-weight:900;
+  line-height:1;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+}
+.field-location-address {
+  font-family:var(--font-light);
+  font-size:14px;
+  color:var(--muted);
+  margin-top:8px;
+  line-height:1.6;
+}
+.field-location-action {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--gold);
+  color:var(--white);
+  font-family:var(--font-display);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  padding:12px 18px;
+  white-space:nowrap;
+  clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);
+}
+.field-location-action:hover { background:var(--gold-light) }
+
+/* ── TOURNAMENT CARD GRID ───────────────────────────── */
+.tourn-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+}
+.tourn-card {
+  position:relative; overflow:hidden; min-height:420px;
+  background:var(--card); display:flex; flex-direction:column;
+}
+.tourn-card-img {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; filter:brightness(.55) saturate(.75);
+  transition:transform .8s var(--ease-out), filter .8s;
+}
+.tourn-card:hover .tourn-card-img { transform:scale(1.05); filter:brightness(.4) }
+.tourn-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(6,9,26,.97) 0%, rgba(6,9,26,.4) 55%, transparent 80%);
+}
+.tourn-body {
+  position:absolute; bottom:0; left:0; right:0;
+  padding:28px; z-index:2;
+  display:flex; flex-direction:column; gap:10px;
+}
+.tourn-format-badge {
+  display:inline-flex; align-items:center;
+  font-family:var(--font-display); font-size:9px; font-weight:700;
+  letter-spacing:.22em; text-transform:uppercase;
+  color:var(--gold); gap:6px; margin-bottom:2px;
+}
+.tourn-format-badge::before { content:''; width:14px; height:1px; background:var(--gold) }
+.tourn-card-name {
+  font-family:var(--font-display); font-size:clamp(20px,2.2vw,28px); font-weight:900;
+  text-transform:uppercase; line-height:1; letter-spacing:.02em;
+}
+.tourn-card-actions { display:flex; flex-direction:column; gap:6px; margin-top:4px }
+.tourn-sinc-btn {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--gold); color:var(--white);
+  font-family:var(--font-display); font-size:10px; font-weight:800; letter-spacing:.18em; text-transform:uppercase;
+  padding:10px 18px; align-self:flex-start;
+  clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);
+  transition:background .3s;
+}
+.tourn-sinc-btn:hover { background:var(--gold-light) }
+.tourn-sinc-btn.disabled {
+  background:rgba(255,255,255,.12); color:rgba(255,255,255,.4);
+  cursor:not-allowed; clip-path:none;
+}
+.tourn-sinc-badge {
+  font-family:var(--font-display); font-size:9px; letter-spacing:.12em;
+  text-transform:uppercase; color:rgba(255,255,255,.3);
+}
+.tourn-sinc-badge a { color:rgba(255,255,255,.35); text-decoration:underline; text-underline-offset:2px; transition:color .2s }
+.tourn-sinc-badge a:hover { color:var(--gold) }
+
+/* ── SEASON TABLE ───────────────────────────────────── */
+.schedule-table { width:100%; border-collapse:collapse }
+.schedule-table th { font-family:var(--font-display); font-size:9px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); text-align:left; padding:0 0 14px; border-bottom:1px solid var(--border-sub) }
+.schedule-table td { padding:16px 0; border-bottom:1px solid var(--border-sub); font-size:13px; color:var(--off-white); vertical-align:middle }
+.schedule-table tr:last-child td { border-bottom:none }
+.schedule-table td:first-child { font-family:var(--font-display); font-weight:700; letter-spacing:.04em; color:var(--white) }
+.sinc-link { font-family:var(--font-display); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); transition:opacity .2s; white-space:nowrap }
+.sinc-link:hover { opacity:.75 }
+.sinc-link.tba { color:var(--muted); cursor:default }
+
+/* ── FAQ ────────────────────────────────────────────── */
+.faq-item { border-bottom:1px solid var(--border-sub) }
+.faq-q { width:100%; display:flex; align-items:center; justify-content:space-between; padding:20px 0; text-align:left; gap:20px; cursor:pointer }
+.faq-q span { font-family:var(--font-body); font-size:15px; font-weight:500; color:var(--white) }
+.faq-icon { font-family:var(--font-display); font-size:20px; color:var(--gold); flex-shrink:0; transition:transform .3s }
+.faq-item.open .faq-icon { transform:rotate(45deg) }
+.faq-a { font-family:var(--font-light); font-size:14px; color:var(--muted); line-height:1.75; max-height:0; overflow:hidden; transition:max-height .4s var(--ease-out), padding .4s }
+.faq-item.open .faq-a { max-height:300px; padding-bottom:20px }
+.faq-a a { color:var(--gold); text-decoration:underline; text-underline-offset:3px }
+
+/* ── AGE BRACKETS ───────────────────────────────────── */
+.age-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:2px; margin-top:2px }
+.age-card { background:var(--card); padding:24px 16px; text-align:center; border:1px solid transparent; transition:all .3s }
+.age-card:hover { border-color:var(--border); background:var(--card-hover) }
+.age-num { font-family:var(--font-display); font-size:clamp(28px,3.5vw,42px); font-weight:900; color:var(--gold); line-height:1 }
+.age-label { font-family:var(--font-display); font-size:9px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-top:6px }
+.age-range { font-family:var(--font-light); font-size:12px; color:rgba(255,255,255,.4); margin-top:4px }
+
+/* ── PRIVATE TRAINING CTA ───────────────────────────── */
+.pt-cta-strip {
+  background:var(--charcoal); border:1px solid var(--border-sub);
+  padding:clamp(32px,4vw,48px); display:grid;
+  grid-template-columns:1fr auto; gap:24px; align-items:center;
+}
+.pt-cta-strip h3 { font-family:var(--font-display); font-size:clamp(20px,2.5vw,28px); font-weight:800; text-transform:uppercase; letter-spacing:.04em }
+.pt-cta-strip p { font-family:var(--font-light); font-size:14px; color:var(--muted); margin-top:6px }
+
+@media(max-width:900px) {
+  .tourn-grid { grid-template-columns:1fr 1fr }
+  .age-grid { grid-template-columns:repeat(3,1fr) }
+  .pt-cta-strip { grid-template-columns:1fr }
+  .field-location { grid-template-columns:1fr }
+}
+@media(max-width:640px) {
+  .tourn-grid { grid-template-columns:1fr }
+  .age-grid { grid-template-columns:repeat(2,1fr) }
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLACEHOLDER"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- SOCIAL BAR -->
+<div class="social-bar" aria-label="Follow Rising Stars Atlanta on social media">
+  <span class="social-bar-tagline">Atlanta's Elite Youth Football Club</span>
+  <div class="social-bar-links">
+    <a href="https://www.instagram.com/risingstarsatl" class="social-bar-link sb-instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+    <a href="https://www.facebook.com/risingstarsatl" class="social-bar-link sb-facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="https://x.com/risingstarsatl" class="social-bar-link sb-x" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.631L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- NAV -->
+<header id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="../index.html"><div class="nav-logo-img"><img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="90" height="90" decoding="async"></div></a>
+    <nav class="nav-links">
+      <div class="nav-dropdown">
+        <a href="tournaments.html" class="active">Tournaments ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="tournaments.html#memorial-day-5v5">Memorial Day 5v5</a>
+          <a href="tournaments.html#summer-elite-5v5">Summer Elite 5v5</a>
+          <a href="tournaments.html#championship-cup-5v5">Championship Cup 5v5</a>
+          <a href="tournaments.html#elite-7v7-summer">Elite 7v7 Summer Series</a>
+          <a href="tournaments.html#labor-day-5v5">Labor Day 5v5</a>
+          <a href="tournaments.html#winter-elite-5v5">Winter Elite 5v5</a>
+        </div>
+      </div>
+      <div class="nav-dropdown"><a href="programs.html">Programs ▾</a>
+        <div class="nav-dropdown-menu"><a href="programs.html#private">Private Training</a></div>
+      </div>
+      <a href="schedules.html">Schedules</a><a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a><div class="nav-dropdown"><a href="resources.html">Resources ▾</a><div class="nav-dropdown-menu"><a href="resources.html#downloads">Documents</a><a href="resources.html#rules">Rules</a><a href="resources.html#faq">FAQ</a></div></div>
+      <a href="merchandise.html">Merch</a><a href="partner.html">Partner</a>
+      <a href="tournaments.html" class="nav-cta-btn">Private Training</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mm-backdrop" id="mmBackdrop"></div>
+  <div class="mm-panel">
+    <div class="mm-header">
+      <div class="mm-brand">
+        <img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="46" height="46">
+        <div>
+          <div class="mm-brand-name">Rising <span>Stars</span></div>
+          <span class="mm-brand-sub">Atlanta · Est. 2019</span>
+        </div>
+      </div>
+      <button class="mm-close" id="mmClose" aria-label="Close menu"><span></span><span></span></button>
+    </div>
+    <nav class="mm-nav" aria-label="Mobile navigation">
+      <a href="tournaments.html" class="mm-link" data-num="01">Tournaments</a>
+      <a href="programs.html"    class="mm-link" data-num="02">Programs</a>
+      <a href="schedules.html"   class="mm-link" data-num="03">Schedules</a>
+      <a href="gallery.html"     class="mm-link" data-num="04">Gallery</a>
+      <a href="about.html"       class="mm-link" data-num="05">About</a>
+      <a href="resources.html"   class="mm-link" data-num="06">Resources</a>
+      <a href="merchandise.html" class="mm-link" data-num="07">Merchandise</a>
+      <a href="partner.html"     class="mm-link" data-num="08">Partner</a>
+    </nav>
+    <div class="mm-foot">
+      <a href="tournaments.html" class="mm-cta">Request Private Training ↗</a>
+      <div class="mm-contact">
+        <a href="tel:+16784380539">📞 (678) 438-0539</a>
+        <a href="mailto:info@risingstarsatlanta.com">✉ info@risingstarsatlanta.com</a>
+      </div>
+      <div class="mm-social">
+        <a href="https://www.instagram.com/risingstarsatl" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <a href="https://www.facebook.com/risingstarsatl" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+        <a href="https://wa.me/16784380539" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+        <a href="https://x.com/risingstarsatl" target="_blank" rel="noopener" aria-label="X (Twitter)">X</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('../assets/images/gallery/events/risingstar_14.webp')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content container">
+    <p class="page-hero-eyebrow">SincSports Managed</p>
+    <h1 class="page-hero-title">Elite <span>Tournaments</span></h1>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div id="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span>Summer Elite 5v5 — Register on SincSports ↗</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Championship Cup 5v5 Invitational — Now Open ↗</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Elite 7v7 Summer Series — Limited Spots ↗</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Memorial Day 5v5 — Register on SincSports ↗</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Labor Day 5v5 — Register on SincSports ↗</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Winter Elite 5v5 — Link Coming Soon</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Summer Elite 5v5 — Register on SincSports ↗</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Championship Cup 5v5 Invitational — Now Open ↗</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Elite 7v7 Summer Series — Limited Spots ↗</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Memorial Day 5v5 — Register on SincSports ↗</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Labor Day 5v5 — Register on SincSports ↗</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Winter Elite 5v5 — Link Coming Soon</span>
+  </div>
+</div>
+
+<!-- TOURNAMENTS -->
+<section class="section">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <p class="label">2026 Season</p>
+      <h2 class="section-title">All <span>Tournaments</span></h2>
+      <p class="section-desc">All tournaments are managed and registered through SincSports. Click "View Tournament" to access schedules, brackets, and complete your registration on their platform.</p>
+    </div>
+
+    <!-- SINCSPORTS NOTICE -->
+    <div class="sinc-notice reveal">
+      <span class="sinc-notice-icon">ℹ️</span>
+      <p>
+        <strong>Tournaments are managed by SincSports.</strong>
+        Clicking "View Tournament ↗" will take you to <a href="https://soccer.sincsports.com" target="_blank" rel="noopener">soccer.sincsports.com</a> to view schedules, brackets, and complete registration.
+        Rising Stars Atlanta does not collect tournament registration on this site.
+        For <strong>private training</strong>, use the form below — sessions are by coach invitation only.
+      </p>
+    </div>
+
+    <div class="field-location reveal">
+      <div>
+        <p class="field-location-label">Field Location</p>
+        <h3 class="field-location-name">Franklin Gateway Sports Complex</h3>
+        <p class="field-location-address">1034 Franklin Gateway, Marietta, GA 30067</p>
+      </div>
+      <a class="field-location-action" href="https://www.google.com/maps/search/?api=1&query=Franklin%20Gateway%20Sports%20Complex%201034%20Franklin%20Gateway%20Marietta%20GA%2030067" target="_blank" rel="noopener noreferrer">Open Map ↗</a>
+    </div>
+
+    <!-- TOURNAMENT CARDS GRID -->
+    <div class="tourn-grid">
+
+      <!-- 1 Memorial Day 5v5 -->
+      <article class="tourn-card reveal" id="memorial-day-5v5" style="scroll-margin-top:var(--nav-h)">
+        <img class="tourn-card-img" src="../assets/images/gallery/events/risingstar_05.webp" width="1600" height="1046" alt="Memorial Day 5v5 Tournament" loading="lazy" decoding="async">
+        <div class="tourn-overlay"></div>
+        <div class="tourn-body">
+          <p class="tourn-format-badge">5v5 Format</p>
+          <h3 class="tourn-card-name">Memorial Day<br>5v5 Tournament</h3>
+          <div class="tourn-card-actions">
+            <a href="https://soccer.sincsports.com/TTContent.aspx?tid=RISING5&tab=1" class="tourn-sinc-btn" data-tourn-id="memorial-day-5v5" target="_blank" rel="noopener noreferrer">View Tournament ↗</a>
+            <span class="tourn-sinc-badge">Managed by <a href="https://soccer.sincsports.com" target="_blank" rel="noopener">SincSports ↗</a></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2 Summer Elite 5v5 -->
+      <article class="tourn-card reveal reveal-delay-1" id="summer-elite-5v5" style="scroll-margin-top:var(--nav-h)">
+        <img class="tourn-card-img" src="../assets/images/gallery/events/risingstar_04.webp" width="1600" height="1046" alt="Summer Elite 5v5 Tournament" loading="lazy" decoding="async">
+        <div class="tourn-overlay"></div>
+        <div class="tourn-body">
+          <p class="tourn-format-badge">5v5 Format</p>
+          <h3 class="tourn-card-name">Summer Elite<br>5v5 Tournament</h3>
+          <div class="tourn-card-actions">
+            <a href="https://soccer.sincsports.com/TTContent.aspx?tid=RISING52&tab=1" class="tourn-sinc-btn" data-tourn-id="summer-elite-5v5" target="_blank" rel="noopener noreferrer">View Tournament ↗</a>
+            <span class="tourn-sinc-badge">Managed by <a href="https://soccer.sincsports.com" target="_blank" rel="noopener">SincSports ↗</a></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3 Championship Cup 5v5 Invitational -->
+      <article class="tourn-card reveal reveal-delay-2" id="championship-cup-5v5" style="scroll-margin-top:var(--nav-h)">
+        <img class="tourn-card-img" src="../assets/images/gallery/events/risingstar_06.webp" width="1600" height="1046" alt="Championship Cup 5v5 Invitational" loading="lazy" decoding="async">
+        <div class="tourn-overlay"></div>
+        <div class="tourn-body">
+          <p class="tourn-format-badge">5v5 Invitational</p>
+          <h3 class="tourn-card-name">Championship Cup<br>5v5 Invitational</h3>
+          <div class="tourn-card-actions">
+            <a href="https://soccer.sincsports.com/TTContent.aspx?tid=RISINGC&qual=INTRO&edit=N" class="tourn-sinc-btn" data-tourn-id="championship-cup-5v5" target="_blank" rel="noopener noreferrer">View Tournament ↗</a>
+            <span class="tourn-sinc-badge">Managed by <a href="https://soccer.sincsports.com" target="_blank" rel="noopener">SincSports ↗</a></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 Elite 7v7 Summer Series -->
+      <article class="tourn-card reveal" id="elite-7v7-summer" style="scroll-margin-top:var(--nav-h)">
+        <img class="tourn-card-img" src="../assets/images/gallery/events/risingstar_07.webp" width="1600" height="1046" alt="Elite 7v7 Summer Series" loading="lazy" decoding="async">
+        <div class="tourn-overlay"></div>
+        <div class="tourn-body">
+          <p class="tourn-format-badge">7v7 Format</p>
+          <h3 class="tourn-card-name">Elite 7v7<br>Summer Series</h3>
+          <div class="tourn-card-actions">
+            <a href="https://soccer.sincsports.com/TTContent.aspx?tid=ELITE7V7&tab=1" class="tourn-sinc-btn" data-tourn-id="elite-7v7-summer" target="_blank" rel="noopener noreferrer">View Tournament ↗</a>
+            <span class="tourn-sinc-badge">Managed by <a href="https://soccer.sincsports.com" target="_blank" rel="noopener">SincSports ↗</a></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5 Labor Day 5v5 -->
+      <article class="tourn-card reveal reveal-delay-1" id="labor-day-5v5" style="scroll-margin-top:var(--nav-h)">
+        <img class="tourn-card-img" src="../assets/images/gallery/events/risingstar_08.webp" width="1600" height="1046" alt="Labor Day 5v5 Tournament" loading="lazy" decoding="async">
+        <div class="tourn-overlay"></div>
+        <div class="tourn-body">
+          <p class="tourn-format-badge">5v5 Format</p>
+          <h3 class="tourn-card-name">Labor Day<br>5v5 Tournament</h3>
+          <div class="tourn-card-actions">
+            <a href="https://soccer.sincsports.com/TTContent.aspx?tid=RISING51&tab=1" class="tourn-sinc-btn" data-tourn-id="labor-day-5v5" target="_blank" rel="noopener noreferrer">View Tournament ↗</a>
+            <span class="tourn-sinc-badge">Managed by <a href="https://soccer.sincsports.com" target="_blank" rel="noopener">SincSports ↗</a></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6 Winter Elite 5v5 — Link TBA -->
+      <article class="tourn-card reveal reveal-delay-2" id="winter-elite-5v5" style="scroll-margin-top:var(--nav-h)">
+        <img class="tourn-card-img" src="../assets/images/gallery/events/risingstar_09.webp" width="1600" height="1046" alt="Winter Elite 5v5 Tournament" loading="lazy" decoding="async">
+        <div class="tourn-overlay"></div>
+        <div class="tourn-body">
+          <p class="tourn-format-badge">5v5 Format</p>
+          <h3 class="tourn-card-name">Winter Elite<br>5v5 Tournament</h3>
+          <div class="tourn-card-actions">
+            <span class="tourn-sinc-btn disabled" data-tourn-id="winter-elite-5v5">Link Coming Soon</span>
+            <span class="tourn-sinc-badge">Registration link will be posted when available</span>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /tourn-grid -->
+  </div>
+</section>
+
+<!-- AGE BRACKETS -->
+<section class="section" style="background:var(--dark);border-top:1px solid var(--border-sub)">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">Age Groups</p>
+      <h2 class="section-title">Your <span>Division</span></h2>
+      <p class="section-desc">Every age group competes against peers of the same level. Find your division below.</p>
+    </div>
+    <div class="age-grid reveal">
+      <div class="age-card"><div class="age-num">U6</div><div class="age-label">Ages 4–5</div><div class="age-range">5v5 Format</div></div>
+      <div class="age-card"><div class="age-num">U8</div><div class="age-label">Ages 6–7</div><div class="age-range">5v5 Format</div></div>
+      <div class="age-card"><div class="age-num">U10</div><div class="age-label">Ages 8–9</div><div class="age-range">5v5 Format</div></div>
+      <div class="age-card"><div class="age-num">U12</div><div class="age-label">Ages 10–11</div><div class="age-range">7v7 Format</div></div>
+      <div class="age-card"><div class="age-num">U14</div><div class="age-label">Ages 12–13</div><div class="age-range">7v7 Format</div></div>
+      <div class="age-card"><div class="age-num">U17</div><div class="age-label">Ages 14–17</div><div class="age-range">7v7 Format</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL SEASON CALENDAR -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">Season Schedule</p>
+      <h2 class="section-title">Full <span>Calendar</span></h2>
+    </div>
+    <div class="sinc-notice reveal" style="margin-bottom:24px">
+      <span class="sinc-notice-icon">🔗</span>
+      <p>All registration links open on <strong>SincSports</strong> in a new tab. Rising Stars Atlanta does not process tournament payments or registrations on this site.</p>
+    </div>
+    <div class="reveal" style="background:var(--dark);border:1px solid var(--border-sub);padding:0 32px">
+      <table class="schedule-table">
+        <thead>
+          <tr><th>Tournament</th><th>Format</th><th>Status</th><th>Registration</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Memorial Day 5v5 Tournament</td>
+            <td style="color:var(--muted)">5v5</td>
+            <td><span style="color:#22c55e;font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">● Open</span></td>
+            <td><a href="https://soccer.sincsports.com/TTContent.aspx?tid=RISING5&tab=1" class="sinc-link" data-tourn-id="memorial-day-5v5" target="_blank" rel="noopener">View on SincSports ↗</a></td>
+          </tr>
+          <tr>
+            <td>Summer Elite 5v5 Tournament</td>
+            <td style="color:var(--muted)">5v5</td>
+            <td><span style="color:#22c55e;font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">● Open</span></td>
+            <td><a href="https://soccer.sincsports.com/TTContent.aspx?tid=RISING52&tab=1" class="sinc-link" data-tourn-id="summer-elite-5v5" target="_blank" rel="noopener">View on SincSports ↗</a></td>
+          </tr>
+          <tr>
+            <td>Championship Cup 5v5 Invitational</td>
+            <td style="color:var(--muted)">5v5 Invitational</td>
+            <td><span style="color:#22c55e;font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">● Open</span></td>
+            <td><a href="https://soccer.sincsports.com/TTContent.aspx?tid=RISINGC&qual=INTRO&edit=N" class="sinc-link" data-tourn-id="championship-cup-5v5" target="_blank" rel="noopener">View on SincSports ↗</a></td>
+          </tr>
+          <tr>
+            <td>Elite 7v7 Summer Series</td>
+            <td style="color:var(--muted)">7v7</td>
+            <td><span style="color:#22c55e;font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">● Open</span></td>
+            <td><a href="https://soccer.sincsports.com/TTContent.aspx?tid=ELITE7V7&tab=1" class="sinc-link" data-tourn-id="elite-7v7-summer" target="_blank" rel="noopener">View on SincSports ↗</a></td>
+          </tr>
+          <tr>
+            <td>Labor Day 5v5 Tournament</td>
+            <td style="color:var(--muted)">5v5</td>
+            <td><span style="color:#22c55e;font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">● Open</span></td>
+            <td><a href="https://soccer.sincsports.com/TTContent.aspx?tid=RISING51&tab=1" class="sinc-link" data-tourn-id="labor-day-5v5" target="_blank" rel="noopener">View on SincSports ↗</a></td>
+          </tr>
+          <tr>
+            <td>Winter Elite 5v5 Tournament</td>
+            <td style="color:var(--muted)">5v5</td>
+            <td><span style="color:var(--muted);font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Coming Soon</span></td>
+            <td><span class="sinc-link tba" data-tourn-id="winter-elite-5v5">Link Coming Soon</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--dark);border-top:1px solid var(--border-sub)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,100px);align-items:start">
+      <div class="reveal">
+        <p class="label">Got Questions?</p>
+        <h2 class="section-title">Tournament <span>FAQ</span></h2>
+        <p class="section-desc" style="margin-top:20px">Everything you need to know. Still need help? <a href="mailto:info@risingstarsatlanta.com" style="color:var(--gold)">Contact us.</a></p>
+        <div style="margin-top:36px;display:flex;flex-direction:column;gap:12px">
+          <a href="https://soccer.sincsports.com" target="_blank" rel="noopener" class="btn-primary">View All on SincSports ↗</a>
+          <a href="tournaments.html" class="btn-outline">Request Private Training ↗</a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="faq-item">
+          <button class="faq-q"><span>How do I register for a tournament?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">All tournament registrations are handled through <a href="https://soccer.sincsports.com" target="_blank" rel="noopener">SincSports</a>. Click "View Tournament ↗" on any card above and complete your registration directly on their platform. RSA does not collect tournament registrations on this website.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>How many players are on a team?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">5v5 teams require 5–8 players. 7v7 teams require 7–12 players. Rosters must be finalized one week before the tournament date.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>What equipment do players need?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">Players need cleats (no metal studs), shin guards, and a water bottle. Goalkeepers need gloves. Check the specific SincSports tournament page for jersey requirements per event.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Can a player play in multiple age groups?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">Players may only compete in their age-appropriate division. Age verification (birth certificate or ID) may be required at check-in per SincSports and RSA rules.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>How do I access private training?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">Private training sessions are by <strong>invitation from coaches only</strong>. Use the "Request Private Training" form on this site to express interest — a coach will follow up if a spot becomes available.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Are spectators welcome?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">Yes! Spectators are always welcome and admission is free. We encourage families to come cheer on the players at every event.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVATE TRAINING CTA -->
+<section class="section" style="background:var(--charcoal);border-top:1px solid var(--border-sub)">
+  <div class="container">
+    <div class="pt-cta-strip reveal">
+      <div>
+        <h3>Interested in Private Training?</h3>
+        <p>Private sessions are invite-only from our coaching staff. Submit your details and a coach will reach out if a spot opens.</p>
+      </div>
+      <a href="tournaments.html" class="btn-primary" style="white-space:nowrap">Request Private Training ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div><div class="footer-logo"><div class="footer-logo-img"><img src="../assets/logo/rising-stars-logo-160.png" alt="Rising Stars Atlanta" width="44" height="44" decoding="async"></div><span>RISING <span>STARS</span> ATL</span></div><p class="footer-tagline">Atlanta's premier elite youth football experience since 2019.</p><div class="footer-socials"><a href="tel:+16784380539" class="footer-social" aria-label="Call">PH</a><a href="mailto:info@risingstarsatlanta.com" class="footer-social" aria-label="Email">EM</a></div></div>
+      <div class="footer-col"><h4>Programs</h4><ul><li><a href="programs.html#private">Private Training</a></li><li><a href="tournaments.html">Request Training</a></li></ul></div>
+      <div class="footer-col"><h4>Events</h4><ul><li><a href="tournaments.html">Summer Classic 2026</a></li><li><a href="tournaments.html">5v5 Championship</a></li><li><a href="tournaments.html">7v7 League</a></li><li><a href="tournaments.html">All Events</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="schedules.html">Schedules</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="resources.html">Resources</a></li><li><a href="partner.html">Partner</a></li></ul></div>
+      <div class="footer-col"><h4>Shop</h4><ul><li><a href="merchandise.html">Merchandise</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2026 Rising Stars Atlanta. All rights reserved.</p><div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap"><a href="https://umojaserv.com/" target="_blank" rel="noopener noreferrer" class="footer-credit">Site by UmojaServ</a></div></div>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-text">2026 Tournaments<span>Register via SincSports</span></div>
+  <a href="https://soccer.sincsports.com" target="_blank" rel="noopener" class="sticky-cta-btn">View ↗</a>
+</div>
+
+<script>
+const nav=document.getElementById('nav'),stickyCta=document.getElementById('stickyCta');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>40);stickyCta.classList.toggle('visible',scrollY>300)},{passive:true});
+const toggle=document.getElementById('navToggle'),menu=document.getElementById('mobileMenu'),backdrop=document.getElementById('mmBackdrop'),mmCloseBtn=document.getElementById('mmClose');
+const mmOpen=()=>{menu.classList.add('open');toggle.classList.add('active');toggle.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'};
+const mmClose=()=>{menu.classList.remove('open');toggle.classList.remove('active');toggle.setAttribute('aria-expanded','false');document.body.style.overflow=''};
+toggle.addEventListener('click',()=>menu.classList.contains('open')?mmClose():mmOpen());
+if(mmCloseBtn)mmCloseBtn.addEventListener('click',mmClose);
+if(backdrop)backdrop.addEventListener('click',mmClose);
+document.querySelectorAll('.mm-link,.mm-cta').forEach(a=>a.addEventListener('click',mmClose));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')mmClose()});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('.faq-q').forEach(btn=>btn.addEventListener('click',()=>{const item=btn.closest('.faq-item');const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open')}));
+
+// Dynamic SincSports URLs from admin (if available via CMS)
+(async function loadTournamentLinks(){
+  const cfg = window.RSA_CMS_CONFIG;
+  if(!cfg||!cfg.PUBLIC_API_URL) return;
+  try {
+    const res = await fetch(`${cfg.PUBLIC_API_URL}?action=getPublicContent`);
+    const json = await res.json();
+    const links = json?.data?.tournamentLinks || [];
+    links.forEach(row=>{
+      const id = row.tournament_id || row.id;
+      if(!id) return;
+      document.querySelectorAll(`[data-tourn-id="${id}"]`).forEach(el=>{
+        const url = row.sincsports_url || '';
+        const isCardButton = el.classList.contains('tourn-sinc-btn');
+        if (url) {
+          const link = el.tagName === 'A' ? el : document.createElement('a');
+          link.href = url;
+          link.className = isCardButton ? 'tourn-sinc-btn' : 'sinc-link';
+          link.dataset.tournId = id;
+          link.target = '_blank';
+          link.rel = isCardButton ? 'noopener noreferrer' : 'noopener';
+          link.textContent = isCardButton ? 'View Tournament ↗' : 'View on SincSports ↗';
+          if (el !== link) el.replaceWith(link);
+          return;
+        }
+        const pending = el.tagName === 'SPAN' ? el : document.createElement('span');
+        pending.className = isCardButton ? 'tourn-sinc-btn disabled' : 'sinc-link tba';
+        pending.dataset.tournId = id;
+        pending.textContent = 'Link Coming Soon';
+        if (el !== pending) el.replaceWith(pending);
+      });
+    });
+  } catch(e){}
+})();
+</script>
+<!-- MOBILE BOTTOM NAVIGATION -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation" role="navigation">
+  <div class="mobile-bottom-nav-inner">
+    <a href="../index.html" class="mobile-nav-item" data-nav-tab="home" aria-label="Home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="mobile-nav-label">Home</span>
+    </a>
+    <a href="tournaments.html" class="mobile-nav-item" data-nav-tab="tournaments" aria-label="Tournaments">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9c0-1 1-2 2-2h8c1 0 2 1 2 2"/><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M12 9v6M9 13h6"/></svg>
+      <span class="mobile-nav-label">Tournaments</span>
+    </a>
+    <a href="programs.html" class="mobile-nav-item" data-nav-tab="programs" aria-label="Programs">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+      <span class="mobile-nav-label">Programs</span>
+    </a>
+    <a href="gallery.html" class="mobile-nav-item" data-nav-tab="gallery" aria-label="Gallery">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span class="mobile-nav-label">Gallery</span>
+    </a>
+    <button type="button" class="mobile-nav-item" data-nav-tab="menu" aria-label="Menu" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      <span class="mobile-nav-label">Menu</span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU DROPDOWN -->
+<div class="mobile-menu-dropdown" id="mobileMenuDropdown" role="menu" aria-label="Additional menu">
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title">Training</div>
+    <a href="programs.html#private" class="mobile-menu-link" role="menuitem">Private Training</a>
+    <a href="programs.html#elite-pickup" class="mobile-menu-link" role="menuitem">Elite Pickup</a>
+  </div>
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title">Info</div>
+    <a href="schedules.html" class="mobile-menu-link" role="menuitem">Schedules</a>
+    <a href="about.html" class="mobile-menu-link" role="menuitem">About</a>
+    <a href="resources.html" class="mobile-menu-link" role="menuitem">Resources</a>
+  </div>
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title">Shop</div>
+    <a href="merchandise.html" class="mobile-menu-link" role="menuitem">Merchandise</a>
+    <a href="partner.html" class="mobile-menu-link" role="menuitem">Partner With Us</a>
+  </div>
+</div>
+
+<script src="../assets/js/cms-config.js" defer></script>
+<script src="../assets/js/cms.js?v=navfix-20260608" defer></script>
+<script src="../assets/js/mobile-nav.js?v=mobile-nav-20260613" defer></script>
+</body>
+</html>
