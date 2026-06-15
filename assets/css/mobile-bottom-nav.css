@@ -1,0 +1,318 @@
+/* ═══════════════════════════════════════════════════════
+   RISING STARS ATLANTA — Mobile Bottom Navigation
+   Apple-style bottom tab navigation for mobile devices
+═══════════════════════════════════════════════════════ */
+
+/* ── MOBILE BOTTOM NAV ────────────────────────────── */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--dark);
+  border-top: 1px solid rgba(200,16,46,.1);
+  z-index: 950;
+  padding-bottom: max(0px, env(safe-area-inset-bottom));
+}
+
+.mobile-bottom-nav-inner {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  height: 60px;
+  gap: 0;
+  align-items: stretch;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-decoration: none;
+  color: rgba(255,255,255,.5);
+  transition: all .2s ease;
+  position: relative;
+  padding: 8px 0;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+.mobile-nav-item:active {
+  background: rgba(200,16,46,.05);
+}
+
+.mobile-nav-item.active {
+  color: var(--red, var(--gold));
+}
+
+.mobile-nav-item.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--red, var(--gold));
+}
+
+.mobile-nav-item.active::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(200,16,46,.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.mobile-nav-item svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2;
+  transition: all .2s ease;
+}
+
+.mobile-nav-item.active svg {
+  width: 26px;
+  height: 26px;
+  filter: drop-shadow(0 0 8px rgba(200,16,46,.4));
+}
+
+.mobile-nav-item:hover:not(.active) {
+  color: rgba(255,255,255,.7);
+}
+
+.mobile-nav-label {
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* ── MOBILE MENU DROPDOWN ────────────────────────── */
+.mobile-menu-dropdown,
+.mobile-tournament-menu {
+  display: none;
+  position: fixed;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: none;
+  background: linear-gradient(180deg, rgba(16,28,48,.98), rgba(10,18,34,.98));
+  border: 1px solid rgba(255,255,255,.08);
+  border-bottom: none;
+  border-radius: 14px 14px 0 0;
+  box-shadow: 0 -18px 38px rgba(0,0,0,.38);
+  z-index: 951;
+  max-height: 54vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.mobile-menu-dropdown::before,
+.mobile-tournament-menu::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--red, var(--gold)), transparent);
+}
+
+.mobile-menu-dropdown.open,
+.mobile-tournament-menu.open {
+  display: block;
+  animation: slideUp .25s var(--ease-out);
+}
+
+.mobile-tournament-menu {
+  right: 0;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu-section {
+  padding: 0;
+}
+
+.mobile-menu-section-title {
+  font-family: var(--font-display);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 10px 18px 7px;
+  border-bottom: 1px solid var(--border-sub);
+}
+
+.mobile-menu-section:first-child .mobile-menu-section-title {
+  padding-top: 12px;
+}
+
+.mobile-menu-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 18px;
+  min-height: 42px;
+  color: var(--off-white);
+  font-family: var(--font-light);
+  font-size: 13px;
+  line-height: 1.15;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-sub);
+  transition: all .2s;
+  position: relative;
+}
+
+.mobile-menu-link:active {
+  background: rgba(200,16,46,.08);
+  color: var(--red, var(--gold));
+  padding-left: 30px;
+}
+
+.mobile-menu-link-primary {
+  font-weight: 700;
+  color: var(--white);
+  background: rgba(200,16,46,.08);
+}
+
+.mobile-menu-link-disabled {
+  justify-content: space-between;
+  gap: 12px;
+  color: rgba(255,255,255,.46);
+  cursor: not-allowed;
+}
+
+.mobile-menu-link-disabled small {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-family: var(--font-display);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.mobile-menu-link:last-child {
+  border-bottom: none;
+}
+
+.mobile-menu-link::before {
+  content: '→';
+  position: absolute;
+  left: 14px;
+  color: var(--red, var(--gold));
+  font-weight: 700;
+  font-size: 12px;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity .2s, transform .2s;
+}
+
+.mobile-menu-link:active::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── ADJUST BODY FOR BOTTOM NAV ──────────────────── */
+body.mobile-nav-enabled {
+  padding-bottom: 60px;
+}
+
+/* ── HIDE HAMBURGER ON MOBILE ────────────────────── */
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: block;
+  }
+
+  .nav-toggle {
+    display: none !important;
+  }
+
+  /* Adjust scroll padding for mobile nav */
+  html {
+    scroll-padding-top: 60px;
+  }
+
+  body {
+    padding-bottom: 60px;
+  }
+}
+
+/* ── HIDE BOTTOM NAV ON DESKTOP ──────────────────── */
+@media (min-width: 769px) {
+  .mobile-bottom-nav {
+    display: none !important;
+  }
+
+  .mobile-menu-dropdown,
+  .mobile-tournament-menu {
+    display: none !important;
+  }
+
+  body {
+    padding-bottom: 0;
+  }
+}
+
+/* ── TABLET ADJUSTMENTS ──────────────────────────── */
+@media (max-width: 480px) {
+  .mobile-nav-label {
+    font-size: 8px;
+  }
+
+  .mobile-bottom-nav {
+    height: 56px;
+  }
+
+  .mobile-bottom-nav-inner {
+    height: 56px;
+  }
+
+  .mobile-menu-dropdown,
+  .mobile-tournament-menu {
+    bottom: 56px;
+  }
+
+  body {
+    padding-bottom: 56px;
+  }
+}
+
+/* Keep the scroll CTA above the bottom tab bar when both are visible. */
+@media (max-width: 640px) {
+  .sticky-cta {
+    bottom: 61px;
+  }
+
+  body {
+    padding-bottom: 129px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sticky-cta {
+    bottom: 57px;
+  }
+
+  body {
+    padding-bottom: 121px;
+  }
+}
